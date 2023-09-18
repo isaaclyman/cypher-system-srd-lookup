@@ -7,15 +7,24 @@ class CSearchManager {
 
   CSearchManager(this.root);
 
-  Iterable<CSearchResultCategory> search(String searchText) {
+  Iterable<CSearchResultCategory> search(
+    String searchText,
+    Map<String, bool> filterState,
+  ) {
     if (searchText.trim().isEmpty) {
       return [];
     }
 
     final results = <String, CSearchResultCategory>{};
 
-    for (var searchableList in root.searchables) {
-      for (var searchable in searchableList) {
+    for (var searchableCategory in root.searchables) {
+      final category = searchableCategory.category;
+
+      if (filterState[category] == false) {
+        continue;
+      }
+
+      for (var searchable in searchableCategory.searchables) {
         final match = searchable.searchTextList.indexed.firstWhereOrNull(
             (it) => it.$2.toLowerCase().contains(searchText.toLowerCase()));
         if (match == null) {
@@ -23,16 +32,20 @@ class CSearchManager {
         }
 
         final (priority, matchingText) = match;
-        final result = searchable.asSearchResult();
-        final category = results.putIfAbsent(
-          result.category,
+        final resultCategory = results.putIfAbsent(
+          category,
           () => CSearchResultCategory(
-            category: result.category,
+            category: category,
             results: [],
           ),
         );
-        category.addResult(CSearchResultWithBody.fromCSearchResult(
-            result, matchingText, priority));
+        resultCategory.addResult(
+          CSearchResultWithBody(
+            header: searchable.header,
+            body: matchingText,
+            priority: priority,
+          ),
+        );
       }
     }
 
@@ -68,37 +81,28 @@ class CSearchResultCategory {
 }
 
 class CSearchResultWithBody {
-  final String category;
   final String header;
   final String body;
   final int priority;
 
   CSearchResultWithBody({
-    required this.category,
     required this.header,
     required this.body,
     required this.priority,
   });
-
-  CSearchResultWithBody.fromCSearchResult(
-    CSearchResult result,
-    String body,
-    int priority,
-  ) : this(
-          category: result.category,
-          header: result.header,
-          body: body,
-          priority: priority,
-        );
 }
 
-class CSearchResult {
-  final String category;
-  final String header;
+//
+// FOR DATA CLASSES
+//
 
-  CSearchResult({
+class CSearchableCategory {
+  String category;
+  List<CSearchable> searchables;
+
+  CSearchableCategory({
     required this.category,
-    required this.header,
+    required this.searchables,
   });
 }
 
@@ -107,12 +111,12 @@ class CSearchResult {
 //
 
 abstract class CHasSearchables {
-  List<List<CSearchable>> get searchables;
+  List<CSearchableCategory> get searchables;
 }
 
 abstract class CSearchable {
+  String get header;
   Iterable<String> get searchTextList;
-  CSearchResult asSearchResult();
 }
 
 abstract class CSearchableItem {

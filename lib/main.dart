@@ -9,17 +9,17 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MainApp(srdRoot: await readSrdJson()));
+  runApp(MainApp(dataRoot: await readSrdJson()));
 }
 
 class MainApp extends StatefulWidget {
-  final CJsonRoot srdRoot;
+  final CJsonRoot dataRoot;
   final CSearchManager manager;
 
   MainApp({
     super.key,
-    required this.srdRoot,
-  }) : manager = CSearchManager(srdRoot);
+    required this.dataRoot,
+  }) : manager = CSearchManager(dataRoot);
 
   @override
   State<MainApp> createState() => _MainAppState();
@@ -30,6 +30,7 @@ class _MainAppState extends State<MainApp> {
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
   String searchText = "";
+  Map<String, bool> filterState = {};
   late void Function() debouncedSearch;
 
   @override
@@ -39,7 +40,7 @@ class _MainAppState extends State<MainApp> {
     debouncedSearch = cDebounce(
       const Duration(milliseconds: 150),
       () => setState(() {
-        results = widget.manager.search(searchText);
+        results = widget.manager.search(searchText, filterState);
       }),
     );
   }
@@ -47,6 +48,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         body: AnimatedAlign(
           alignment: isSearchBarFocused || hasResults
@@ -63,14 +65,20 @@ class _MainAppState extends State<MainApp> {
                 onFocusChange: (isFocused) => setState(() {
                   isSearchBarFocused = isFocused;
                 }),
-                onValueChange: (str) {
+                onValueChange: (str, filterState) {
                   searchText = str;
+                  this.filterState = filterState;
                   debouncedSearch();
                 },
+                filters:
+                    widget.dataRoot.searchables.map((s) => s.category).toList(),
               ),
               if (hasResults)
                 Expanded(
-                  child: CResultsBlock(results, searchText: searchText,),
+                  child: CResultsBlock(
+                    results,
+                    searchText: searchText,
+                  ),
                 ),
             ],
           ),
@@ -82,10 +90,14 @@ class _MainAppState extends State<MainApp> {
 
 class _SearchBlock extends StatelessWidget {
   final void Function(bool) onFocusChange;
-  final void Function(String) onValueChange;
+  final void Function(String, Map<String, bool>) onValueChange;
+  final List<String> filters;
 
-  const _SearchBlock(
-      {required this.onFocusChange, required this.onValueChange});
+  const _SearchBlock({
+    required this.onFocusChange,
+    required this.onValueChange,
+    required this.filters,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +113,7 @@ class _SearchBlock extends StatelessWidget {
             child: CSearchBar(
               onFocusChange: onFocusChange,
               onValueChange: onValueChange,
+              filters: filters,
             ),
           ),
         ),

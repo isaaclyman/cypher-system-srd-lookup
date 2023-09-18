@@ -35,14 +35,17 @@ class CJsonRoot implements CHasSearchables {
       _$CJsonRootFromJson(json);
 
   @override
-  List<List<CSearchable>> get searchables => [
-        abilities,
-        types,
+  List<CSearchableCategory> get searchables => [
+        CSearchableCategory(category: "Abilities", searchables: abilities),
+        CSearchableCategory(category: "Types", searchables: types),
       ];
 }
 
 @JsonSerializable()
 class CJsonAbility implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
   int? cost;
   List<String> pool;
@@ -82,10 +85,6 @@ class CJsonAbility implements CSearchable {
 
   factory CJsonAbility.fromJson(Map<String, dynamic> json) =>
       _$CJsonAbilityFromJson(json);
-
-  @override
-  CSearchResult asSearchResult() =>
-      CSearchResult(category: "Ability", header: name);
 }
 
 @JsonSerializable()
@@ -127,6 +126,9 @@ class CJsonBasicAbility implements CSearchableItem {
 
 @JsonSerializable()
 class CJsonType implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
   List<CJsonBasicAbility> intrusions;
 
@@ -164,10 +166,6 @@ class CJsonType implements CSearchable {
 
   factory CJsonType.fromJson(Map<String, dynamic> json) =>
       _$CJsonTypeFromJson(json);
-
-  @override
-  CSearchResult asSearchResult() =>
-      CSearchResult(category: "Type", header: name);
 }
 
 @JsonSerializable()

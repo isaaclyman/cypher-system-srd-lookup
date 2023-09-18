@@ -20,7 +20,7 @@ class CResultsBlock extends StatefulWidget {
 }
 
 class _CResultsBlockState extends State<CResultsBlock> {
-  Map<String, int> resultsToShow = {};
+  final Map<String, int> resultsToShow = {};
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +186,7 @@ class _HighlightMatch extends StatelessWidget {
   Widget build(BuildContext context) {
     final fullMatchIx = fullText.toLowerCase().indexOf(matchText.toLowerCase());
 
-    final minWindow = max(40, matchText.length);
+    final minWindow = max(30, matchText.length);
     String windowedText;
     if (minWindow >= fullText.length || fullMatchIx <= minWindow) {
       windowedText = fullText;
@@ -196,7 +196,6 @@ class _HighlightMatch extends StatelessWidget {
       windowedText = "...${fullText.substring(fullMatchIx - minWindow ~/ 2)}";
     }
 
-    debugPrint(windowedText);
     final windowMatchIx =
         windowedText.toLowerCase().indexOf(matchText.toLowerCase());
 
