@@ -2,18 +2,10 @@
 
 ## Generating JSON deserialization code
 
-This is necessary whenever `lib/types.dart` is changed.
+This is necessary whenever `lib/json_data/types.dart` or `assets/CSRD.json` is changed.
 
 ```sh
-cd cli
 dart run build_runner build
-```
-
-## Checking JSON deserialization
-
-```sh
-cd cli
-dart run :decode
 ```
 
 ## Shout-outs
