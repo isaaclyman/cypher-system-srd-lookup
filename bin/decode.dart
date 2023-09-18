@@ -1,4 +1,4 @@
-import 'package:cli/read_json.dart';
+import 'package:app/json_data/read_json.dart';
 
 void main(List<String> arguments) async {
   final decoded = await readJson();
