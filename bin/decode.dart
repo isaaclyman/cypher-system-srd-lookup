@@ -1,7 +1,13 @@
-import 'package:app/json_data/read_json.dart';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:app/json_data/json_types.dart';
+import 'package:path/path.dart';
 
 void main(List<String> arguments) async {
-  final decoded = await readJson();
+  final jsonFile = File(join("assets", "CSRD.json"));
+  final jsonString = await jsonFile.readAsString();
+  var decoded = CJsonRoot.fromJson(jsonDecode(jsonString));
   print('JSON successfully decoded.');
   print(decoded);
 }
