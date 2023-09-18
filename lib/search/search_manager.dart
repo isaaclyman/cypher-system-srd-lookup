@@ -1,12 +1,11 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
-import 'package:cypher_system_srd_lookup/json_data/json_types.dart';
 
 class CSearchManager {
-  final CJsonRoot srdRoot;
+  final CHasSearchables root;
 
-  CSearchManager(this.srdRoot);
+  CSearchManager(this.root);
 
   Iterable<CSearchResultCategory> search(String searchText) {
     if (searchText.trim().isEmpty) {
@@ -15,7 +14,7 @@ class CSearchManager {
 
     final results = <String, CSearchResultCategory>{};
 
-    for (var searchableList in srdRoot.searchables) {
+    for (var searchableList in root.searchables) {
       for (var searchable in searchableList) {
         final match = searchable.searchTextList.indexed.firstWhereOrNull(
             (it) => it.$2.toLowerCase().contains(searchText.toLowerCase()));
@@ -38,11 +37,15 @@ class CSearchManager {
     }
 
     for (var category in results.values) {
-      category.results.sort((v1, v2) => v1.priority.compareTo(v2.priority));
+      category.results.sort((v1, v2) => v1.priority == v2.priority
+          ? v1.header.compareTo(v2.header)
+          : v1.priority.compareTo(v2.priority));
     }
 
     return results.values
-        .sorted((v1, v2) => v1.minPriority.compareTo(v2.minPriority))
+        .sorted((v1, v2) => v1.minPriority == v2.minPriority
+            ? v1.category.compareTo(v2.category)
+            : v1.minPriority.compareTo(v2.minPriority))
         .reversed
         .toList();
   }
@@ -97,6 +100,14 @@ class CSearchResult {
     required this.category,
     required this.header,
   });
+}
+
+//
+// INTERFACES
+//
+
+abstract class CHasSearchables {
+  List<List<CSearchable>> get searchables;
 }
 
 abstract class CSearchable {

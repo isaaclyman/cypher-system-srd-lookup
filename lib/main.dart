@@ -70,7 +70,7 @@ class _MainAppState extends State<MainApp> {
               ),
               if (hasResults)
                 Expanded(
-                  child: CResultsBlock(results),
+                  child: CResultsBlock(results, searchText: searchText,),
                 ),
             ],
           ),
@@ -109,7 +109,7 @@ class _SearchBlock extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 2),
             child: Text(
               "Compatible with the Cypher System",
-              style: context.text.tiny,
+              style: context.text.legal,
             ),
           ),
         ),

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CThemeText {
-  final TextStyle tiny = const TextStyle(
+  final TextStyle highlight = const TextStyle(
+    backgroundColor: Colors.yellow,
+  );
+
+  final TextStyle legal = const TextStyle(
     fontSize: 8,
+  );
+
+  final TextStyle small = const TextStyle(
+    fontSize: 10,
   );
 
   final TextStyle categoryHeader = TextStyle(

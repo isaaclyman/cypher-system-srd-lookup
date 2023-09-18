@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'json_types.g.dart';
 
 @JsonSerializable()
-class CJsonRoot {
+class CJsonRoot implements CHasSearchables {
   List<CJsonType> types;
   List<CJsonFlavor> flavors;
   List<CJsonDescriptor> descriptors;
@@ -34,6 +34,7 @@ class CJsonRoot {
   factory CJsonRoot.fromJson(Map<String, dynamic> json) =>
       _$CJsonRootFromJson(json);
 
+  @override
   List<List<CSearchable>> get searchables => [
         abilities,
         types,
