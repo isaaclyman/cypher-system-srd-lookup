@@ -18,4 +18,4 @@ dart run :decode
 
 ## Shout-outs
 
-Thanks to Jon Davis for his hard work compiling the Cypher System SRD to [JSON format](https://github.com/Jon-Davis/Cypher-System-JSON-DB). The SQLite database in this project is based on his work.
+Thanks to Jon Davis for his hard work compiling the Cypher System SRD to [JSON format](https://github.com/Jon-Davis/Cypher-System-JSON-DB).
