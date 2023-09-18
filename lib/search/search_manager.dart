@@ -5,30 +5,21 @@ class CSearchManager {
 
   CSearchManager(this.srdRoot);
 
-  Iterable<CSearchResultCategory> search(
-    String searchText, {
-    int resultLimit = 10,
-  }) {
+  Iterable<CSearchResultCategory> search(String searchText) {
+    if (searchText.trim().isEmpty) {
+      return [];
+    }
+
     final results = <String, CSearchResultCategory>{};
-    var resultsFound = 0;
 
     for (var searchableList in srdRoot.searchables) {
-      if (resultsFound >= resultLimit) {
-        break;
-      }
-
       for (var searchable in searchableList) {
-        if (resultsFound >= resultLimit) {
-          break;
-        }
-
         final matchingTexts = searchable.searchTextList.where((element) =>
             element.toLowerCase().contains(searchText.toLowerCase()));
         if (matchingTexts.isEmpty) {
           continue;
         }
 
-        resultsFound++;
         final result = searchable.asSearchResult();
         final category = results.putIfAbsent(
           result.category,

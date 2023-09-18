@@ -71,7 +71,7 @@ class CJsonAbility implements CSearchable {
     required this.description,
     required this.references,
   }) : searchTextList = [
-          name,
+          "Name: $name",
           description,
           if (cost != null) "Cost: $costRendered",
           if (tier != null) "Tier: $tier",
@@ -100,7 +100,8 @@ class CJsonAbilityRef implements CSearchableItem {
     required this.name,
     required this.tier,
     required this.preselected,
-  }) : searchText = "$name (Tier $tier${preselected ? ", preselected" : ""})";
+  }) : searchText =
+            "Ability: $name (Tier $tier, ${preselected ? "preselected" : "optional"})";
 
   factory CJsonAbilityRef.fromJson(Map<String, dynamic> json) =>
       _$CJsonAbilityRefFromJson(json);
@@ -152,7 +153,7 @@ class CJsonType implements CSearchable {
     required this.abilities,
     required this.specialAbilities,
   }) : searchTextList = [
-          name,
+          "Name: $name",
           ...statPool.entries.map((kvp) => "${kvp.key}: ${kvp.value}"),
           ...abilities.map((a) => a.searchText),
           ...specialAbilities.map((s) => s.searchText),

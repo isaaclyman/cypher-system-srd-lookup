@@ -4,6 +4,7 @@ import 'package:cypher_system_srd_lookup/search/results.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/search/search_bar.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
+import 'package:cypher_system_srd_lookup/util/debounce.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -28,6 +29,20 @@ class _MainAppState extends State<MainApp> {
   bool isSearchBarFocused = false;
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
+  String searchText = "";
+  late void Function() debouncedSearch;
+
+  @override
+  void initState() {
+    super.initState();
+
+    debouncedSearch = cDebounce(
+      const Duration(milliseconds: 150),
+      () => setState(() {
+        results = widget.manager.search(searchText);
+      }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +63,15 @@ class _MainAppState extends State<MainApp> {
                 onFocusChange: (isFocused) => setState(() {
                   isSearchBarFocused = isFocused;
                 }),
-                onValueChange: (searchText) => setState(() {
-                  results = widget.manager.search(searchText);
-                }),
+                onValueChange: (str) {
+                  searchText = str;
+                  debouncedSearch();
+                },
               ),
-              if (hasResults) CResultsBlock(results),
+              if (hasResults)
+                Expanded(
+                  child: CResultsBlock(results),
+                ),
             ],
           ),
         ),
