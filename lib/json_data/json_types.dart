@@ -1,3 +1,4 @@
+import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'json_types.g.dart';
@@ -32,10 +33,15 @@ class CJsonRoot {
 
   factory CJsonRoot.fromJson(Map<String, dynamic> json) =>
       _$CJsonRootFromJson(json);
+
+  List<List<CSearchable>> get searchables => [
+        abilities,
+        types,
+      ];
 }
 
 @JsonSerializable()
-class CJsonAbility {
+class CJsonAbility implements CSearchable {
   String name;
   int? cost;
   List<String> pool;
@@ -51,6 +57,9 @@ class CJsonAbility {
   String description;
   List<String> references;
 
+  @override
+  Iterable<String> searchTextList;
+
   CJsonAbility({
     required this.name,
     required this.cost,
@@ -61,44 +70,61 @@ class CJsonAbility {
     required this.category,
     required this.description,
     required this.references,
-  });
+  }) : searchTextList = [
+          name,
+          description,
+          if (cost != null) "Cost: $costRendered",
+          if (tier != null) "Tier: $tier",
+          if (category.isNotEmpty) "Category: ${category.join(" / ")}",
+          if (references.isNotEmpty) "Used by: ${references.join(", ")}"
+        ];
 
   factory CJsonAbility.fromJson(Map<String, dynamic> json) =>
       _$CJsonAbilityFromJson(json);
+
+  @override
+  CSearchResult asSearchResult() =>
+      CSearchResult(category: "Ability", header: name);
 }
 
 @JsonSerializable()
-class CJsonAbilityRef {
+class CJsonAbilityRef implements CSearchableItem {
   String name;
   int tier;
   bool preselected;
+
+  @override
+  String searchText;
 
   CJsonAbilityRef({
     required this.name,
     required this.tier,
     required this.preselected,
-  });
+  }) : searchText = "$name (Tier $tier${preselected ? ", preselected" : ""})";
 
   factory CJsonAbilityRef.fromJson(Map<String, dynamic> json) =>
       _$CJsonAbilityRefFromJson(json);
 }
 
 @JsonSerializable()
-class CJsonBasicAbility {
+class CJsonBasicAbility implements CSearchableItem {
   String name;
   String description;
+
+  @override
+  String searchText;
 
   CJsonBasicAbility({
     required this.name,
     required this.description,
-  });
+  }) : searchText = "$name: $description";
 
   factory CJsonBasicAbility.fromJson(Map<String, dynamic> json) =>
       _$CJsonBasicAbilityFromJson(json);
 }
 
 @JsonSerializable()
-class CJsonType {
+class CJsonType implements CSearchable {
   String name;
   List<CJsonBasicAbility> intrusions;
 
@@ -108,11 +134,14 @@ class CJsonType {
   CJsonRollTable background;
 
   @JsonKey(name: "special_abilities_per_tier")
-  List<CJsonAmount> specialAbilitiesPerTier;
+  List<CJsonSpecialAbilitiesAmount> specialAbilitiesPerTier;
   List<CJsonBasicAbility> abilities;
 
   @JsonKey(name: "special_abilities")
   List<CJsonAbilityRef> specialAbilities;
+
+  @override
+  Iterable<String> searchTextList;
 
   CJsonType({
     required this.name,
@@ -122,25 +151,39 @@ class CJsonType {
     required this.specialAbilitiesPerTier,
     required this.abilities,
     required this.specialAbilities,
-  });
+  }) : searchTextList = [
+          name,
+          ...statPool.entries.map((kvp) => "${kvp.key}: ${kvp.value}"),
+          ...abilities.map((a) => a.searchText),
+          ...specialAbilities.map((s) => s.searchText),
+          ...intrusions.map((i) => i.searchText),
+          ...specialAbilitiesPerTier.map((s) => s.searchText),
+        ];
 
   factory CJsonType.fromJson(Map<String, dynamic> json) =>
       _$CJsonTypeFromJson(json);
+
+  @override
+  CSearchResult asSearchResult() =>
+      CSearchResult(category: "Type", header: name);
 }
 
 @JsonSerializable()
-class CJsonAmount {
+class CJsonSpecialAbilitiesAmount implements CSearchableItem {
   int tier;
 
   @JsonKey(name: "special_abilities")
   int specialAbilities;
 
-  CJsonAmount({
+  @override
+  String searchText;
+
+  CJsonSpecialAbilitiesAmount({
     required this.tier,
     required this.specialAbilities,
-  });
+  }) : searchText = "$specialAbilities special abilities at tier $tier";
 
-  factory CJsonAmount.fromJson(Map<String, dynamic> json) =>
+  factory CJsonSpecialAbilitiesAmount.fromJson(Map<String, dynamic> json) =>
       _$CJsonAmountFromJson(json);
 }
 

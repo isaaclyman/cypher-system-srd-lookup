@@ -1,3 +1,7 @@
+# Cypher SRD Quick Lookup
+
+An instant full-text search app for the Cypher System SRD with structured results.
+
 # Development
 
 ## Generating JSON deserialization code

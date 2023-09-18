@@ -114,10 +114,11 @@ CJsonType _$CJsonTypeFromJson(Map<String, dynamic> json) => CJsonType(
       statPool: Map<String, int>.from(json['stat_pool'] as Map),
       background:
           CJsonRollTable.fromJson(json['background'] as Map<String, dynamic>),
-      specialAbilitiesPerTier:
-          (json['special_abilities_per_tier'] as List<dynamic>)
-              .map((e) => CJsonAmount.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      specialAbilitiesPerTier: (json['special_abilities_per_tier']
+              as List<dynamic>)
+          .map((e) =>
+              CJsonSpecialAbilitiesAmount.fromJson(e as Map<String, dynamic>))
+          .toList(),
       abilities: (json['abilities'] as List<dynamic>)
           .map((e) => CJsonBasicAbility.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -136,12 +137,14 @@ Map<String, dynamic> _$CJsonTypeToJson(CJsonType instance) => <String, dynamic>{
       'special_abilities': instance.specialAbilities,
     };
 
-CJsonAmount _$CJsonAmountFromJson(Map<String, dynamic> json) => CJsonAmount(
+CJsonSpecialAbilitiesAmount _$CJsonAmountFromJson(Map<String, dynamic> json) =>
+    CJsonSpecialAbilitiesAmount(
       tier: json['tier'] as int,
       specialAbilities: json['special_abilities'] as int,
     );
 
-Map<String, dynamic> _$CJsonAmountToJson(CJsonAmount instance) =>
+Map<String, dynamic> _$CJsonAmountToJson(
+        CJsonSpecialAbilitiesAmount instance) =>
     <String, dynamic>{
       'tier': instance.tier,
       'special_abilities': instance.specialAbilities,
