@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:collection/collection.dart';
 import 'package:cypher_system_srd_lookup/json_data/json_types.dart';
 
 class CSearchManager {
@@ -14,12 +17,13 @@ class CSearchManager {
 
     for (var searchableList in srdRoot.searchables) {
       for (var searchable in searchableList) {
-        final matchingTexts = searchable.searchTextList.where((element) =>
-            element.toLowerCase().contains(searchText.toLowerCase()));
-        if (matchingTexts.isEmpty) {
+        final match = searchable.searchTextList.indexed.firstWhereOrNull(
+            (it) => it.$2.toLowerCase().contains(searchText.toLowerCase()));
+        if (match == null) {
           continue;
         }
 
+        final (priority, matchingText) = match;
         final result = searchable.asSearchResult();
         final category = results.putIfAbsent(
           result.category,
@@ -28,38 +32,61 @@ class CSearchManager {
             results: [],
           ),
         );
-        category.results.add(CSearchResultWithBody.fromCSearchResult(
-            result, matchingTexts.join("\n")));
+        category.addResult(CSearchResultWithBody.fromCSearchResult(
+            result, matchingText, priority));
       }
     }
 
-    return results.values;
+    for (var category in results.values) {
+      category.results.sort((v1, v2) => v1.priority.compareTo(v2.priority));
+    }
+
+    return results.values
+        .sorted((v1, v2) => v1.minPriority.compareTo(v2.minPriority))
+        .reversed
+        .toList();
   }
 }
 
 class CSearchResultCategory {
   final String category;
   final List<CSearchResultWithBody> results;
+  int minPriority = 100;
 
   CSearchResultCategory({
     required this.category,
     required this.results,
   });
+
+  void addResult(CSearchResultWithBody result) {
+    minPriority = min(minPriority, result.priority);
+    results.add(result);
+  }
 }
 
 class CSearchResultWithBody {
   final String category;
   final String header;
   final String body;
+  final int priority;
 
   CSearchResultWithBody({
     required this.category,
     required this.header,
     required this.body,
+    required this.priority,
   });
 
-  CSearchResultWithBody.fromCSearchResult(CSearchResult result, String body)
-      : this(category: result.category, header: result.header, body: body);
+  CSearchResultWithBody.fromCSearchResult(
+    CSearchResult result,
+    String body,
+    int priority,
+  ) : this(
+          category: result.category,
+          header: result.header,
+          body: body,
+          priority: priority,
+        );
 }
 
 class CSearchResult {
