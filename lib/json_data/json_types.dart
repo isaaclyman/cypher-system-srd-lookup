@@ -50,6 +50,7 @@ class CJsonRoot implements CHasSearchables {
   @override
   List<CSearchableCategory> get searchables => [
         CSearchableCategory(category: "Abilities", searchables: abilities),
+        CSearchableCategory(category: "Artifacts", searchables: artifacts),
         CSearchableCategory(category: "Creatures", searchables: creatures),
         CSearchableCategory(category: "Cyphers", searchables: cyphers),
         CSearchableCategory(category: "Descriptors", searchables: descriptors),
@@ -531,7 +532,10 @@ class CJsonRollEntry {
 }
 
 @JsonSerializable()
-class CJsonArtifact {
+class CJsonArtifact implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
 
   @JsonKey(name: "level_dice")
@@ -545,6 +549,10 @@ class CJsonArtifact {
   String effect;
   List<CJsonRollTable> options;
 
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
+
   CJsonArtifact({
     required this.name,
     required this.levelDice,
@@ -553,10 +561,52 @@ class CJsonArtifact {
     required this.depletion,
     required this.effect,
     required this.options,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          effect,
+          if (levelDice != null)
+            "Level: $levelDice ${levelMod != 0 ? "+ $levelMod" : ""}",
+          "Form: $form",
+          "Depletion: $depletion",
+          ...options
+              .map((t) => t.table.map((roll) =>
+                  "${roll.start == roll.end ? roll.start.toString() : "${roll.start}-${roll.end}"}: ${roll.entry}"))
+              .flattened,
+        ];
 
   factory CJsonArtifact.fromJson(Map<String, dynamic> json) =>
       _$CJsonArtifactFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    final depletionIsShort = depletion.length <= "Automatic".length;
+
+    return [
+      CRenderVerticalKeyValues([
+        CNameDescription("Form", form),
+        if (levelDice != null)
+          CNameDescription(
+              "Level", "$levelDice ${levelMod != 0 ? "+ $levelMod" : ""}"),
+        if (depletionIsShort) CNameDescription("Depletion", depletion),
+      ]),
+      CRenderParagraph(effect),
+      if (!depletionIsShort)
+        CRenderLabeledParagraph(label: "Depletion", text: depletion),
+      ...options.map(
+        (t) => CRenderVerticalKeyValues(
+          [
+            CNameDescription(
+                "d${t.table.map((roll) => roll.end).max}", "Effect"),
+            ...t.table.map((roll) => CNameDescription(
+                roll.start == roll.end
+                    ? roll.start.toString()
+                    : "${roll.start}-${roll.end}",
+                roll.entry)),
+          ],
+        ),
+      ),
+    ];
+  }
 }
 
 @JsonSerializable()
@@ -731,9 +781,9 @@ class CJsonEquipmentVariant implements CSearchableComplexItem {
     required this.levels,
   }) : searchTextList = [
           "Variant: $description",
-          if (notes.isNotEmpty) "Notes: ${notes.join(", ")}",
-          if (value.isNotEmpty) "Value: ${value.join("/")}",
-          if (levels.isNotEmpty) "Level: ${levels.join(", ")}",
+          ...notes.map((note) => "Note: $note"),
+          ...value.map((val) => "Value: $val"),
+          ...levels.map((l) => "Level: $l"),
           ...tags.map((tag) => "Tag: $tag"),
         ];
 
@@ -743,17 +793,23 @@ class CJsonEquipmentVariant implements CSearchableComplexItem {
   @override
   Iterable<Widget> getRenderables() {
     return [
-      if (description.isNotEmpty) CRenderParagraph(description),
       CRenderVerticalKeyValues([
         CNameDescription("Level", levels.isEmpty ? "Any" : levels.join(", ")),
         CNameDescription("Value", value.isEmpty ? "Any" : value.join("/")),
       ]),
-      ...notes.map((n) => CRenderParagraph(n)),
-      CRenderLinksParagraph(
-        label: "Tags",
-        textQueries:
-            tags.map((tag) => CSearchQueryLink(tag, "Tag: $tag")).toList(),
-      )
+      if (description.isNotEmpty) CRenderParagraph(description),
+      if (notes.isNotEmpty)
+        CRenderLinksParagraph(
+            label: "Notes",
+            textQueries: notes
+                .map((note) => CSearchQueryLink(note, "Note: $note"))
+                .toList()),
+      if (tags.isNotEmpty)
+        CRenderLinksParagraph(
+          label: "Tags",
+          textQueries:
+              tags.map((tag) => CSearchQueryLink(tag, "Tag: $tag")).toList(),
+        )
     ];
   }
 }
