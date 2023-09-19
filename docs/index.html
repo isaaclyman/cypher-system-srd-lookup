@@ -19,7 +19,7 @@
       html,
       body {
         background-color: #f3f6f2;
-        color: #880E4F;
+        color: #880e4f;
         font-family: "Poppins", Helvetica, sans-serif;
         margin: 0;
         padding: 0 0;
@@ -51,10 +51,10 @@
         display: flex;
         flex-direction: column;
         height: 100vh;
-        justify-content: center;
+        justify-content: flex-start;
         margin: 0 auto;
         max-width: 100%;
-        padding: 0 16px;
+        padding: 16px;
         width: 600px;
       }
 
@@ -74,8 +74,13 @@
       }
 
       .compatible {
-        font-size: 12px;
-        font-weight: bold;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .compatible-img {
+        width: 100px;
       }
 
       .badges {
@@ -132,9 +137,12 @@
 
     <div class="main">
       <div class="logo">
-        <img class="logo-img" src="logo.png" alt="Cypher System SRD Lookup logo" />
+        <img
+          class="logo-img"
+          src="logo.png"
+          alt="Cypher System SRD Lookup logo"
+        />
         <h1>Cypher System SRD Lookup</h1>
-        <p class="compatible">Compatible with the Cypher System</p>
       </div>
       <div class="badges">
         <div class="badge">
@@ -164,16 +172,27 @@
         </div>
         &bull;
         <div class="support">
-          <a href="https://isaaclyman.com/cypher-system-srd-lookup/privacy.html">Privacy</a>
+          <a href="https://isaaclyman.com/cypher-system-srd-lookup/privacy.html"
+            >Privacy</a
+          >
         </div>
         &bull;
         <div class="support">
-          <a href="https://isaaclyman.com/cypher-system-srd-lookup/terms.html">Terms</a>
+          <a href="https://isaaclyman.com/cypher-system-srd-lookup/terms.html"
+            >Terms</a
+          >
         </div>
         &bull;
         <div class="support">
           <a href="mailto:cyphersrdlookup@isaaclyman.com">Support</a>
         </div>
+      </div>
+      <div class="compatible">
+        <img
+          class="compatible-img"
+          src="compatible-csol.png"
+          alt="Compatible with the Cypher System"
+        />
       </div>
     </div>
   </body>
