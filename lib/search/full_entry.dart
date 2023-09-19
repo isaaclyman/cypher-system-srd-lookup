@@ -21,21 +21,23 @@ class CFullEntry extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    result.category,
-                    style: context.text.entryCategory,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 2),
-                    child: Text(
-                      result.header,
-                      style: context.text.entryMainHeader,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      result.category,
+                      style: context.text.entryCategory,
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 2),
+                      child: Text(
+                        result.header,
+                        style: context.text.entryMainHeader,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               IconButton(
                 onPressed: () {

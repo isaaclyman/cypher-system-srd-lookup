@@ -1,7 +1,11 @@
 import 'package:accordion/accordion.dart';
+import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/theme/colors.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
+import 'package:cypher_system_srd_lookup/util/intersperse.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CRenderHorizontalKeyValues extends StatelessWidget {
   final Map<String, String> map;
@@ -49,8 +53,8 @@ class CRenderHorizontalKeyValues extends StatelessWidget {
                 .toList(),
           ),
           TableRow(
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: context.colors.accentContrast,
             ),
             children: map.values
                 .map((value) => _MapTableCell(
@@ -101,7 +105,7 @@ class CRenderLabeledList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Accordion(
       disableScrolling: true,
-      headerBackgroundColor: Colors.transparent,
+      headerBackgroundColor: Colors.white,
       headerBorderColor: context.colors.text,
       headerBorderColorOpened: context.colors.text,
       headerBorderWidth: 1,
@@ -212,6 +216,12 @@ class CRenderVerticalKeyValues extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Table(
+        border: TableBorder.symmetric(
+          inside: BorderSide(
+            color: Colors.grey[400]!,
+            width: 1,
+          ),
+        ),
         columnWidths: const {
           0: IntrinsicColumnWidth(),
           1: FlexColumnWidth(),
@@ -227,7 +237,7 @@ class CRenderVerticalKeyValues extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 8,
-                          vertical: 2,
+                          vertical: 4,
                         ),
                         child: Text(
                           kvp.key,
@@ -237,8 +247,14 @@ class CRenderVerticalKeyValues extends StatelessWidget {
                     ),
                     TableCell(
                       verticalAlignment: TableCellVerticalAlignment.middle,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: context.colors.accentContrast,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         child: Text(
                           kvp.value,
                           style: context.text.mapVerticalTableCellBordered,
@@ -248,6 +264,49 @@ class CRenderVerticalKeyValues extends StatelessWidget {
                   ],
                 ))
             .toList(),
+      ),
+    );
+  }
+}
+
+class CRenderLabeledSearchLinks extends StatelessWidget {
+  final String label;
+  final List<MapEntry<String, String>> textQueries;
+
+  const CRenderLabeledSearchLinks({
+    super.key,
+    required this.label,
+    required this.textQueries,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<CEventHandler>(
+      builder: (_, handler, child) => Row(
+        children: [
+          if (child != null) child,
+          Text.rich(
+            TextSpan(
+                children: textQueries
+                    .map((kvp) => TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              handler.setSearchQuery(kvp.value);
+                              handler.closeDrawer(context);
+                            },
+                          style: context.text.link,
+                          text: kvp.key,
+                        ))
+                    .intersperse(const TextSpan(text: ", "))
+                    .toList()),
+          ),
+        ],
+      ),
+      child: Text(
+        "$label: ",
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

@@ -22,6 +22,7 @@ class CThemeText {
   final TextStyle entryMainHeader = TextStyle(
     color: cThemeColors.accent,
     fontSize: 20,
+    fontWeight: FontWeight.w300,
   );
 
   final TextStyle highlight = const TextStyle(
@@ -30,6 +31,12 @@ class CThemeText {
 
   final TextStyle legal = const TextStyle(
     fontSize: 8,
+  );
+
+  final TextStyle link = TextStyle(
+    color: cThemeColors.accent,
+    decoration: TextDecoration.underline,
+    decorationColor: cThemeColors.accent,
   );
 
   final TextStyle mapHorizontalTableCellBordered = TextStyle(

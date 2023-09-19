@@ -1,3 +1,4 @@
+import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/json_data/json_types.dart';
 import 'package:cypher_system_srd_lookup/json_data/read_json.dart';
 import 'package:cypher_system_srd_lookup/search/full_entry.dart';
@@ -5,8 +6,8 @@ import 'package:cypher_system_srd_lookup/search/results.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/search/search_bar.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
-import 'package:cypher_system_srd_lookup/util/debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,37 +16,40 @@ void main() async {
 
 class MainApp extends StatefulWidget {
   final CJsonRoot dataRoot;
-  final CSearchManager manager;
+  final CSearchManager searchManager;
 
   MainApp({
     super.key,
     required this.dataRoot,
-  }) : manager = CSearchManager(dataRoot);
+  }) : searchManager = CSearchManager(dataRoot);
 
   @override
   State<MainApp> createState() => _MainAppState();
 }
 
 class _MainAppState extends State<MainApp> {
+  late final CEventHandler eventHandler;
+
   bool isSearchBarFocused = false;
-  Iterable<CSearchResultCategory> results = [];
-  bool get hasResults => results.isNotEmpty;
   CSearchResult? selectedResult;
 
-  String searchText = "";
-  Map<String, bool> filterState = {};
   late void Function() debouncedSearch;
 
   @override
   void initState() {
     super.initState();
+    eventHandler = CEventHandler(searchManager: widget.searchManager);
+    widget.searchManager.addListener(onSearchUpdate);
+  }
 
-    debouncedSearch = cDebounce(
-      const Duration(milliseconds: 150),
-      () => setState(() {
-        results = widget.manager.search(searchText, filterState);
-      }),
-    );
+  @override
+  void dispose() {
+    widget.searchManager.removeListener(onSearchUpdate);
+    super.dispose();
+  }
+
+  void onSearchUpdate() {
+    setState(() {});
   }
 
   @override
@@ -53,53 +57,59 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: Scaffold(
-        body: AnimatedAlign(
-          alignment: isSearchBarFocused || hasResults
-              ? Alignment.topCenter
-              : Alignment.center,
-          duration: const Duration(milliseconds: 150),
-          curve: Curves.easeOut,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _SearchBlock(
-                onFocusChange: (isFocused) => setState(() {
-                  isSearchBarFocused = isFocused;
-                }),
-                onValueChange: (str, filterState) {
-                  searchText = str;
-                  this.filterState = filterState;
-                  debouncedSearch();
-                },
-                filters:
-                    widget.dataRoot.searchables.map((s) => s.category).toList(),
-              ),
-              if (hasResults)
-                Expanded(
-                  child: Builder(builder: (context) {
-                    return CResultsBlock(
-                      results,
-                      onSelectResult: (result) {
-                        setState(() {
-                          selectedResult = result;
-                          Scaffold.of(context).openEndDrawer();
-                        });
-                      },
-                      searchText: searchText,
-                    );
-                  }),
-                ),
-            ],
+      home: MultiProvider(
+        providers: [
+          Provider<CEventHandler>(
+            create: (_) => eventHandler,
           ),
+          ChangeNotifierProvider<CSearchManager>(
+            create: (_) => widget.searchManager,
+          )
+        ],
+        child: Scaffold(
+          body: AnimatedAlign(
+            alignment: isSearchBarFocused || widget.searchManager.hasResults
+                ? Alignment.topCenter
+                : Alignment.center,
+            duration: const Duration(milliseconds: 150),
+            curve: Curves.easeOut,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _SearchBlock(
+                  onFocusChange: (isFocused) => setState(() {
+                    isSearchBarFocused = isFocused;
+                  }),
+                  filters: widget.dataRoot.searchables
+                      .map((s) => s.category)
+                      .toList(),
+                ),
+                if (widget.searchManager.hasResults)
+                  Expanded(
+                    child: Builder(builder: (context) {
+                      return CResultsBlock(
+                        widget.searchManager.results,
+                        onSelectResult: (result) {
+                          setState(() {
+                            selectedResult = result;
+                            Scaffold.of(context).openEndDrawer();
+                          });
+                        },
+                        searchText: widget.searchManager.searchText,
+                      );
+                    }),
+                  ),
+              ],
+            ),
+          ),
+          endDrawer: selectedResult != null
+              ? Drawer(
+                  child: CFullEntry(result: selectedResult!),
+                )
+              : null,
         ),
-        endDrawer: selectedResult != null
-            ? Drawer(
-                child: CFullEntry(result: selectedResult!),
-              )
-            : null,
       ),
     );
   }
@@ -107,12 +117,10 @@ class _MainAppState extends State<MainApp> {
 
 class _SearchBlock extends StatelessWidget {
   final void Function(bool) onFocusChange;
-  final void Function(String, Map<String, bool>) onValueChange;
   final List<String> filters;
 
   const _SearchBlock({
     required this.onFocusChange,
-    required this.onValueChange,
     required this.filters,
   });
 
@@ -129,7 +137,6 @@ class _SearchBlock extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
             child: CSearchBar(
               onFocusChange: onFocusChange,
-              onValueChange: onValueChange,
               filters: filters,
             ),
           ),

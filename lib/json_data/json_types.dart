@@ -81,7 +81,7 @@ class CJsonAbility implements CSearchable {
           description,
           if (cost != null) "Cost: $costRendered",
           if (tier != null) "Tier: $tier",
-          if (category.isNotEmpty) "Category: ${category.join(" / ")}",
+          if (category.isNotEmpty) ...category.map((c) => "Category: $c"),
           if (references.isNotEmpty) "Used by: ${references.join(", ")}"
         ];
 
@@ -93,8 +93,15 @@ class CJsonAbility implements CSearchable {
     return [
       CRenderVerticalKeyValues({
         "Cost": cost == null ? "None" : costRendered,
+        if (tier != null) "Tier": tier!,
       }),
       CRenderParagraph(description),
+      if (category.isNotEmpty)
+        CRenderLabeledSearchLinks(
+          label: category.length == 1 ? "Category" : "Categories",
+          textQueries:
+              category.map((cat) => MapEntry(cat, "Category: $cat")).toList(),
+        ),
     ];
   }
 }

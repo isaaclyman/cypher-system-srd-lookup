@@ -3,22 +3,29 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
-class CSearchManager {
-  final CHasSearchables root;
+class CSearchManager extends ChangeNotifier {
+  final CHasSearchables _root;
 
-  CSearchManager(this.root);
+  String searchText = "";
+  Map<String, bool> filterState = {};
+  Iterable<CSearchResultCategory> results = [];
+  bool get hasResults => results.isNotEmpty;
 
-  Iterable<CSearchResultCategory> search(
-    String searchText,
-    Map<String, bool> filterState,
-  ) {
+  CSearchManager(this._root);
+
+  void search() {
+    results = _getResults();
+    notifyListeners();
+  }
+
+  Iterable<CSearchResultCategory> _getResults() {
     if (searchText.trim().isEmpty) {
       return [];
     }
 
     final results = <String, CSearchResultCategory>{};
 
-    for (var searchableCategory in root.searchables) {
+    for (var searchableCategory in _root.searchables) {
       final category = searchableCategory.category;
 
       if (filterState[category] == false) {
