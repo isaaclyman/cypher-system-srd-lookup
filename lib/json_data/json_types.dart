@@ -1,11 +1,14 @@
 import 'package:collection/collection.dart';
+import 'package:cypher_system_srd_lookup/render/accordion.dart';
 import 'package:cypher_system_srd_lookup/render/horizontal_key_values.dart';
+import 'package:cypher_system_srd_lookup/render/internal_column.dart';
 import 'package:cypher_system_srd_lookup/render/labeled_link_accordion.dart';
 import 'package:cypher_system_srd_lookup/render/labeled_list_accordion.dart';
 import 'package:cypher_system_srd_lookup/render/labeled_search_links.dart';
 import 'package:cypher_system_srd_lookup/render/link.dart';
 import 'package:cypher_system_srd_lookup/render/name_description.dart';
 import 'package:cypher_system_srd_lookup/render/paragraph.dart';
+import 'package:cypher_system_srd_lookup/render/section_label.dart';
 import 'package:cypher_system_srd_lookup/render/vertical_key_values.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +52,7 @@ class CJsonRoot implements CHasSearchables {
         CSearchableCategory(category: "Abilities", searchables: abilities),
         CSearchableCategory(category: "Cyphers", searchables: cyphers),
         CSearchableCategory(category: "Descriptors", searchables: descriptors),
+        CSearchableCategory(category: "Equipment", searchables: equipment),
         CSearchableCategory(category: "Flavors", searchables: flavors),
         CSearchableCategory(category: "Foci", searchables: foci),
         CSearchableCategory(category: "Types", searchables: types),
@@ -597,26 +601,70 @@ class CJsonCreature {
 }
 
 @JsonSerializable()
-class CJsonEquipment {
+class CJsonEquipment implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
   List<CJsonEquipmentVariant> variants;
+
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
 
   CJsonEquipment({
     required this.name,
     required this.variants,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          ...variants.map((v) => v.searchTextList).flattened,
+        ];
 
   factory CJsonEquipment.fromJson(Map<String, dynamic> json) =>
       _$CJsonEquipmentFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    if (variants.isEmpty) {
+      return [CRenderParagraph("It's just a $name.")];
+    }
+
+    if (variants.length == 1) {
+      return variants.first.getRenderables();
+    }
+
+    final defaultVariant =
+        variants.firstWhereOrNull((v) => v.description.isEmpty) ??
+            variants.first;
+    final otherVariants = variants.where((v) => v != defaultVariant);
+
+    return [
+      ...defaultVariant.getRenderables(),
+      if (otherVariants.isNotEmpty) ...[
+        const CRenderSectionLabel("Variants"),
+        ...otherVariants.mapIndexed(
+          (ix, v) => CRenderAccordion(
+            label: "Variant ${ix + 1}",
+            content:
+                CRenderInternalColumn(children: v.getRenderables().toList()),
+          ),
+        )
+      ],
+    ];
+  }
 }
 
 @JsonSerializable()
-class CJsonEquipmentVariant {
+class CJsonEquipmentVariant implements CSearchableComplexItem {
   String description;
   Set<String> notes;
   Set<String> tags;
   List<String> value;
   List<int> levels;
+
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
 
   CJsonEquipmentVariant({
     required this.description,
@@ -624,8 +672,31 @@ class CJsonEquipmentVariant {
     required this.tags,
     required this.value,
     required this.levels,
-  });
+  }) : searchTextList = [
+          "Variant: $description",
+          if (notes.isNotEmpty) "Notes: ${notes.join(", ")}",
+          if (value.isNotEmpty) "Value: ${value.join("/")}",
+          if (levels.isNotEmpty) "Level: ${levels.join(", ")}",
+          ...tags.map((tag) => "Tag: $tag"),
+        ];
 
   factory CJsonEquipmentVariant.fromJson(Map<String, dynamic> json) =>
       _$CJsonEquipmentVariantFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      if (description.isNotEmpty) CRenderParagraph(description),
+      CRenderVerticalKeyValues([
+        CNameDescription("Level", levels.isEmpty ? "Any" : levels.join(", ")),
+        CNameDescription("Value", value.isEmpty ? "Any" : value.join("/")),
+      ]),
+      ...notes.map((n) => CRenderParagraph(n)),
+      CRenderLinksParagraph(
+        label: "Tags",
+        textQueries:
+            tags.map((tag) => CSearchQueryLink(tag, "Tag: $tag")).toList(),
+      )
+    ];
+  }
 }

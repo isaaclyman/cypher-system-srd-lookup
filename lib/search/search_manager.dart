@@ -182,3 +182,8 @@ abstract class CSearchable {
 abstract class CSearchableItem {
   String get searchText;
 }
+
+abstract class CSearchableComplexItem {
+  Iterable<String> get searchTextList;
+  Iterable<Widget> getRenderables();
+}
