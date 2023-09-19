@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math';
 
 import 'package:collection/collection.dart';
@@ -117,7 +118,10 @@ class CSearchManager extends ChangeNotifier {
             header: searchable.header,
             summary: matchingText,
             getRenderables: searchable.getRenderables,
-            priority: priority,
+            priority:
+                searchText.toLowerCase() == searchable.header.toLowerCase()
+                    ? -1
+                    : priority,
           ),
         );
       }
@@ -129,11 +133,12 @@ class CSearchManager extends ChangeNotifier {
           : v1.priority.compareTo(v2.priority));
     }
 
+    inspect(results);
+
     return results.values
         .sorted((v1, v2) => v1.minPriority == v2.minPriority
             ? v1.category.compareTo(v2.category)
             : v1.minPriority.compareTo(v2.minPriority))
-        .reversed
         .toList();
   }
 }
