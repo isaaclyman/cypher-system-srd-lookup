@@ -47,7 +47,10 @@ class CJsonRoot implements CHasSearchables {
   @override
   List<CSearchableCategory> get searchables => [
         CSearchableCategory(category: "Abilities", searchables: abilities),
+        CSearchableCategory(category: "Cyphers", searchables: cyphers),
+        CSearchableCategory(category: "Descriptors", searchables: descriptors),
         CSearchableCategory(category: "Flavors", searchables: flavors),
+        CSearchableCategory(category: "Foci", searchables: foci),
         CSearchableCategory(category: "Types", searchables: types),
       ];
 }
@@ -73,6 +76,7 @@ class CJsonAbility implements CSearchable {
   List<String> references;
 
   @override
+  @JsonKey(includeFromJson: false)
   Iterable<String> searchTextList;
 
   CJsonAbility({
@@ -130,6 +134,7 @@ class CJsonAbilityRef implements CSearchableItem {
   bool preselected;
 
   @override
+  @JsonKey(includeFromJson: false)
   String searchText;
 
   CJsonAbilityRef({
@@ -149,6 +154,7 @@ class CJsonBasicAbility implements CSearchableItem {
   String description;
 
   @override
+  @JsonKey(includeFromJson: false)
   String searchText;
 
   CJsonBasicAbility({
@@ -181,6 +187,7 @@ class CJsonType implements CSearchable {
   List<CJsonAbilityRef> specialAbilities;
 
   @override
+  @JsonKey(includeFromJson: false)
   Iterable<String> searchTextList;
 
   CJsonType({
@@ -251,6 +258,7 @@ class CJsonSpecialAbilitiesAmount implements CSearchableItem {
   int specialAbilities;
 
   @override
+  @JsonKey(includeFromJson: false)
   String searchText;
 
   CJsonSpecialAbilitiesAmount({
@@ -259,11 +267,11 @@ class CJsonSpecialAbilitiesAmount implements CSearchableItem {
   }) : searchText = "$specialAbilities special abilities at tier $tier";
 
   factory CJsonSpecialAbilitiesAmount.fromJson(Map<String, dynamic> json) =>
-      _$CJsonAmountFromJson(json);
+      _$CJsonSpecialAbilitiesAmountFromJson(json);
 }
 
 @JsonSerializable()
-class CJsonFlavor extends CSearchable {
+class CJsonFlavor implements CSearchable {
   @override
   String get header => name;
 
@@ -271,6 +279,7 @@ class CJsonFlavor extends CSearchable {
   List<CJsonAbilityRef> abilities;
 
   @override
+  @JsonKey(includeFromJson: false)
   Iterable<String> searchTextList;
 
   CJsonFlavor({
@@ -311,44 +320,118 @@ class CJsonFlavor extends CSearchable {
 }
 
 @JsonSerializable()
-class CJsonDescriptor {
+class CJsonDescriptor implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
   String description;
   List<CJsonBasicAbility> characteristics;
   List<String> links;
+
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
 
   CJsonDescriptor({
     required this.name,
     required this.description,
     required this.characteristics,
     required this.links,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          description,
+          ...characteristics.map((c) => c.searchText),
+          ...links.map((link) => "Link: $link"),
+        ];
 
   factory CJsonDescriptor.fromJson(Map<String, dynamic> json) =>
       _$CJsonDescriptorFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      CRenderParagraph(description),
+      CRenderLabeledListAccordion(
+        characteristics.map((c) => CNameDescription(c.name, c.description)),
+        label: "Characteristics",
+      ),
+      CRenderLabeledListAccordion(
+        links
+            .mapIndexed((ix, link) => CNameDescription("Link ${ix + 1}", link)),
+        innerLabel: "Choose how you became involved in the first adventure:",
+        label: "Links",
+      ),
+    ];
+  }
 }
 
 @JsonSerializable()
-class CJsonFocus {
+class CJsonFocus implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
   String description;
   List<CJsonAbilityRef> abilities;
   String intrusions;
+
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
 
   CJsonFocus({
     required this.name,
     required this.description,
     required this.abilities,
     required this.intrusions,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          description,
+          ...abilities.map((a) => a.searchText),
+          "GM Intrusion: $intrusions",
+        ];
 
   factory CJsonFocus.fromJson(Map<String, dynamic> json) =>
       _$CJsonFocusFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      CRenderParagraph(description),
+      CRenderLabeledParagraph(label: "GM Intrusions:", text: intrusions),
+      ...abilities
+          .groupListsBy((a) => a.tier)
+          .entries
+          .map(
+            (grp) => CRenderLabeledResultLinkAccordion(
+              label: "Tier ${grp.key} Abilities",
+              links: grp.value
+                  .sorted((a, b) => a.preselected == b.preselected
+                      ? 0
+                      : a.preselected
+                          ? -1
+                          : 1)
+                  .map((a) => CResultLink(
+                        "${a.name}${a.preselected ? " (preselected)" : ""}",
+                        resultCategory: "Abilities",
+                        resultName: a.name,
+                      ))
+                  .toList(),
+            ),
+          )
+          .toList(),
+    ];
+  }
 }
 
 @JsonSerializable()
-class CJsonCypher {
+class CJsonCypher implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
+  String effect;
   String? form;
 
   @JsonKey(name: "level_dice")
@@ -359,19 +442,57 @@ class CJsonCypher {
 
   List<CJsonRollTable> options;
 
-  List<String>? kinds;
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
 
   CJsonCypher({
     required this.name,
+    required this.effect,
     required this.form,
     required this.levelDice,
     required this.levelMod,
     required this.options,
-    required this.kinds,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          effect,
+          if (form != null) "Form: $form",
+          if (levelDice != null)
+            "Level: $levelDice ${levelMod != 0 ? "+ $levelMod" : ""}",
+          ...options
+              .map((t) => t.table.map((roll) =>
+                  "${roll.start == roll.end ? roll.start.toString() : "${roll.start}-${roll.end}"}: ${roll.entry}"))
+              .flattened,
+        ];
 
   factory CJsonCypher.fromJson(Map<String, dynamic> json) =>
       _$CJsonCypherFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      CRenderVerticalKeyValues([
+        CNameDescription("Form", form == null ? "Any" : form!),
+        if (levelDice != null)
+          CNameDescription(
+              "Level", "$levelDice ${levelMod != 0 ? "+ $levelMod" : ""}"),
+      ]),
+      CRenderParagraph(effect),
+      ...options.map(
+        (t) => CRenderVerticalKeyValues(
+          [
+            CNameDescription(
+                "d${t.table.map((roll) => roll.end).max}", "Effect"),
+            ...t.table.map((roll) => CNameDescription(
+                roll.start == roll.end
+                    ? roll.start.toString()
+                    : "${roll.start}-${roll.end}",
+                roll.entry)),
+          ],
+        ),
+      ),
+    ];
+  }
 }
 
 @JsonSerializable()

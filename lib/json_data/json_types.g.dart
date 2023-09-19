@@ -137,13 +137,14 @@ Map<String, dynamic> _$CJsonTypeToJson(CJsonType instance) => <String, dynamic>{
       'special_abilities': instance.specialAbilities,
     };
 
-CJsonSpecialAbilitiesAmount _$CJsonAmountFromJson(Map<String, dynamic> json) =>
+CJsonSpecialAbilitiesAmount _$CJsonSpecialAbilitiesAmountFromJson(
+        Map<String, dynamic> json) =>
     CJsonSpecialAbilitiesAmount(
       tier: json['tier'] as int,
       specialAbilities: json['special_abilities'] as int,
     );
 
-Map<String, dynamic> _$CJsonAmountToJson(
+Map<String, dynamic> _$CJsonSpecialAbilitiesAmountToJson(
         CJsonSpecialAbilitiesAmount instance) =>
     <String, dynamic>{
       'tier': instance.tier,
@@ -200,24 +201,23 @@ Map<String, dynamic> _$CJsonFocusToJson(CJsonFocus instance) =>
 
 CJsonCypher _$CJsonCypherFromJson(Map<String, dynamic> json) => CJsonCypher(
       name: json['name'] as String,
+      effect: json['effect'] as String,
       form: json['form'] as String?,
       levelDice: json['level_dice'] as String?,
       levelMod: json['level_mod'] as int,
       options: (json['options'] as List<dynamic>)
           .map((e) => CJsonRollTable.fromJson(e as Map<String, dynamic>))
           .toList(),
-      kinds:
-          (json['kinds'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$CJsonCypherToJson(CJsonCypher instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'effect': instance.effect,
       'form': instance.form,
       'level_dice': instance.levelDice,
       'level_mod': instance.levelMod,
       'options': instance.options,
-      'kinds': instance.kinds,
     };
 
 CJsonRollTable _$CJsonRollTableFromJson(Map<String, dynamic> json) =>

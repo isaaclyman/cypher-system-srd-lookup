@@ -1,14 +1,20 @@
 import 'package:cypher_system_srd_lookup/render/accordion.dart';
 import 'package:cypher_system_srd_lookup/render/chip.dart';
 import 'package:cypher_system_srd_lookup/render/name_description.dart';
+import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
 
 class CRenderLabeledListAccordion extends StatelessWidget {
   final String label;
+  final String? innerLabel;
   final Iterable<CNameDescription> listItems;
 
-  const CRenderLabeledListAccordion(this.listItems,
-      {super.key, required this.label});
+  const CRenderLabeledListAccordion(
+    this.listItems, {
+    super.key,
+    this.innerLabel,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,17 @@ class CRenderLabeledListAccordion extends StatelessWidget {
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
-        children: listItems.map((it) => _LabeledListItem(it)).toList(),
+        children: [
+          if (innerLabel != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                innerLabel!,
+                style: context.text.accordionInnerLabel,
+              ),
+            ),
+          ...listItems.map((it) => _LabeledListItem(it)).toList(),
+        ],
       ),
     );
   }

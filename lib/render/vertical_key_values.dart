@@ -33,6 +33,9 @@ class CRenderVerticalKeyValues extends StatelessWidget {
         },
         children: items
             .map((item) => TableRow(
+                  decoration: BoxDecoration(
+                    color: context.colors.accent,
+                  ),
                   children: [
                     TableCell(
                       verticalAlignment: TableCellVerticalAlignment.middle,
