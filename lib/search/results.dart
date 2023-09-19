@@ -28,40 +28,59 @@ class _CResultsBlockState extends State<CResultsBlock> {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 650),
-      child: ListView(
-        children: widget.results
-            .map((cat) => [
-                  _CategoryHeader(text: cat.category),
-                  ...cat.results
-                      .slice(
-                        0,
-                        min(resultsToShow.putIfAbsent(cat.category, () => 10),
-                            cat.results.length),
-                      )
-                      .map((r) => _ResultItem(
-                            onTap: () {
-                              widget.onSelectResult(r);
+      child: widget.results.isEmpty
+          ? const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 8),
+                    child: Icon(Icons.error),
+                  ),
+                  Text(
+                    "No results found.",
+                  ),
+                ],
+              ),
+            )
+          : ListView(
+              children: widget.results
+                  .map((cat) => [
+                        _CategoryHeader(text: cat.category),
+                        ...cat.results
+                            .slice(
+                              0,
+                              min(
+                                  resultsToShow.putIfAbsent(
+                                      cat.category, () => 10),
+                                  cat.results.length),
+                            )
+                            .map((r) => _ResultItem(
+                                  onTap: () {
+                                    widget.onSelectResult(r);
+                                  },
+                                  result: r,
+                                  searchText: widget.searchText,
+                                )),
+                        if (cat.results.length >
+                            (resultsToShow[cat.category] ?? 10))
+                          _LoadMoreResults(
+                            categoryName: cat.category,
+                            onLoadMore: () {
+                              setState(() {
+                                resultsToShow[cat.category] = resultsToShow
+                                        .putIfAbsent(cat.category, () => 10) +
+                                    10;
+                              });
                             },
-                            result: r,
-                            searchText: widget.searchText,
-                          )),
-                  if (cat.results.length > (resultsToShow[cat.category] ?? 10))
-                    _LoadMoreResults(
-                      categoryName: cat.category,
-                      onLoadMore: () {
-                        setState(() {
-                          resultsToShow[cat.category] = resultsToShow
-                                  .putIfAbsent(cat.category, () => 10) +
-                              10;
-                        });
-                      },
-                      resultsShown: resultsToShow[cat.category] ?? 10,
-                      totalResults: cat.results.length,
-                    ),
-                ])
-            .flattened
-            .toList(),
-      ),
+                            resultsShown: resultsToShow[cat.category] ?? 10,
+                            totalResults: cat.results.length,
+                          ),
+                      ])
+                  .flattened
+                  .toList(),
+            ),
     );
   }
 }

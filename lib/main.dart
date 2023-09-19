@@ -86,7 +86,7 @@ class _MainAppState extends State<MainApp> {
                       .map((s) => s.category)
                       .toList(),
                 ),
-                if (widget.searchManager.hasResults)
+                if (widget.searchManager.searchText.isNotEmpty)
                   Expanded(
                     child: Builder(builder: (context) {
                       return CResultsBlock(
@@ -100,7 +100,7 @@ class _MainAppState extends State<MainApp> {
                         searchText: widget.searchManager.searchText,
                       );
                     }),
-                  ),
+                  )
               ],
             ),
           ),

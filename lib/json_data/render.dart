@@ -114,7 +114,11 @@ class CRenderLabeledList extends StatelessWidget {
         vertical: 4,
       ),
       openAndCloseAnimation: false,
+      paddingBetweenClosedSections: 0,
+      paddingBetweenOpenSections: 0,
+      paddingListBottom: 0,
       paddingListHorizontal: 0,
+      paddingListTop: 0,
       rightIcon: Icon(
         Icons.keyboard_arrow_down,
         color: context.colors.text,
@@ -127,7 +131,7 @@ class CRenderLabeledList extends StatelessWidget {
             style: context.text.entryListHeader,
           ),
           content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: listItems.map((it) => _LabeledListItem(it)).toList(),
           ),
@@ -199,7 +203,7 @@ class CRenderParagraph extends StatelessWidget {
 }
 
 class CRenderVerticalKeyValues extends StatelessWidget {
-  final Map<String, String> map;
+  final List<MapEntry<String, String>> map;
 
   const CRenderVerticalKeyValues(this.map, {super.key});
 
@@ -226,7 +230,7 @@ class CRenderVerticalKeyValues extends StatelessWidget {
           0: IntrinsicColumnWidth(),
           1: FlexColumnWidth(),
         },
-        children: map.entries
+        children: map
             .map((kvp) => TableRow(
                   children: [
                     TableCell(
@@ -283,22 +287,25 @@ class CRenderLabeledSearchLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CEventHandler>(
       builder: (_, handler, child) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (child != null) child,
-          Text.rich(
-            TextSpan(
-                children: textQueries
-                    .map((kvp) => TextSpan(
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              handler.setSearchQuery(kvp.value);
-                              handler.closeDrawer(context);
-                            },
-                          style: context.text.link,
-                          text: kvp.key,
-                        ))
-                    .intersperse(const TextSpan(text: ", "))
-                    .toList()),
+          Expanded(
+            child: Text.rich(
+              TextSpan(
+                  children: textQueries
+                      .map((kvp) => TextSpan(
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                handler.setSearchQuery(kvp.value);
+                                handler.closeDrawer(context);
+                              },
+                            style: context.text.link,
+                            text: kvp.key,
+                          ))
+                      .intersperse(const TextSpan(text: ", "))
+                      .toList()),
+            ),
           ),
         ],
       ),

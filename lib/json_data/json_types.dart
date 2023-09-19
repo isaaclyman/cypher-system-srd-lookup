@@ -91,16 +91,22 @@ class CJsonAbility implements CSearchable {
   @override
   Iterable<Widget> getRenderables() {
     return [
-      CRenderVerticalKeyValues({
-        "Cost": cost == null ? "None" : costRendered,
-        if (tier != null) "Tier": tier!,
-      }),
+      CRenderVerticalKeyValues([
+        MapEntry("Cost", cost == null ? "None" : costRendered),
+        if (tier != null) MapEntry("Tier", tier!),
+      ]),
       CRenderParagraph(description),
       if (category.isNotEmpty)
         CRenderLabeledSearchLinks(
           label: category.length == 1 ? "Category" : "Categories",
           textQueries:
               category.map((cat) => MapEntry(cat, "Category: $cat")).toList(),
+        ),
+      if (references.isNotEmpty)
+        CRenderLabeledSearchLinks(
+          label: "Used by",
+          textQueries:
+              references.map((ref) => MapEntry(ref, "Name: $ref")).toList(),
         ),
     ];
   }
@@ -196,6 +202,21 @@ class CJsonType implements CSearchable {
         abilities.map((a) => MapEntry(a.name, a.description)),
         label: "Traits",
       ),
+      CRenderLabeledList(
+        intrusions.map((i) => MapEntry(i.name, i.description)),
+        label: "Intrusions",
+      ),
+      // Tier 1 Abilities (links)
+      // Tier 2 Abilities (links)
+      // Etc.
+      CRenderLabeledList(
+          specialAbilities.map((a) => MapEntry(a.name,
+              "Tier ${a.tier}, ${a.preselected ? "preselected" : "optional"}")),
+          label: "Special Abilities"),
+      CRenderVerticalKeyValues(specialAbilitiesPerTier
+          .map((amt) => MapEntry(
+              "Tier ${amt.tier}", "${amt.specialAbilities} special abilities"))
+          .toList()),
     ];
   }
 }
