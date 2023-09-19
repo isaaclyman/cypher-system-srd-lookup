@@ -50,6 +50,7 @@ class CJsonRoot implements CHasSearchables {
   @override
   List<CSearchableCategory> get searchables => [
         CSearchableCategory(category: "Abilities", searchables: abilities),
+        CSearchableCategory(category: "Creatures", searchables: creatures),
         CSearchableCategory(category: "Cyphers", searchables: cyphers),
         CSearchableCategory(category: "Descriptors", searchables: descriptors),
         CSearchableCategory(category: "Equipment", searchables: equipment),
@@ -559,7 +560,10 @@ class CJsonArtifact {
 }
 
 @JsonSerializable()
-class CJsonCreature {
+class CJsonCreature implements CSearchable {
+  @override
+  String get header => name;
+
   String name;
   String kind;
   int? level;
@@ -576,6 +580,10 @@ class CJsonCreature {
   String? uses;
   String? loot;
   String? intrusions;
+
+  @override
+  @JsonKey(includeFromJson: false)
+  Iterable<String> searchTextList;
 
   CJsonCreature({
     required this.name,
@@ -594,10 +602,59 @@ class CJsonCreature {
     required this.uses,
     required this.loot,
     required this.intrusions,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          description,
+          "Kind: $kind",
+          if (level != null) "Level: $level",
+          if (motive != null) "Motive: $motive",
+          if (environment != null) "Environment: $environment",
+          if (health != null) "Health: $health",
+          if (damage != null) "Damage: $damage",
+          if (armor != 0) "Armor: $armor",
+          if (movement != null) "Movement: $movement",
+          ...modifications.map((mod) => "Modification: $mod"),
+          if (combat != null) "Combat: $combat",
+          if (interactions != null) "Interactions: $interactions",
+          if (uses != null) "Uses: $uses",
+          if (loot != null) "Loot: $loot",
+          if (intrusions != null) "GM Intrusions: $intrusions",
+        ];
 
   factory CJsonCreature.fromJson(Map<String, dynamic> json) =>
       _$CJsonCreatureFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      CRenderVerticalKeyValues([
+        CNameDescription("Level", level?.toString() ?? "Unknown"),
+        if (health != null) CNameDescription("Health", health!.toString()),
+        if (armor != 0) CNameDescription("Armor", armor.toString()),
+        if (damage != null) CNameDescription("Damage", damage!),
+        if (movement != null) CNameDescription("Movement", movement!),
+        ...modifications.map((mod) => CNameDescription("Mod", mod)),
+      ]),
+      CRenderParagraph(description),
+      if ([uses, intrusions, loot, motive, environment, combat, interactions]
+          .any((it) => it != null))
+        CRenderLabeledListAccordion(
+          [
+            if (uses != null) CNameDescription("Uses", uses!),
+            if (intrusions != null)
+              CNameDescription("GM Intrusions", intrusions!),
+            if (loot != null) CNameDescription("Loot", loot!),
+            if (motive != null) CNameDescription("Motive", motive!),
+            if (environment != null)
+              CNameDescription("Environment", environment!),
+            if (combat != null) CNameDescription("Combat", combat!),
+            if (interactions != null)
+              CNameDescription("Interactions", interactions!)
+          ],
+          label: "Traits",
+        ),
+    ];
+  }
 }
 
 @JsonSerializable()
