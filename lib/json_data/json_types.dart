@@ -105,14 +105,14 @@ class CJsonAbility implements CSearchable {
       ]),
       CRenderParagraph(description),
       if (category.isNotEmpty)
-        CRenderLabeledSearchLinks(
+        CRenderLinksParagraph(
           label: category.length == 1 ? "Category" : "Categories",
           textQueries: category
               .map((cat) => CSearchQueryLink(cat, "Category: $cat"))
               .toList(),
         ),
       if (references.isNotEmpty)
-        CRenderLabeledSearchLinks(
+        CRenderLinksParagraph(
           label: "Used by",
           textQueries: references
               .map((ref) => CSearchQueryLink(ref, "Name: $ref"))
@@ -238,17 +238,6 @@ class CJsonType implements CSearchable {
               .toList(),
         ),
       ),
-      // Tier 1 Abilities (links)
-      // Tier 2 Abilities (links)
-      // Etc.
-      // CRenderLabeledListAccordion(
-      //     specialAbilities.map((a) => MapEntry(a.name,
-      //         "Tier ${a.tier}, ${a.preselected ? "preselected" : "optional"}")),
-      //     label: "Special Abilities"),
-      // CRenderVerticalKeyValues(specialAbilitiesPerTier
-      //     .map((amt) => MapEntry(
-      //         "Tier ${amt.tier}", "${amt.specialAbilities} special abilities"))
-      //     .toList()),
     ];
   }
 }

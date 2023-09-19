@@ -1,3 +1,4 @@
+import 'package:cypher_system_srd_lookup/events/error_toast.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/util/debounce.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,15 @@ class CEventHandler {
     Scaffold.of(context).closeEndDrawer();
   }
 
-  void goToResult(String searchableCategoryName, String itemName) {
+  void goToResult(
+      BuildContext context, String searchableCategoryName, String itemName) {
     final result = searchManager.getResult(searchableCategoryName, itemName);
-    searchManager.selectResult(result);
+    if (result != null) {
+      searchManager.selectResult(result);
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(getErrorToast("Couldn't find that item (bad link)."));
+    }
   }
 
   void setSearchFilters(Map<String, bool> filterState) {

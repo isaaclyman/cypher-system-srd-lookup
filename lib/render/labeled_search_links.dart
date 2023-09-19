@@ -6,11 +6,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CRenderLabeledSearchLinks extends StatelessWidget {
+class CRenderLinksParagraph extends StatelessWidget {
   final String label;
   final List<CLink> textQueries;
 
-  const CRenderLabeledSearchLinks({
+  const CRenderLinksParagraph({
     super.key,
     required this.label,
     required this.textQueries,
@@ -35,6 +35,7 @@ class CRenderLabeledSearchLinks extends StatelessWidget {
                                   handler.closeDrawer(context);
                                 } else if (item is CResultLink) {
                                   handler.goToResult(
+                                    context,
                                     item.resultCategory,
                                     item.resultName,
                                   );

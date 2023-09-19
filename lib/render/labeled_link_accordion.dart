@@ -42,7 +42,11 @@ class CRenderLabeledResultLinkAccordion extends StatelessWidget {
                     handler.setSearchQuery(link.query);
                     handler.closeDrawer(context);
                   } else if (link is CResultLink) {
-                    handler.goToResult(link.resultCategory, link.resultName);
+                    handler.goToResult(
+                      context,
+                      link.resultCategory,
+                      link.resultName,
+                    );
                   }
                 },
                 child: Row(
