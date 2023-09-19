@@ -32,6 +32,7 @@ class _CResultsBlockState extends State<CResultsBlock> {
           ? const Padding(
               padding: EdgeInsets.symmetric(vertical: 16),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
@@ -39,7 +40,7 @@ class _CResultsBlockState extends State<CResultsBlock> {
                     child: Icon(Icons.error),
                   ),
                   Text(
-                    "No results found.",
+                    "No results found.\nCheck your filters.",
                   ),
                 ],
               ),

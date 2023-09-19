@@ -1,6 +1,7 @@
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CFullEntry extends StatelessWidget {
   final CSearchResult result;
@@ -61,16 +62,43 @@ class CFullEntry extends StatelessWidget {
                 vertical: 4,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: result
-                    .getRenderables()
-                    .map((r) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4),
-                          child: r,
-                        ))
-                    .toList(),
-              ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ...result
+                        .getRenderables()
+                        .map((r) => Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4),
+                              child: r,
+                            ))
+                        .toList(),
+                    Consumer<CSearchManager>(
+                      builder: (_, searchManager, ___) => !searchManager
+                              .canGoBack
+                          ? const SizedBox.shrink()
+                          : Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: TextButton(
+                                onPressed: () {
+                                  searchManager.selectPreviousResult();
+                                },
+                                child: Row(
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 8),
+                                      child: Icon(Icons.arrow_back),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        "Back to ${searchManager.lastResult?.header ?? "previous entry"}",
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                    )
+                  ]),
             ),
           ),
         ),

@@ -10,7 +10,11 @@ class CSearchManager extends ChangeNotifier {
   Map<String, bool> filterState = {};
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
+
   CSearchResult? selectedResult;
+  List<CSearchResult> pastResults = [];
+  CSearchResult? get lastResult => pastResults.last;
+  bool get canGoBack => pastResults.isNotEmpty;
 
   CSearchManager(this._root);
 
@@ -42,7 +46,20 @@ class CSearchManager extends ChangeNotifier {
   }
 
   void selectResult(CSearchResult? result) {
+    if (selectedResult != null) {
+      pastResults.add(selectedResult!);
+    }
+
     selectedResult = result;
+    notifyListeners();
+  }
+
+  void selectPreviousResult() {
+    if (pastResults.isEmpty) {
+      return;
+    }
+
+    selectedResult = pastResults.removeLast();
     notifyListeners();
   }
 

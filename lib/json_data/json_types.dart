@@ -47,6 +47,7 @@ class CJsonRoot implements CHasSearchables {
   @override
   List<CSearchableCategory> get searchables => [
         CSearchableCategory(category: "Abilities", searchables: abilities),
+        CSearchableCategory(category: "Flavors", searchables: flavors),
         CSearchableCategory(category: "Types", searchables: types),
       ];
 }
@@ -262,17 +263,51 @@ class CJsonSpecialAbilitiesAmount implements CSearchableItem {
 }
 
 @JsonSerializable()
-class CJsonFlavor {
+class CJsonFlavor extends CSearchable {
+  @override
+  String get header => name;
+
   String name;
   List<CJsonAbilityRef> abilities;
+
+  @override
+  Iterable<String> searchTextList;
 
   CJsonFlavor({
     required this.name,
     required this.abilities,
-  });
+  }) : searchTextList = [
+          "Name: $name",
+          ...abilities.map((a) => a.searchText),
+        ];
 
   factory CJsonFlavor.fromJson(Map<String, dynamic> json) =>
       _$CJsonFlavorFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return abilities
+        .groupListsBy((a) => a.tier)
+        .entries
+        .map(
+          (grp) => CRenderLabeledResultLinkAccordion(
+            label: "Tier ${grp.key} Abilities",
+            links: grp.value
+                .sorted((a, b) => a.preselected == b.preselected
+                    ? 0
+                    : a.preselected
+                        ? -1
+                        : 1)
+                .map((a) => CResultLink(
+                      "${a.name}${a.preselected ? " (preselected)" : ""}",
+                      resultCategory: "Abilities",
+                      resultName: a.name,
+                    ))
+                .toList(),
+          ),
+        )
+        .toList();
+  }
 }
 
 @JsonSerializable()

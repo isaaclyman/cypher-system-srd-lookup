@@ -103,12 +103,11 @@ class _MainAppState extends State<MainApp> {
               ],
             ),
           ),
-          endDrawer: widget.searchManager.selectedResult != null
-              ? Drawer(
-                  child:
-                      CFullEntry(result: widget.searchManager.selectedResult!),
-                )
-              : null,
+          endDrawer: Drawer(
+            child: widget.searchManager.selectedResult != null
+                ? CFullEntry(result: widget.searchManager.selectedResult!)
+                : null,
+          ),
         ),
       ),
     );
