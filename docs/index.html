@@ -1,1 +1,180 @@
-HELLO WORLD
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" />
+    <title>Cypher System SRD Lookup</title>
+  </head>
+  <body>
+    <style>
+      html,
+      body {
+        background-color: #f3f6f2;
+        color: #880E4F;
+        font-family: "Poppins", Helvetica, sans-serif;
+        margin: 0;
+        padding: 0 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: lighter;
+        line-height: 1em;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a,
+      a:link,
+      a:visited,
+      a:active {
+        color: #160829;
+      }
+
+      .main {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 0 16px;
+        width: 600px;
+      }
+
+      .logo {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .logo-img {
+        object-fit: contain;
+        margin-bottom: 4px;
+        max-width: 95%;
+        width: 400px;
+      }
+
+      .compatible {
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .badges {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .badge {
+        flex: 1;
+        margin: 0 8px;
+        text-align: center;
+      }
+
+      .badge-img {
+        object-fit: contain;
+        width: 100%;
+      }
+
+      .apple-badge {
+        width: 80%;
+      }
+
+      .supports {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        justify-content: center;
+        margin-top: 12px;
+      }
+
+      .support {
+        padding: 0 8px;
+      }
+
+      /* PUZZLES page */
+
+      .links-header {
+        font-size: 18px;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+
+      .links {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .link {
+        margin-top: 6px;
+      }
+    </style>
+
+    <div class="main">
+      <div class="logo">
+        <img class="logo-img" src="logo.png" alt="Cypher System SRD Lookup logo" />
+        <h1>Cypher System SRD Lookup</h1>
+        <p class="compatible">Compatible with the Cypher System</p>
+      </div>
+      <div class="badges">
+        <div class="badge">
+          <a href="https://apps.apple.com/app/">
+            <img
+              class="badge-img apple-badge"
+              src="app_store_badge.svg"
+              alt="Download on the App Store"
+            />
+          </a>
+        </div>
+        <div class="badge">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.isaaclyman.cyphersrd"
+          >
+            <img
+              class="badge-img"
+              src="google_play_badge.png"
+              alt="Get it on Google Play"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="supports">
+        <div class="support">
+          <a href="https://csol.montecookgames.com/">License</a>
+        </div>
+        &bull;
+        <div class="support">
+          <a href="https://isaaclyman.com/cypher-system-srd-lookup/privacy.html">Privacy</a>
+        </div>
+        &bull;
+        <div class="support">
+          <a href="https://isaaclyman.com/cypher-system-srd-lookup/terms.html">Terms</a>
+        </div>
+        &bull;
+        <div class="support">
+          <a href="mailto:cyphersrdlookup@isaaclyman.com">Support</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
