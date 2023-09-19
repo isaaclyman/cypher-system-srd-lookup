@@ -31,7 +31,6 @@ class _MainAppState extends State<MainApp> {
   late final CEventHandler eventHandler;
 
   bool isSearchBarFocused = false;
-  CSearchResult? selectedResult;
 
   late void Function() debouncedSearch;
 
@@ -93,7 +92,7 @@ class _MainAppState extends State<MainApp> {
                         widget.searchManager.results,
                         onSelectResult: (result) {
                           setState(() {
-                            selectedResult = result;
+                            widget.searchManager.selectResult(result);
                             Scaffold.of(context).openEndDrawer();
                           });
                         },
@@ -104,9 +103,10 @@ class _MainAppState extends State<MainApp> {
               ],
             ),
           ),
-          endDrawer: selectedResult != null
+          endDrawer: widget.searchManager.selectedResult != null
               ? Drawer(
-                  child: CFullEntry(result: selectedResult!),
+                  child:
+                      CFullEntry(result: widget.searchManager.selectedResult!),
                 )
               : null,
         ),

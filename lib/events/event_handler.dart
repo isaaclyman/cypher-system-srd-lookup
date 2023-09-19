@@ -13,16 +13,21 @@ class CEventHandler {
     );
   }
 
-  closeDrawer(BuildContext context) {
+  void closeDrawer(BuildContext context) {
     Scaffold.of(context).closeEndDrawer();
   }
 
-  setSearchFilters(Map<String, bool> filterState) {
+  void goToResult(String searchableCategoryName, String itemName) {
+    final result = searchManager.getResult(searchableCategoryName, itemName);
+    searchManager.selectResult(result);
+  }
+
+  void setSearchFilters(Map<String, bool> filterState) {
     searchManager.filterState = filterState;
     debouncedSearch();
   }
 
-  setSearchQuery(String query) {
+  void setSearchQuery(String query) {
     searchManager.searchText = query;
     debouncedSearch();
   }

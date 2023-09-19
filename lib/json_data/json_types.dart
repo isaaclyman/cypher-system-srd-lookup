@@ -1,4 +1,12 @@
-import 'package:cypher_system_srd_lookup/json_data/render.dart';
+import 'package:collection/collection.dart';
+import 'package:cypher_system_srd_lookup/render/horizontal_key_values.dart';
+import 'package:cypher_system_srd_lookup/render/labeled_link_accordion.dart';
+import 'package:cypher_system_srd_lookup/render/labeled_list_accordion.dart';
+import 'package:cypher_system_srd_lookup/render/labeled_search_links.dart';
+import 'package:cypher_system_srd_lookup/render/link.dart';
+import 'package:cypher_system_srd_lookup/render/name_description.dart';
+import 'package:cypher_system_srd_lookup/render/paragraph.dart';
+import 'package:cypher_system_srd_lookup/render/vertical_key_values.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -92,21 +100,23 @@ class CJsonAbility implements CSearchable {
   Iterable<Widget> getRenderables() {
     return [
       CRenderVerticalKeyValues([
-        MapEntry("Cost", cost == null ? "None" : costRendered),
-        if (tier != null) MapEntry("Tier", tier!),
+        CNameDescription("Cost", cost == null ? "None" : costRendered),
+        if (tier != null) CNameDescription("Tier", tier!),
       ]),
       CRenderParagraph(description),
       if (category.isNotEmpty)
         CRenderLabeledSearchLinks(
           label: category.length == 1 ? "Category" : "Categories",
-          textQueries:
-              category.map((cat) => MapEntry(cat, "Category: $cat")).toList(),
+          textQueries: category
+              .map((cat) => CSearchQueryLink(cat, "Category: $cat"))
+              .toList(),
         ),
       if (references.isNotEmpty)
         CRenderLabeledSearchLinks(
           label: "Used by",
-          textQueries:
-              references.map((ref) => MapEntry(ref, "Name: $ref")).toList(),
+          textQueries: references
+              .map((ref) => CSearchQueryLink(ref, "Name: $ref"))
+              .toList(),
         ),
     ];
   }
@@ -196,27 +206,49 @@ class CJsonType implements CSearchable {
   Iterable<Widget> getRenderables() {
     return [
       CRenderHorizontalKeyValues(
-        statPool.map((key, value) => MapEntry(key, value.toString())),
+        statPool.entries
+            .map<CNameDescription>(
+                (entry) => CNameDescription(entry.key, entry.value.toString()))
+            .toList(),
       ),
-      CRenderLabeledList(
-        abilities.map((a) => MapEntry(a.name, a.description)),
+      CRenderLabeledListAccordion(
+        abilities.map((a) => CNameDescription(a.name, a.description)),
         label: "Traits",
       ),
-      CRenderLabeledList(
-        intrusions.map((i) => MapEntry(i.name, i.description)),
+      CRenderLabeledListAccordion(
+        intrusions.map((i) => CNameDescription(i.name, i.description)),
         label: "Intrusions",
+      ),
+      ...specialAbilitiesPerTier.map(
+        (tierAmount) => CRenderLabeledResultLinkAccordion(
+          label: "Tier ${tierAmount.tier} Abilities",
+          innerLabel: "Take ${tierAmount.specialAbilities}:",
+          links: specialAbilities
+              .where((a) => a.tier == tierAmount.tier)
+              .sorted((a, b) => a.preselected == b.preselected
+                  ? 0
+                  : a.preselected
+                      ? -1
+                      : 1)
+              .map((a) => CResultLink(
+                    "${a.name}${a.preselected ? " (preselected)" : ""}",
+                    resultCategory: "Abilities",
+                    resultName: a.name,
+                  ))
+              .toList(),
+        ),
       ),
       // Tier 1 Abilities (links)
       // Tier 2 Abilities (links)
       // Etc.
-      CRenderLabeledList(
-          specialAbilities.map((a) => MapEntry(a.name,
-              "Tier ${a.tier}, ${a.preselected ? "preselected" : "optional"}")),
-          label: "Special Abilities"),
-      CRenderVerticalKeyValues(specialAbilitiesPerTier
-          .map((amt) => MapEntry(
-              "Tier ${amt.tier}", "${amt.specialAbilities} special abilities"))
-          .toList()),
+      // CRenderLabeledListAccordion(
+      //     specialAbilities.map((a) => MapEntry(a.name,
+      //         "Tier ${a.tier}, ${a.preselected ? "preselected" : "optional"}")),
+      //     label: "Special Abilities"),
+      // CRenderVerticalKeyValues(specialAbilitiesPerTier
+      //     .map((amt) => MapEntry(
+      //         "Tier ${amt.tier}", "${amt.specialAbilities} special abilities"))
+      //     .toList()),
     ];
   }
 }

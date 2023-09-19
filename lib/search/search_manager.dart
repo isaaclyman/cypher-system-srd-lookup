@@ -10,11 +10,39 @@ class CSearchManager extends ChangeNotifier {
   Map<String, bool> filterState = {};
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
+  CSearchResult? selectedResult;
 
   CSearchManager(this._root);
 
   void search() {
     results = _getResults();
+    notifyListeners();
+  }
+
+  CSearchResult? getResult(String searchableCategoryName, String itemName) {
+    var searchableCategory = _root.searchables
+        .firstWhereOrNull((cat) => cat.category == searchableCategoryName);
+    if (searchableCategory == null) {
+      return null;
+    }
+
+    var searchable = searchableCategory.searchables
+        .firstWhereOrNull((it) => it.header == itemName);
+    if (searchable == null) {
+      return null;
+    }
+
+    return CSearchResult(
+      category: searchableCategory.category,
+      header: searchable.header,
+      summary: itemName,
+      getRenderables: searchable.getRenderables,
+      priority: 0,
+    );
+  }
+
+  void selectResult(CSearchResult? result) {
+    selectedResult = result;
     notifyListeners();
   }
 

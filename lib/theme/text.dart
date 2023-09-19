@@ -2,6 +2,12 @@ import 'package:cypher_system_srd_lookup/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class CThemeText {
+  final TextStyle accordionInnerLabel = TextStyle(
+    color: cThemeColors.text,
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+  );
+
   final TextStyle entryCategory = TextStyle(
     color: cThemeColors.muted,
     fontSize: 10,
