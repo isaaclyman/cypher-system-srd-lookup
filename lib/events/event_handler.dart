@@ -19,7 +19,10 @@ class CEventHandler {
   }
 
   void goToResult(
-      BuildContext context, String searchableCategoryName, String itemName) {
+    BuildContext context,
+    String? searchableCategoryName,
+    String itemName,
+  ) {
     final result = searchManager.getResult(searchableCategoryName, itemName);
     if (result != null) {
       searchManager.selectResult(result);

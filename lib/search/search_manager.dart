@@ -23,10 +23,29 @@ class CSearchManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  CSearchResult? getResult(String searchableCategoryName, String itemName) {
-    var searchableCategory = _root.searchables
-        .firstWhereOrNull((cat) => cat.category == searchableCategoryName);
+  CSearchResult? getResult(String? searchableCategoryName, String itemName) {
+    var searchableCategory = searchableCategoryName != null
+        ? _root.searchables
+            .firstWhereOrNull((cat) => cat.category == searchableCategoryName)
+        : null;
+
     if (searchableCategory == null) {
+      for (var category in _root.searchables) {
+        var searchable = category.searchables
+            .firstWhereOrNull((it) => it.header == itemName);
+        if (searchable == null) {
+          continue;
+        }
+
+        return CSearchResult(
+          category: category.category,
+          header: searchable.header,
+          summary: itemName,
+          getRenderables: searchable.getRenderables,
+          priority: 0,
+        );
+      }
+
       return null;
     }
 

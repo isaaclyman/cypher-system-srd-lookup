@@ -11,7 +11,7 @@ class CSearchQueryLink extends CLink {
 }
 
 class CResultLink extends CLink {
-  final String resultCategory;
+  final String? resultCategory;
   final String resultName;
 
   const CResultLink(

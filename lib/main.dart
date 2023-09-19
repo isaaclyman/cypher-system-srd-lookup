@@ -66,46 +66,51 @@ class _MainAppState extends State<MainApp> {
           )
         ],
         child: Scaffold(
-          body: AnimatedAlign(
-            alignment: isSearchBarFocused || widget.searchManager.hasResults
-                ? Alignment.topCenter
-                : Alignment.center,
-            duration: const Duration(milliseconds: 150),
-            curve: Curves.easeOut,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _SearchBlock(
-                  onFocusChange: (isFocused) => setState(() {
-                    isSearchBarFocused = isFocused;
-                  }),
-                  filters: widget.dataRoot.searchables
-                      .map((s) => s.category)
-                      .toList(),
-                ),
-                if (widget.searchManager.searchText.isNotEmpty)
-                  Expanded(
-                    child: Builder(builder: (context) {
-                      return CResultsBlock(
-                        widget.searchManager.results,
-                        onSelectResult: (result) {
-                          setState(() {
-                            widget.searchManager.selectResult(result);
-                            Scaffold.of(context).openEndDrawer();
-                          });
-                        },
-                        searchText: widget.searchManager.searchText,
-                      );
+          body: SafeArea(
+            child: AnimatedAlign(
+              alignment: isSearchBarFocused || widget.searchManager.hasResults
+                  ? Alignment.topCenter
+                  : Alignment.center,
+              duration: const Duration(milliseconds: 150),
+              curve: Curves.easeOut,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _SearchBlock(
+                    onFocusChange: (isFocused) => setState(() {
+                      isSearchBarFocused = isFocused;
                     }),
-                  )
-              ],
+                    filters: widget.dataRoot.searchables
+                        .map((s) => s.category)
+                        .toList(),
+                  ),
+                  if (widget.searchManager.searchText.isNotEmpty)
+                    Expanded(
+                      child: Builder(builder: (context) {
+                        return CResultsBlock(
+                          widget.searchManager.results,
+                          onSelectResult: (result) {
+                            setState(() {
+                              widget.searchManager.selectResult(result);
+                              Scaffold.of(context).openEndDrawer();
+                            });
+                          },
+                          searchText: widget.searchManager.searchText,
+                        );
+                      }),
+                    )
+                ],
+              ),
             ),
           ),
           endDrawer: Drawer(
             child: widget.searchManager.selectedResult != null
-                ? CFullEntry(result: widget.searchManager.selectedResult!)
+                ? SafeArea(
+                    child: CFullEntry(
+                    result: widget.searchManager.selectedResult!,
+                  ))
                 : null,
           ),
         ),

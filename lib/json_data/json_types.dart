@@ -126,7 +126,8 @@ class CJsonAbility implements CSearchable {
         CRenderLinksParagraph(
           label: "Used by",
           textQueries: references
-              .map((ref) => CSearchQueryLink(ref, "Name: $ref"))
+              .map((ref) =>
+                  CResultLink(ref, resultCategory: null, resultName: ref))
               .toList(),
         ),
     ];
