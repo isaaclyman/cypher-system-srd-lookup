@@ -1,6 +1,29 @@
+import 'package:cypher_system_srd_lookup/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class CThemeText {
+  final TextStyle entryCategory = TextStyle(
+    color: cThemeColors.muted,
+    fontSize: 10,
+    fontWeight: FontWeight.bold,
+  );
+
+  final TextStyle entryChip = TextStyle(
+    color: cThemeColors.mutedContrast,
+    fontSize: 10,
+    fontWeight: FontWeight.bold,
+  );
+
+  final TextStyle entryListHeader = TextStyle(
+    color: cThemeColors.text,
+    fontSize: 18,
+  );
+
+  final TextStyle entryMainHeader = TextStyle(
+    color: cThemeColors.accent,
+    fontSize: 20,
+  );
+
   final TextStyle highlight = const TextStyle(
     backgroundColor: Colors.yellow,
   );
@@ -9,18 +32,38 @@ class CThemeText {
     fontSize: 8,
   );
 
-  final TextStyle small = const TextStyle(
-    fontSize: 10,
+  final TextStyle mapHorizontalTableCellBordered = TextStyle(
+    color: cThemeColors.accent,
+    fontWeight: FontWeight.bold,
   );
 
-  final TextStyle categoryHeader = TextStyle(
-    color: Colors.grey[600],
+  final TextStyle mapHorizontalTableCellSolidColor = TextStyle(
+    color: cThemeColors.accentContrast,
+    fontWeight: FontWeight.bold,
+  );
+
+  final TextStyle mapVerticalTableCellBordered = TextStyle(
+    color: cThemeColors.text,
+    fontWeight: FontWeight.bold,
+  );
+
+  final TextStyle mapVerticalTableCellSolidColor = TextStyle(
+    color: cThemeColors.accentContrast,
+    fontWeight: FontWeight.bold,
+  );
+
+  final TextStyle resultCategoryHeader = TextStyle(
+    color: cThemeColors.muted,
     fontSize: 12,
   );
 
-  final TextStyle resultHeader = TextStyle(
-    color: Colors.pink[900],
+  final TextStyle resultEntryHeader = TextStyle(
+    color: cThemeColors.accent,
     fontSize: 16,
+  );
+
+  final TextStyle small = const TextStyle(
+    fontSize: 10,
   );
 }
 

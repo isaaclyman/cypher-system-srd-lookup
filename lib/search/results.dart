@@ -6,12 +6,14 @@ import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
 
 class CResultsBlock extends StatefulWidget {
+  final void Function(CSearchResult) onSelectResult;
   final Iterable<CSearchResultCategory> results;
   final String searchText;
 
   const CResultsBlock(
     this.results, {
     super.key,
+    required this.onSelectResult,
     required this.searchText,
   });
 
@@ -37,6 +39,9 @@ class _CResultsBlockState extends State<CResultsBlock> {
                             cat.results.length),
                       )
                       .map((r) => _ResultItem(
+                            onTap: () {
+                              widget.onSelectResult(r);
+                            },
                             result: r,
                             searchText: widget.searchText,
                           )),
@@ -89,7 +94,7 @@ class _CategoryHeader extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               text,
-              style: context.text.categoryHeader,
+              style: context.text.resultCategoryHeader,
             ),
           ),
           const Expanded(
@@ -106,34 +111,42 @@ class _CategoryHeader extends StatelessWidget {
 
 class _ResultItem extends StatelessWidget {
   final String searchText;
-  final CSearchResultWithBody result;
+  final CSearchResult result;
+  final void Function() onTap;
 
-  const _ResultItem({required this.result, required this.searchText});
+  const _ResultItem({
+    required this.result,
+    required this.searchText,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 6,
-        left: 24,
-        right: 24,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              result.header,
-              style: context.text.resultHeader,
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          bottom: 6,
+          left: 24,
+          right: 24,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                result.header,
+                style: context.text.resultEntryHeader,
+              ),
             ),
-          ),
-          _HighlightMatch(
-            matchText: searchText,
-            fullText: result.body,
-          ),
-        ],
+            _HighlightMatch(
+              matchText: searchText,
+              fullText: result.summary,
+            ),
+          ],
+        ),
       ),
     );
   }

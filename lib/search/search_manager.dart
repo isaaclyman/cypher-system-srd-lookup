@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 
 class CSearchManager {
   final CHasSearchables root;
@@ -40,9 +41,11 @@ class CSearchManager {
           ),
         );
         resultCategory.addResult(
-          CSearchResultWithBody(
+          CSearchResult(
+            category: category,
             header: searchable.header,
-            body: matchingText,
+            summary: matchingText,
+            getRenderables: searchable.getRenderables,
             priority: priority,
           ),
         );
@@ -66,7 +69,7 @@ class CSearchManager {
 
 class CSearchResultCategory {
   final String category;
-  final List<CSearchResultWithBody> results;
+  final List<CSearchResult> results;
   int minPriority = 100;
 
   CSearchResultCategory({
@@ -74,20 +77,24 @@ class CSearchResultCategory {
     required this.results,
   });
 
-  void addResult(CSearchResultWithBody result) {
+  void addResult(CSearchResult result) {
     minPriority = min(minPriority, result.priority);
     results.add(result);
   }
 }
 
-class CSearchResultWithBody {
+class CSearchResult {
+  final String category;
   final String header;
-  final String body;
+  final String summary;
+  final Iterable<Widget> Function() getRenderables;
   final int priority;
 
-  CSearchResultWithBody({
+  CSearchResult({
+    required this.category,
     required this.header,
-    required this.body,
+    required this.summary,
+    required this.getRenderables,
     required this.priority,
   });
 }
@@ -117,6 +124,7 @@ abstract class CHasSearchables {
 abstract class CSearchable {
   String get header;
   Iterable<String> get searchTextList;
+  Iterable<Widget> getRenderables();
 }
 
 abstract class CSearchableItem {

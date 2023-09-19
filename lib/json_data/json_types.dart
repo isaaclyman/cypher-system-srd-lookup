@@ -1,4 +1,6 @@
+import 'package:cypher_system_srd_lookup/json_data/render.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'json_types.g.dart';
@@ -85,6 +87,16 @@ class CJsonAbility implements CSearchable {
 
   factory CJsonAbility.fromJson(Map<String, dynamic> json) =>
       _$CJsonAbilityFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      CRenderVerticalKeyValues({
+        "Cost": cost == null ? "None" : costRendered,
+      }),
+      CRenderParagraph(description),
+    ];
+  }
 }
 
 @JsonSerializable()
@@ -166,6 +178,19 @@ class CJsonType implements CSearchable {
 
   factory CJsonType.fromJson(Map<String, dynamic> json) =>
       _$CJsonTypeFromJson(json);
+
+  @override
+  Iterable<Widget> getRenderables() {
+    return [
+      CRenderHorizontalKeyValues(
+        statPool.map((key, value) => MapEntry(key, value.toString())),
+      ),
+      CRenderLabeledList(
+        abilities.map((a) => MapEntry(a.name, a.description)),
+        label: "Traits",
+      ),
+    ];
+  }
 }
 
 @JsonSerializable()

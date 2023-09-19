@@ -1,5 +1,6 @@
 import 'package:cypher_system_srd_lookup/json_data/json_types.dart';
 import 'package:cypher_system_srd_lookup/json_data/read_json.dart';
+import 'package:cypher_system_srd_lookup/search/full_entry.dart';
 import 'package:cypher_system_srd_lookup/search/results.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/search/search_bar.dart';
@@ -29,6 +30,8 @@ class _MainAppState extends State<MainApp> {
   bool isSearchBarFocused = false;
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
+  CSearchResult? selectedResult;
+
   String searchText = "";
   Map<String, bool> filterState = {};
   late void Function() debouncedSearch;
@@ -48,6 +51,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         body: AnimatedAlign(
@@ -75,14 +79,27 @@ class _MainAppState extends State<MainApp> {
               ),
               if (hasResults)
                 Expanded(
-                  child: CResultsBlock(
-                    results,
-                    searchText: searchText,
-                  ),
+                  child: Builder(builder: (context) {
+                    return CResultsBlock(
+                      results,
+                      onSelectResult: (result) {
+                        setState(() {
+                          selectedResult = result;
+                          Scaffold.of(context).openEndDrawer();
+                        });
+                      },
+                      searchText: searchText,
+                    );
+                  }),
                 ),
             ],
           ),
         ),
+        endDrawer: selectedResult != null
+            ? Drawer(
+                child: CFullEntry(result: selectedResult!),
+              )
+            : null,
       ),
     );
   }
