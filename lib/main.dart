@@ -82,9 +82,6 @@ class _MainAppState extends State<MainApp> {
                     onFocusChange: (isFocused) => setState(() {
                       isSearchBarFocused = isFocused;
                     }),
-                    filters: widget.dataRoot.searchables
-                        .map((s) => s.category)
-                        .toList(),
                   ),
                   if (widget.searchManager.searchText.isNotEmpty)
                     Expanded(
@@ -121,11 +118,9 @@ class _MainAppState extends State<MainApp> {
 
 class _SearchBlock extends StatelessWidget {
   final void Function(bool) onFocusChange;
-  final List<String> filters;
 
   const _SearchBlock({
     required this.onFocusChange,
-    required this.filters,
   });
 
   @override
@@ -133,7 +128,7 @@ class _SearchBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
@@ -141,7 +136,6 @@ class _SearchBlock extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
             child: CSearchBar(
               onFocusChange: onFocusChange,
-              filters: filters,
             ),
           ),
         ),
@@ -154,6 +148,7 @@ class _SearchBlock extends StatelessWidget {
             ),
           ),
         ),
+        const CSearchFilters(),
       ],
     );
   }

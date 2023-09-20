@@ -1,5 +1,7 @@
 import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
+import 'package:cypher_system_srd_lookup/theme/text.dart';
+import 'package:cypher_system_srd_lookup/util/intersperse.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cypher_system_srd_lookup/theme/colors.dart';
@@ -7,12 +9,10 @@ import 'package:provider/provider.dart';
 
 class CSearchBar extends StatefulWidget {
   final void Function(bool) onFocusChange;
-  final List<String> filters;
 
   const CSearchBar({
     super.key,
     required this.onFocusChange,
-    required this.filters,
   });
 
   @override
@@ -22,13 +22,11 @@ class CSearchBar extends StatefulWidget {
 class _CSearchBarState extends State<CSearchBar> {
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
-  Map<String, bool> filterState = {};
 
   @override
   void initState() {
     super.initState();
     _focusNode.addListener(_onFocusChange);
-    filterState = {for (var filter in widget.filters) filter: true};
 
     context.read<CSearchManager>().addListener(_onSearchChange);
   }
@@ -44,8 +42,6 @@ class _CSearchBarState extends State<CSearchBar> {
 
   void _onSearchChange() {
     _controller.text = context.read<CSearchManager>().searchText;
-    // setState(() {
-    // });
   }
 
   void _onFocusChange() {
@@ -62,69 +58,45 @@ class _CSearchBarState extends State<CSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<CEventHandler, CSearchManager>(
-      builder: (_, handler, searchManager, ___) => Row(
-        children: [
-          Expanded(
-            child: TextField(
-              autofocus: true,
-              controller: _controller,
-              decoration: InputDecoration(
-                border: _border(1),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 6,
+    return Consumer<CEventHandler>(
+      builder: (_, handler, ___) => TextField(
+        autofocus: true,
+        controller: _controller,
+        decoration: InputDecoration(
+          border: _border(1),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 6,
+          ),
+          enabledBorder: _border(1),
+          focusedBorder: _border(2),
+          labelText: "Search SRD",
+          suffixIcon: _controller.text.isEmpty
+              ? null
+              : IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () => setState(() {
+                    _controller.clear();
+                    handler.setSearchQuery("");
+                  }),
+                  tooltip: "Clear search",
                 ),
-                enabledBorder: _border(1),
-                focusedBorder: _border(2),
-                labelText: "Search SRD",
-                suffixIcon: _controller.text.isEmpty
-                    ? null
-                    : IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () => setState(() {
-                          _controller.clear();
-                          handler.setSearchQuery("");
-                        }),
-                        tooltip: "Clear search",
-                      ),
-              ),
-              focusNode: _focusNode,
-              onChanged: (value) => handler.setSearchQuery(value),
-            ),
-          ),
-          AnimatedSize(
-            duration: const Duration(milliseconds: 150),
-            child: !_focusNode.hasFocus || _controller.text.isNotEmpty
-                ? _FilterMenu(
-                    filterState: filterState,
-                    onFilterChange: (filter, checked) => setState(() {
-                      filterState[filter] = checked;
-                      handler.setSearchFilters(filterState);
-                    }),
-                  )
-                : const SizedBox.shrink(),
-          ),
-        ],
+        ),
+        focusNode: _focusNode,
+        onChanged: (value) => handler.setSearchQuery(value),
       ),
     );
   }
 }
 
-class _FilterMenu extends StatefulWidget {
-  final Map<String, bool> filterState;
-  final void Function(String filter, bool checked) onFilterChange;
-
-  const _FilterMenu({
-    required this.filterState,
-    required this.onFilterChange,
-  });
+class CSearchFilters extends StatefulWidget {
+  const CSearchFilters({super.key});
 
   @override
-  State<_FilterMenu> createState() => _FilterMenuState();
+  State<CSearchFilters> createState() => _CSearchFiltersState();
 }
 
-class _FilterMenuState extends State<_FilterMenu> {
+class _CSearchFiltersState extends State<CSearchFilters> {
   @override
   void initState() {
     super.initState();
@@ -132,26 +104,65 @@ class _FilterMenuState extends State<_FilterMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return MenuAnchor(
-      menuChildren: widget.filterState.entries
-          .map((kvp) => CheckboxMenuButton(
-                closeOnActivate: false,
-                onChanged: (checked) =>
-                    widget.onFilterChange(kvp.key, checked ?? true),
-                value: kvp.value,
-                child: Text(kvp.key),
-              ))
-          .toList(),
-      builder: (_, controller, ___) => IconButton(
-        icon: const Icon(Icons.tune),
-        onPressed: () {
-          if (controller.isOpen) {
-            controller.close();
-          } else {
-            controller.open();
-          }
-        },
-        tooltip: "Set filters",
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
+        vertical: 4,
+      ),
+      child: ShaderMask(
+        shaderCallback: (rect) => const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Colors.white,
+            Colors.transparent,
+            Colors.transparent,
+            Colors.white
+          ],
+          stops: [0.0, 0.02, 0.9, 1.0],
+        ).createShader(rect),
+        blendMode: BlendMode.dstOut,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 4,
+            ),
+            child: Consumer2<CEventHandler, CSearchManager>(
+              builder: (_, handler, searchManager, __) => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: searchManager.filterState.entries
+                    .map<Widget>(
+                      (kvp) => FilterChip(
+                        label: Text(kvp.key),
+                        labelPadding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 0,
+                        ),
+                        labelStyle: context.text.filterChip,
+                        selected: kvp.value,
+                        onSelected: (value) {
+                          final newFilters =
+                              Map<String, bool>.from(searchManager.filterState);
+                          newFilters[kvp.key] = value;
+                          handler.setSearchFilters(newFilters);
+                        },
+                      ),
+                    )
+                    .intersperse(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4,
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

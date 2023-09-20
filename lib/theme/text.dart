@@ -31,6 +31,11 @@ class CThemeText {
     fontWeight: FontWeight.w300,
   );
 
+  final TextStyle filterChip = TextStyle(
+    color: cThemeColors.text,
+    fontSize: 12,
+  );
+
   final TextStyle highlight = const TextStyle(
     backgroundColor: Colors.yellow,
   );

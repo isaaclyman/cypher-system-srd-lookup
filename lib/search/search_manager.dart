@@ -8,7 +8,7 @@ class CSearchManager extends ChangeNotifier {
   final CHasSearchables _root;
 
   String searchText = "";
-  Map<String, bool> filterState = {};
+  Map<String, bool> filterState;
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
 
@@ -17,7 +17,9 @@ class CSearchManager extends ChangeNotifier {
   CSearchResult? get lastResult => pastResults.last;
   bool get canGoBack => pastResults.isNotEmpty;
 
-  CSearchManager(this._root);
+  CSearchManager(this._root)
+      : filterState = Map.fromEntries(
+            _root.searchables.map((s) => MapEntry(s.category, true)));
 
   void search() {
     results = _getResults();
