@@ -40,12 +40,6 @@ class _CPageSearchState extends State<CPageSearch> {
               child: Builder(builder: (context) {
                 return CResultsBlock(
                   searchManager.results,
-                  onSelectResult: (result) {
-                    setState(() {
-                      searchManager.selectResult(result);
-                      Scaffold.of(context).openEndDrawer();
-                    });
-                  },
                   searchText: searchManager.searchText,
                 );
               }),

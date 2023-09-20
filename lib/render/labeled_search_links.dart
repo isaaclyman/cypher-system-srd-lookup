@@ -31,7 +31,7 @@ class CRenderLinksParagraph extends StatelessWidget {
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 if (item is CSearchQueryLink) {
-                                  handler.setSearchQuery(item.query);
+                                  handler.setSearchQuery(context, item.query);
                                   handler.closeDrawer(context);
                                 } else if (item is CResultLink) {
                                   handler.goToResult(

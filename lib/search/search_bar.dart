@@ -1,3 +1,4 @@
+import 'package:cypher_system_srd_lookup/components/fade_horizontal_scroll.dart';
 import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
@@ -87,13 +88,13 @@ class _CSearchBarState extends State<CSearchBar> {
                 icon: const Icon(Icons.clear),
                 onPressed: () => setState(() {
                   _controller.clear();
-                  handler.setSearchQuery("");
+                  handler.setSearchQuery(context, "");
                 }),
                 tooltip: "Clear search",
               ),
       ),
       focusNode: _focusNode,
-      onChanged: (value) => handler.setSearchQuery(value),
+      onChanged: (value) => handler.setSearchQuery(context, value),
     );
   }
 }
@@ -113,64 +114,37 @@ class _CSearchFiltersState extends State<CSearchFilters> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 4,
-      ),
-      child: ShaderMask(
-        shaderCallback: (rect) => const LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            Colors.white,
-            Colors.transparent,
-            Colors.transparent,
-            Colors.white
-          ],
-          stops: [0.0, 0.02, 0.9, 1.0],
-        ).createShader(rect),
-        blendMode: BlendMode.dstOut,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 4,
-            ),
-            child: Consumer2<CEventHandler, CSearchManager>(
-              builder: (_, handler, searchManager, __) => Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: searchManager.filterState.entries
-                    .map<Widget>(
-                      (kvp) => FilterChip(
-                        label: Text(kvp.key),
-                        labelPadding: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                          vertical: 0,
-                        ),
-                        labelStyle: context.text.filterChip,
-                        selected: kvp.value,
-                        onSelected: (value) {
-                          final newFilters =
-                              Map<String, bool>.from(searchManager.filterState);
-                          newFilters[kvp.key] = value;
-                          handler.setSearchFilters(newFilters);
-                        },
-                      ),
-                    )
-                    .intersperse(
-                      const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 4,
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
+    return CFadeHorizontalScroll(
+      child: Consumer2<CEventHandler, CSearchManager>(
+        builder: (_, handler, searchManager, __) => Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: searchManager.filterState.entries
+              .map<Widget>(
+                (kvp) => FilterChip(
+                  label: Text(kvp.key),
+                  labelPadding: const EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical: 0,
+                  ),
+                  labelStyle: context.text.filterChip,
+                  selected: kvp.value,
+                  onSelected: (value) {
+                    final newFilters =
+                        Map<String, bool>.from(searchManager.filterState);
+                    newFilters[kvp.key] = value;
+                    handler.setSearchFilters(newFilters);
+                  },
+                ),
+              )
+              .intersperse(
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 4,
+                  ),
+                ),
+              )
+              .toList(),
         ),
       ),
     );

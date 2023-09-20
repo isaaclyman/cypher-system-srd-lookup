@@ -4,6 +4,7 @@ import 'package:cypher_system_srd_lookup/render/link.dart';
 import 'package:cypher_system_srd_lookup/theme/colors.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class CRenderLabeledResultLinkAccordion extends StatelessWidget {
@@ -39,7 +40,7 @@ class CRenderLabeledResultLinkAccordion extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
                   if (link is CSearchQueryLink) {
-                    handler.setSearchQuery(link.query);
+                    handler.setSearchQuery(context, link.query);
                     handler.closeDrawer(context);
                   } else if (link is CResultLink) {
                     handler.goToResult(

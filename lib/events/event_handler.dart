@@ -2,6 +2,7 @@ import 'package:cypher_system_srd_lookup/events/error_toast.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/util/debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CEventHandler {
   final CSearchManager searchManager;
@@ -37,8 +38,9 @@ class CEventHandler {
     debouncedSearch();
   }
 
-  void setSearchQuery(String query) {
+  void setSearchQuery(BuildContext context, String query) {
     searchManager.searchText = query;
     debouncedSearch();
+    context.go('/search');
   }
 }

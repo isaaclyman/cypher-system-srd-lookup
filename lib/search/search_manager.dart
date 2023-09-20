@@ -1,14 +1,21 @@
 import 'dart:developer';
 import 'dart:math';
 
+import 'package:azlistview/azlistview.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class CSearchManager extends ChangeNotifier {
   final CHasSearchables _root;
+  CSearchableCategory? get browsingCategory => selectedBrowseFilter == null
+      ? null
+      : _root.searchables
+          .firstWhereOrNull((cat) => cat.category == selectedBrowseFilter);
 
   String searchText = "";
   Map<String, bool> filterState;
+  String? selectedBrowseFilter;
+
   Iterable<CSearchResultCategory> results = [];
   bool get hasResults => results.isNotEmpty;
 
@@ -19,7 +26,8 @@ class CSearchManager extends ChangeNotifier {
 
   CSearchManager(this._root)
       : filterState = Map.fromEntries(
-            _root.searchables.map((s) => MapEntry(s.category, true)));
+            _root.searchables.map((s) => MapEntry(s.category, true))),
+        selectedBrowseFilter = _root.searchables.first.category;
 
   void search() {
     results = _getResults();
@@ -65,6 +73,11 @@ class CSearchManager extends ChangeNotifier {
       getRenderables: searchable.getRenderables,
       priority: 0,
     );
+  }
+
+  void selectBrowseFilter(String? filter) {
+    selectedBrowseFilter = filter;
+    notifyListeners();
   }
 
   void selectResult(CSearchResult? result) {
@@ -135,8 +148,6 @@ class CSearchManager extends ChangeNotifier {
           : v1.priority.compareTo(v2.priority));
     }
 
-    inspect(results);
-
     return results.values
         .sorted((v1, v2) => v1.minPriority == v2.minPriority
             ? v1.category.compareTo(v2.category)
@@ -177,6 +188,18 @@ class CSearchResult {
   });
 }
 
+class CSearchableBean implements ISuspensionBean {
+  CSearchable searchable;
+
+  CSearchableBean.fromCSearchable(this.searchable);
+
+  @override
+  bool isShowSuspension = true;
+
+  @override
+  String getSuspensionTag() => searchable.header[0];
+}
+
 //
 // FOR DATA CLASSES
 //
@@ -201,6 +224,7 @@ abstract class CHasSearchables {
 
 abstract class CSearchable {
   String get header;
+  String get defaultDescription;
   Iterable<String> get searchTextList;
   Iterable<Widget> getRenderables();
 }

@@ -1,19 +1,19 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
+import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CResultsBlock extends StatefulWidget {
-  final void Function(CSearchResult) onSelectResult;
   final Iterable<CSearchResultCategory> results;
   final String searchText;
 
   const CResultsBlock(
     this.results, {
     super.key,
-    required this.onSelectResult,
     required this.searchText,
   });
 
@@ -57,10 +57,7 @@ class _CResultsBlockState extends State<CResultsBlock> {
                                       cat.category, () => 10),
                                   cat.results.length),
                             )
-                            .map((r) => _ResultItem(
-                                  onTap: () {
-                                    widget.onSelectResult(r);
-                                  },
+                            .map((r) => CEntrySummary(
                                   result: r,
                                   searchText: widget.searchText,
                                 )),
@@ -129,22 +126,26 @@ class _CategoryHeader extends StatelessWidget {
   }
 }
 
-class _ResultItem extends StatelessWidget {
-  final String searchText;
+class CEntrySummary extends StatelessWidget {
+  final String? searchText;
   final CSearchResult result;
-  final void Function() onTap;
 
-  const _ResultItem({
+  const CEntrySummary({
+    super.key,
     required this.result,
     required this.searchText,
-    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
+    final searchManager = Provider.of<CSearchManager>(context);
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: onTap,
+      onTap: () {
+        searchManager.selectResult(result);
+        Scaffold.of(context).openEndDrawer();
+      },
       child: Padding(
         padding: const EdgeInsets.only(
           bottom: 6,
@@ -162,10 +163,11 @@ class _ResultItem extends StatelessWidget {
                 style: context.text.resultEntryHeader,
               ),
             ),
-            _HighlightMatch(
-              matchText: searchText,
-              fullText: result.summary,
-            ),
+            if (result.summary.isNotEmpty)
+              _HighlightMatch(
+                matchText: searchText,
+                fullText: result.summary,
+              ),
           ],
         ),
       ),
@@ -211,16 +213,28 @@ class _LoadMoreResults extends StatelessWidget {
 }
 
 class _HighlightMatch extends StatelessWidget {
-  final String matchText;
+  final String? matchText;
   final String fullText;
 
-  const _HighlightMatch({required this.matchText, required this.fullText});
+  const _HighlightMatch({
+    required this.matchText,
+    required this.fullText,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final fullMatchIx = fullText.toLowerCase().indexOf(matchText.toLowerCase());
+    if (matchText == null) {
+      return Text.rich(
+        TextSpan(text: fullText),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      );
+    }
 
-    final minWindow = max(30, matchText.length);
+    final fullMatchIx =
+        fullText.toLowerCase().indexOf(matchText!.toLowerCase());
+
+    final minWindow = max(30, matchText!.length);
     String windowedText;
     if (minWindow >= fullText.length || fullMatchIx <= minWindow) {
       windowedText = fullText;
@@ -231,10 +245,14 @@ class _HighlightMatch extends StatelessWidget {
     }
 
     final windowMatchIx =
-        windowedText.toLowerCase().indexOf(matchText.toLowerCase());
+        windowedText.toLowerCase().indexOf(matchText!.toLowerCase());
 
     return windowMatchIx == -1
-        ? Text.rich(TextSpan(text: windowedText))
+        ? Text.rich(
+            TextSpan(text: windowedText),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          )
         : Text.rich(
             TextSpan(children: [
               TextSpan(
@@ -242,11 +260,11 @@ class _HighlightMatch extends StatelessWidget {
               ),
               TextSpan(
                 text: windowedText.substring(
-                    windowMatchIx, windowMatchIx + matchText.length),
+                    windowMatchIx, windowMatchIx + matchText!.length),
                 style: context.text.highlight,
               ),
               TextSpan(
-                text: windowedText.substring(windowMatchIx + matchText.length),
+                text: windowedText.substring(windowMatchIx + matchText!.length),
               ),
             ]),
             maxLines: 1,

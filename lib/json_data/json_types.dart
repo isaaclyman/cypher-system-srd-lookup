@@ -66,6 +66,9 @@ class CJsonAbility implements CSearchable {
   @override
   String get header => name;
 
+  @override
+  String get defaultDescription => description;
+
   String name;
   int? cost;
   List<String> pool;
@@ -178,6 +181,11 @@ class CJsonType implements CSearchable {
   @override
   String get header => name;
 
+  @override
+  String get defaultDescription => statPool.entries
+      .map((entry) => "${entry.key}: ${entry.value}")
+      .join(" | ");
+
   String name;
   List<CJsonBasicAbility> intrusions;
 
@@ -282,6 +290,9 @@ class CJsonFlavor implements CSearchable {
   @override
   String get header => name;
 
+  @override
+  String get defaultDescription => "";
+
   String name;
   List<CJsonAbilityRef> abilities;
 
@@ -331,6 +342,9 @@ class CJsonDescriptor implements CSearchable {
   @override
   String get header => name;
 
+  @override
+  String get defaultDescription => description;
+
   String name;
   String description;
   List<CJsonBasicAbility> characteristics;
@@ -377,6 +391,9 @@ class CJsonDescriptor implements CSearchable {
 class CJsonFocus implements CSearchable {
   @override
   String get header => name;
+
+  @override
+  String get defaultDescription => description;
 
   String name;
   String description;
@@ -436,6 +453,9 @@ class CJsonFocus implements CSearchable {
 class CJsonCypher implements CSearchable {
   @override
   String get header => name;
+
+  @override
+  String get defaultDescription => effect;
 
   String name;
   String effect;
@@ -537,6 +557,9 @@ class CJsonArtifact implements CSearchable {
   @override
   String get header => name;
 
+  @override
+  String get defaultDescription => effect;
+
   String name;
 
   @JsonKey(name: "level_dice")
@@ -614,6 +637,9 @@ class CJsonArtifact implements CSearchable {
 class CJsonCreature implements CSearchable {
   @override
   String get header => name;
+
+  @override
+  String get defaultDescription => description;
 
   String name;
   String kind;
@@ -712,6 +738,9 @@ class CJsonCreature implements CSearchable {
 class CJsonEquipment implements CSearchable {
   @override
   String get header => name;
+
+  @override
+  String get defaultDescription => variants.firstOrNull?.description ?? "";
 
   String name;
   List<CJsonEquipmentVariant> variants;
