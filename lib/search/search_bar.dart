@@ -22,33 +22,42 @@ class CSearchBar extends StatefulWidget {
 class _CSearchBarState extends State<CSearchBar> {
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
+  final List<VoidCallback> onDispose = [];
 
   @override
   void initState() {
     super.initState();
     _focusNode.addListener(_onFocusChange);
+    onDispose.add(() => _focusNode.removeListener(_onFocusChange));
 
-    context.read<CSearchManager>().addListener(_onSearchChange);
+    final searchManager = context.read<CSearchManager>();
+    searchManager.addListener(_onSearchChange);
+    _onSearchChange();
+    onDispose.add(() => searchManager.removeListener(_onSearchChange));
   }
 
   @override
   void dispose() {
-    context.read<CSearchManager>().removeListener(_onSearchChange);
+    for (var callback in onDispose) {
+      callback();
+    }
+
     _controller.dispose();
-    _focusNode.removeListener(_onFocusChange);
     _focusNode.dispose();
     super.dispose();
   }
 
   void _onSearchChange() {
-    _controller.text = context.read<CSearchManager>().searchText;
+    if (context.mounted) {
+      _controller.text = context.read<CSearchManager>().searchText;
+    }
   }
 
   void _onFocusChange() {
     widget.onFocusChange.call(_focusNode.hasFocus);
   }
 
-  OutlineInputBorder _border(double width) => OutlineInputBorder(
+  OutlineInputBorder _inputBorder(double width) => OutlineInputBorder(
         borderSide: BorderSide(
           color: context.colors.primary,
           width: width,
@@ -58,33 +67,33 @@ class _CSearchBarState extends State<CSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CEventHandler>(
-      builder: (_, handler, ___) => TextField(
-        autofocus: true,
-        controller: _controller,
-        decoration: InputDecoration(
-          border: _border(1),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 6,
-          ),
-          enabledBorder: _border(1),
-          focusedBorder: _border(2),
-          labelText: "Search SRD",
-          suffixIcon: _controller.text.isEmpty
-              ? null
-              : IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () => setState(() {
-                    _controller.clear();
-                    handler.setSearchQuery("");
-                  }),
-                  tooltip: "Clear search",
-                ),
+    final handler = context.watch<CEventHandler>();
+
+    return TextField(
+      autofocus: true,
+      controller: _controller,
+      decoration: InputDecoration(
+        border: _inputBorder(1),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 6,
         ),
-        focusNode: _focusNode,
-        onChanged: (value) => handler.setSearchQuery(value),
+        enabledBorder: _inputBorder(1),
+        focusedBorder: _inputBorder(2),
+        labelText: "Search SRD",
+        suffixIcon: _controller.text.isEmpty
+            ? null
+            : IconButton(
+                icon: const Icon(Icons.clear),
+                onPressed: () => setState(() {
+                  _controller.clear();
+                  handler.setSearchQuery("");
+                }),
+                tooltip: "Clear search",
+              ),
       ),
+      focusNode: _focusNode,
+      onChanged: (value) => handler.setSearchQuery(value),
     );
   }
 }
