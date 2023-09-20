@@ -2,6 +2,16 @@
 
 An instant full-text search app for the Cypher System SRD with structured results.
 
+# Get the app
+
+Visit [isaaclyman.com/cypher-system-srd-lookup](https://isaaclyman.com/cypher-system-srd-lookup/) for links to download on the App Store and Google Play.
+
+# Support
+
+If there's a problem with the app or one of the entries in it, you may [file an issue](https://github.com/isaaclyman/cypher-system-srd-lookup/issues).
+
+If you'd like me to spend more time on this app (meaning more free features for everyone), simply [sponsor me](https://ko-fi.com/isaaclyman).
+
 # Development
 
 ## Generating JSON deserialization code
