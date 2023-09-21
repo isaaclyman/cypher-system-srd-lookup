@@ -1,4 +1,6 @@
+import 'package:cypher_system_srd_lookup/components/bookmark_icon_button.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
+import 'package:cypher_system_srd_lookup/theme/colors.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -54,55 +56,102 @@ class CFullEntry extends StatelessWidget {
           height: 6,
         ),
         Expanded(
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 4,
-              ),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ...result
-                        .getRenderables()
-                        .map((r) => Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 4),
-                              child: r,
-                            ))
-                        .toList(),
-                    Consumer<CSearchManager>(
-                      builder: (_, searchManager, ___) => !searchManager
-                              .canGoBack
-                          ? const SizedBox.shrink()
-                          : Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                              child: TextButton(
-                                onPressed: () {
-                                  searchManager.selectPreviousResult();
-                                },
-                                child: Row(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(right: 8),
-                                      child: Icon(Icons.arrow_back),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        "Back to ${searchManager.lastResult?.header ?? "previous entry"}",
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                    )
-                  ]),
-            ),
+          child: _EntryBody(result: result),
+        ),
+        _EntryActions(result: result),
+      ],
+    );
+  }
+}
+
+class _EntryBody extends StatelessWidget {
+  const _EntryBody({
+    super.key,
+    required this.result,
+  });
+
+  final CSearchResult result;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 4,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ...result
+                .getRenderables()
+                .map((r) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: r,
+                    ))
+                .toList(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _EntryActions extends StatelessWidget {
+  final CSearchResult result;
+
+  const _EntryActions({
+    required this.result,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final searchManager = context.watch<CSearchManager>();
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: context.colors.primary,
+            width: 1,
           ),
         ),
-      ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 8,
+        ),
+        child: Row(
+          children: [
+            searchManager.canGoBack
+                ? Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        searchManager.selectPreviousResult();
+                      },
+                      child: Row(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(right: 8),
+                            child: Icon(Icons.arrow_back),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "Back to ${searchManager.lastResult?.header ?? "previous entry"}",
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                : const Spacer(),
+            CBookmarkIconButton(result: result)
+          ],
+        ),
+      ),
     );
   }
 }

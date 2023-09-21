@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math';
 
 import 'package:azlistview/azlistview.dart';
@@ -25,8 +24,7 @@ class CSearchManager extends ChangeNotifier {
   bool get canGoBack => pastResults.isNotEmpty;
 
   CSearchManager(this._root)
-      : filterState = Map.fromEntries(
-            _root.searchables.map((s) => MapEntry(s.category, true))),
+      : filterState = {for (var s in _root.searchables) s.category: true},
         selectedBrowseFilter = _root.searchables.first.category;
 
   void search() {
@@ -81,7 +79,7 @@ class CSearchManager extends ChangeNotifier {
   }
 
   void selectResult(CSearchResult? result) {
-    if (selectedResult != null) {
+    if (selectedResult != null && selectedResult != result) {
       pastResults.add(selectedResult!);
     }
 

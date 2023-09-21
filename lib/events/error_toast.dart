@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-SnackBar getErrorToast(String message) =>
-    SnackBar(content: ErrorToast(message));
+SnackBar cErrorToast(String message) => SnackBar(content: _ErrorToast(message));
 
-class ErrorToast extends StatelessWidget {
+class _ErrorToast extends StatelessWidget {
   final String message;
 
-  const ErrorToast(this.message, {super.key});
+  const _ErrorToast(this.message);
 
   @override
   Widget build(BuildContext context) {

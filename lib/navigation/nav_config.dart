@@ -1,3 +1,4 @@
+import 'package:cypher_system_srd_lookup/db/bookmark.db.dart';
 import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/json_data/json_types.dart';
 import 'package:cypher_system_srd_lookup/pages/page_bookmarks.dart';
@@ -70,7 +71,10 @@ class CAppShell extends StatelessWidget {
         ),
         ChangeNotifierProvider<CSearchManager>(
           create: (_) => searchManager,
-        )
+        ),
+        ChangeNotifierProvider<CBookmarkManager>(
+          create: (_) => CBookmarkManager(),
+        ),
       ],
       child: Scaffold(
         backgroundColor: Colors.white,

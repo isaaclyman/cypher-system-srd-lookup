@@ -41,6 +41,7 @@ class _CPageSearchState extends State<CPageSearch> {
                 return CResultsBlock(
                   searchManager.results,
                   searchText: searchManager.searchText,
+                  noResultsMessage: "No results found.\nCheck your filters.",
                 );
               }),
             )

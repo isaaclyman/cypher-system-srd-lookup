@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
-import 'package:cypher_system_srd_lookup/events/event_handler.dart';
+import 'package:cypher_system_srd_lookup/components/bookmark_icon_button.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +9,14 @@ import 'package:provider/provider.dart';
 
 class CResultsBlock extends StatefulWidget {
   final Iterable<CSearchResultCategory> results;
-  final String searchText;
+  final String? searchText;
+  final String noResultsMessage;
 
   const CResultsBlock(
     this.results, {
     super.key,
     required this.searchText,
+    required this.noResultsMessage,
   });
 
   @override
@@ -29,18 +31,18 @@ class _CResultsBlockState extends State<CResultsBlock> {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 650),
       child: widget.results.isEmpty
-          ? const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
+          ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 8),
                     child: Icon(Icons.error),
                   ),
                   Text(
-                    "No results found.\nCheck your filters.",
+                    widget.noResultsMessage,
                   ),
                 ],
               ),
@@ -60,6 +62,7 @@ class _CResultsBlockState extends State<CResultsBlock> {
                             .map((r) => CEntrySummary(
                                   result: r,
                                   searchText: widget.searchText,
+                                  bookmarkOnLeft: false,
                                 )),
                         if (cat.results.length >
                             (resultsToShow[cat.category] ?? 10))
@@ -129,48 +132,58 @@ class _CategoryHeader extends StatelessWidget {
 class CEntrySummary extends StatelessWidget {
   final String? searchText;
   final CSearchResult result;
+  final bool bookmarkOnLeft;
 
   const CEntrySummary({
     super.key,
     required this.result,
     required this.searchText,
+    required this.bookmarkOnLeft,
   });
 
   @override
   Widget build(BuildContext context) {
     final searchManager = Provider.of<CSearchManager>(context);
 
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        searchManager.selectResult(result);
-        Scaffold.of(context).openEndDrawer();
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(
-          bottom: 6,
-          left: 24,
-          right: 24,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                result.header,
-                style: context.text.resultEntryHeader,
+    return Row(
+      children: [
+        if (bookmarkOnLeft) CBookmarkIconButton(result: result),
+        Expanded(
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              searchManager.selectResult(result);
+              Scaffold.of(context).openEndDrawer();
+            },
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 6,
+                left: bookmarkOnLeft ? 0 : 24,
+                right: 24,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      result.header,
+                      style: context.text.resultEntryHeader,
+                    ),
+                  ),
+                  if (result.summary.isNotEmpty)
+                    _HighlightMatch(
+                      matchText: searchText,
+                      fullText: result.summary,
+                    ),
+                ],
               ),
             ),
-            if (result.summary.isNotEmpty)
-              _HighlightMatch(
-                matchText: searchText,
-                fullText: result.summary,
-              ),
-          ],
+          ),
         ),
-      ),
+        if (!bookmarkOnLeft) CBookmarkIconButton(result: result),
+      ],
     );
   }
 }

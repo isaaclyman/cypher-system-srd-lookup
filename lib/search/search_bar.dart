@@ -71,7 +71,6 @@ class _CSearchBarState extends State<CSearchBar> {
     final handler = context.watch<CEventHandler>();
 
     return TextField(
-      autofocus: true,
       controller: _controller,
       decoration: InputDecoration(
         border: _inputBorder(1),

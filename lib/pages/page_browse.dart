@@ -96,6 +96,7 @@ class _AlphabeticalEntryList extends StatelessWidget {
       itemBuilder: (context, index) {
         final result = searchables.elementAt(index);
         return CEntrySummary(
+          bookmarkOnLeft: true,
           result: CSearchResult(
             category: category,
             header: result.header,

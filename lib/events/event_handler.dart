@@ -29,7 +29,7 @@ class CEventHandler {
       searchManager.selectResult(result);
     } else {
       ScaffoldMessenger.of(context)
-          .showSnackBar(getErrorToast("Couldn't find that item (bad link)."));
+          .showSnackBar(cErrorToast("Couldn't find that item (bad link)."));
     }
   }
 
