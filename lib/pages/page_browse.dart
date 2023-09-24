@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CPageBrowse extends StatefulWidget {
+  static const name = 'Browse';
+
   const CPageBrowse({super.key});
 
   @override

@@ -1,11 +1,17 @@
+import 'package:cypher_system_srd_lookup/navigation/nav_manager.dart';
+import 'package:cypher_system_srd_lookup/pages/page_about.dart';
 import 'package:cypher_system_srd_lookup/search/results.dart';
 import 'package:cypher_system_srd_lookup/search/search_bar.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
+import 'package:cypher_system_srd_lookup/theme/colors.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class CPageSearch extends StatefulWidget {
+  static const name = 'Search';
+
   const CPageSearch({super.key});
 
   @override
@@ -19,34 +25,58 @@ class _CPageSearchState extends State<CPageSearch> {
   Widget build(BuildContext context) {
     final searchManager = context.watch<CSearchManager>();
 
-    return AnimatedAlign(
-      alignment: isSearchBarFocused || searchManager.hasResults
-          ? Alignment.topCenter
-          : Alignment.center,
-      duration: const Duration(milliseconds: 150),
-      curve: Curves.easeOut,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _SearchBlock(
-            onFocusChange: (isFocused) => setState(() {
-              isSearchBarFocused = isFocused;
-            }),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        if (!isSearchBarFocused)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                color: context.colors.accent,
+                onPressed: () {
+                  Provider.of<CNavManager>(context, listen: false)
+                      .changeRoute(CPageAbout.name);
+                  context.goNamed(CPageAbout.name);
+                },
+                icon: const Icon(Icons.info_outline),
+              ),
+            ),
           ),
-          if (searchManager.searchText.isNotEmpty)
-            Expanded(
-              child: Builder(builder: (context) {
-                return CResultsBlock(
-                  searchManager.results,
-                  searchText: searchManager.searchText,
-                  noResultsMessage: "No results found.\nCheck your filters.",
-                );
-              }),
-            )
-        ],
-      ),
+        Expanded(
+          child: AnimatedAlign(
+            alignment: isSearchBarFocused || searchManager.hasResults
+                ? Alignment.topCenter
+                : Alignment.center,
+            duration: const Duration(milliseconds: 150),
+            curve: Curves.easeOut,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _SearchBlock(
+                  onFocusChange: (isFocused) => setState(() {
+                    isSearchBarFocused = isFocused;
+                  }),
+                ),
+                if (searchManager.searchText.isNotEmpty)
+                  Expanded(
+                    child: Builder(builder: (context) {
+                      return CResultsBlock(
+                        searchManager.results,
+                        searchText: searchManager.searchText,
+                        noResultsMessage:
+                            "No results found.\nCheck your filters.",
+                      );
+                    }),
+                  )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

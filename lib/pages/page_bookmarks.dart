@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CPageBookmarks extends StatelessWidget {
+  static const name = 'Bookmarks';
+
   const CPageBookmarks({super.key});
 
   @override

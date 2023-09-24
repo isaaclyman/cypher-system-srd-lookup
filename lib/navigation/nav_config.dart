@@ -1,6 +1,8 @@
 import 'package:cypher_system_srd_lookup/db/bookmark.db.dart';
 import 'package:cypher_system_srd_lookup/events/event_handler.dart';
 import 'package:cypher_system_srd_lookup/json_data/json_types.dart';
+import 'package:cypher_system_srd_lookup/navigation/nav_manager.dart';
+import 'package:cypher_system_srd_lookup/pages/page_about.dart';
 import 'package:cypher_system_srd_lookup/pages/page_bookmarks.dart';
 import 'package:cypher_system_srd_lookup/pages/page_browse.dart';
 import 'package:cypher_system_srd_lookup/pages/page_search.dart';
@@ -20,6 +22,7 @@ class CRouterConfig {
             ShellRoute(
               builder: (context, state, child) => CAppShell(
                 dataRoot: dataRoot,
+                routerState: state,
                 child: child,
               ),
               routes: [
@@ -29,19 +32,28 @@ class CRouterConfig {
                 ),
                 GoRoute(
                   path: '/search',
+                  name: CPageSearch.name,
                   builder: (context, state) =>
                       const CPageShell(child: CPageSearch()),
                 ),
                 GoRoute(
                   path: '/bookmarks',
+                  name: CPageBookmarks.name,
                   builder: (context, state) =>
                       const CPageShell(child: CPageBookmarks()),
                 ),
                 GoRoute(
                   path: '/browse',
+                  name: CPageBrowse.name,
                   builder: (context, state) =>
                       const CPageShell(child: CPageBrowse()),
                 ),
+                GoRoute(
+                  path: '/about',
+                  name: CPageAbout.name,
+                  builder: (context, state) =>
+                      const CPageShell(child: CPageAbout()),
+                )
               ],
             )
           ],
@@ -52,11 +64,13 @@ class CAppShell extends StatelessWidget {
   final Widget child;
   final CJsonRoot dataRoot;
   final CSearchManager searchManager;
+  final GoRouterState routerState;
   late final CEventHandler eventHandler;
 
   CAppShell({
     super.key,
     required this.dataRoot,
+    required this.routerState,
     required this.child,
   }) : searchManager = CSearchManager(dataRoot) {
     eventHandler = CEventHandler(searchManager: searchManager);
@@ -75,10 +89,13 @@ class CAppShell extends StatelessWidget {
         ChangeNotifierProvider<CBookmarkManager>(
           create: (_) => CBookmarkManager(),
         ),
+        ChangeNotifierProvider<CNavManager>(
+          create: (_) => CNavManager(),
+        ),
       ],
       child: Scaffold(
         backgroundColor: Colors.white,
-        bottomNavigationBar: _Navbar(),
+        bottomNavigationBar: _Navbar(currentRouteName: routerState.name),
         endDrawer: Consumer<CSearchManager>(
           builder: (_, searchManager, __) => Drawer(
             child: searchManager.selectedResult != null
@@ -97,26 +114,62 @@ class CAppShell extends StatelessWidget {
 }
 
 class _Navbar extends StatefulWidget {
+  final String? currentRouteName;
+
+  const _Navbar({required this.currentRouteName});
+
   @override
   State<_Navbar> createState() => _NavbarState();
 }
 
 class _NavbarState extends State<_Navbar> {
+  final List<VoidCallback> onDispose = [];
+
   final List<(NavigationDestination, String)> _navItemRoutes = [
     (
       const NavigationDestination(icon: Icon(Icons.search), label: "Search"),
-      "/search"
+      CPageSearch.name
     ),
     (
       const NavigationDestination(
           icon: Icon(Icons.bookmark), label: "Bookmarks"),
-      '/bookmarks'
+      CPageBookmarks.name
     ),
     (
       const NavigationDestination(icon: Icon(Icons.view_list), label: "Browse"),
-      '/browse'
+      CPageBrowse.name
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    final navManager = context.read<CNavManager>();
+    navManager.addListener(_onRouteChange);
+    onDispose.add(() {
+      navManager.removeListener(_onRouteChange);
+    });
+  }
+
+  @override
+  void dispose() {
+    for (var callback in onDispose) {
+      callback();
+    }
+
+    super.dispose();
+  }
+
+  _onRouteChange() {
+    if (mounted) {
+      final routeName = context.read<CNavManager>().selectedRoute;
+      final nextIx =
+          _navItemRoutes.indexWhere((route) => route.$2 == routeName);
+      setState(() {
+        selectedIndex = nextIx > -1 ? nextIx : 0;
+      });
+    }
+  }
 
   int selectedIndex = 0;
 
@@ -126,7 +179,7 @@ class _NavbarState extends State<_Navbar> {
       selectedIndex: selectedIndex,
       onDestinationSelected: (ix) => setState(() {
         selectedIndex = ix;
-        context.go(_navItemRoutes[ix].$2);
+        context.goNamed(_navItemRoutes[ix].$2);
       }),
       destinations: _navItemRoutes.map((r) => r.$1).toList(),
     );

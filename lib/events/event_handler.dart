@@ -1,8 +1,11 @@
 import 'package:cypher_system_srd_lookup/events/error_toast.dart';
+import 'package:cypher_system_srd_lookup/navigation/nav_manager.dart';
+import 'package:cypher_system_srd_lookup/pages/page_search.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/util/debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CEventHandler {
   final CSearchManager searchManager;
@@ -41,6 +44,8 @@ class CEventHandler {
   void setSearchQuery(BuildContext context, String query) {
     searchManager.searchText = query;
     debouncedSearch();
-    context.go('/search');
+    Provider.of<CNavManager>(context, listen: false)
+        .changeRoute(CPageSearch.name);
+    context.goNamed(CPageSearch.name);
   }
 }

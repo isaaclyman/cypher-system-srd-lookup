@@ -135,8 +135,8 @@ class _CSearchFiltersState extends State<CSearchFilters> {
               },
               icon: Icon(
                 areAllFiltersToggledOn
-                    ? Icons.filter_list_off
-                    : Icons.filter_list,
+                    ? Icons.filter_list
+                    : Icons.filter_list_off,
                 size: 20,
               ),
               tooltip: areAllFiltersToggledOn ? 'Deselect all' : 'Select all',
