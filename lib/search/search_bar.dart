@@ -113,12 +113,36 @@ class _CSearchFiltersState extends State<CSearchFilters> {
 
   @override
   Widget build(BuildContext context) {
+    final handler = context.watch<CEventHandler>();
+    final searchManager = context.watch<CSearchManager>();
+    final areAllFiltersToggledOn =
+        searchManager.filterState.entries.every((kvp) => kvp.value);
+
     return CFadeHorizontalScroll(
-      child: Consumer2<CEventHandler, CSearchManager>(
-        builder: (_, handler, searchManager, __) => Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: searchManager.filterState.entries
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 6),
+            child: IconButton(
+              onPressed: () {
+                final newFilters = {
+                  for (var key in searchManager.filterState.keys)
+                    key: !areAllFiltersToggledOn
+                };
+                handler.setSearchFilters(newFilters);
+              },
+              icon: Icon(
+                areAllFiltersToggledOn
+                    ? Icons.filter_list_off
+                    : Icons.filter_list,
+                size: 20,
+              ),
+              tooltip: areAllFiltersToggledOn ? 'Deselect all' : 'Select all',
+            ),
+          ),
+          ...searchManager.filterState.entries
               .map<Widget>(
                 (kvp) => FilterChip(
                   label: Text(kvp.key),
@@ -144,7 +168,7 @@ class _CSearchFiltersState extends State<CSearchFilters> {
                 ),
               )
               .toList(),
-        ),
+        ],
       ),
     );
   }

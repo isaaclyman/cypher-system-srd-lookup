@@ -34,6 +34,7 @@ class CBookmarkIconButton extends StatelessWidget {
                   ? bookmarkManager.addBookmark(bookmark)
                   : bookmarkManager.removeBookmark(bookmark),
               icon: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border),
+              tooltip: !isBookmarked ? 'Add bookmark' : 'Remove bookmark',
               visualDensity: VisualDensity.compact,
             ),
           );
