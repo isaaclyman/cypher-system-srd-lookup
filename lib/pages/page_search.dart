@@ -38,7 +38,7 @@ class _CPageSearchState extends State<CPageSearch> {
                 onPressed: () {
                   Provider.of<CNavManager>(context, listen: false)
                       .changeRoute(CPageAbout.name);
-                  context.goNamed(CPageAbout.name);
+                  context.pushNamed(CPageAbout.name);
                 },
                 icon: const Icon(Icons.info_outline),
               ),
