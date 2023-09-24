@@ -12,6 +12,10 @@ If there's a problem with the app or one of the entries in it, you may [file an 
 
 If you'd like me to spend more time on this app (meaning more free features for everyone), simply [sponsor me](https://ko-fi.com/isaaclyman).
 
+# Contributing
+
+Before submitting a PR, please file an issue describing the feature or fix you'd like to work on. This will help me coordinate with any ongoing work by me or other contributors.
+
 # Development
 
 ## Generating JSON deserialization code
