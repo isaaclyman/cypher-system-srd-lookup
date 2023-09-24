@@ -21,6 +21,7 @@ dependencies:
   url_launcher: ^6.1.14
 
 dev_dependencies:
+  auto_screenshot: ^0.0.2
   build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
@@ -40,3 +41,24 @@ flutter_launcher_icons:
   ios: "AppIcon"
   remove_alpha_ios: true
   image_path: "./icons/icon.png"
+
+auto_screenshot:
+  bundle_id: 
+    android: com.isaaclyman.cyphersrd
+    ios: com.isaaclyman.cyphersrd
+  devices:
+    - iPhone 8 Plus
+    - iPhone 13 Pro Max
+    - iPad Pro (12.9-inch) (2nd generation)
+    - iPad Pro (12.9-inch) (5th generation)
+    - Pixel_3a_API_33_arm64-v8a
+    - Pixel_5_API_33
+  base_url:
+    android: http://flutterbooksample.com
+    ios: customschema://flutterbooksample.com
+  screenshot:
+    - search
+    - search?query=warrior
+    - search?categoryName=type&itemName=warrior
+    - search?categoryName=ability&itemName=bash
+    - browse

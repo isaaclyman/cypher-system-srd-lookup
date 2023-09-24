@@ -33,26 +33,34 @@ class CRouterConfig {
                 GoRoute(
                   path: '/search',
                   name: CPageSearch.name,
-                  builder: (context, state) =>
-                      const CPageShell(child: CPageSearch()),
+                  builder: (context, state) => CPageShell(
+                    routerState: state,
+                    child: const CPageSearch(),
+                  ),
                 ),
                 GoRoute(
                   path: '/bookmarks',
                   name: CPageBookmarks.name,
-                  builder: (context, state) =>
-                      const CPageShell(child: CPageBookmarks()),
+                  builder: (context, state) => CPageShell(
+                    routerState: state,
+                    child: const CPageBookmarks(),
+                  ),
                 ),
                 GoRoute(
                   path: '/browse',
                   name: CPageBrowse.name,
-                  builder: (context, state) =>
-                      const CPageShell(child: CPageBrowse()),
+                  builder: (context, state) => CPageShell(
+                    routerState: state,
+                    child: const CPageBrowse(),
+                  ),
                 ),
                 GoRoute(
                   path: '/about',
                   name: CPageAbout.name,
-                  builder: (context, state) =>
-                      const CPageShell(child: CPageAbout()),
+                  builder: (context, state) => CPageShell(
+                    routerState: state,
+                    child: const CPageAbout(),
+                  ),
                 )
               ],
             )
@@ -188,14 +196,33 @@ class _NavbarState extends State<_Navbar> {
 
 class CPageShell extends StatelessWidget {
   final Widget child;
+  final GoRouterState routerState;
 
   const CPageShell({
     super.key,
     required this.child,
+    required this.routerState,
   });
 
   @override
   Widget build(BuildContext context) {
+    final searchManager = Provider.of<CSearchManager>(context, listen: false);
+    final params = routerState.uri.queryParameters;
+
+    final query = params["query"];
+    if (query != null) {
+      searchManager.searchText = query;
+    }
+
+    final categoryName = params["category"];
+    final itemName = params["item"];
+    if (itemName != null) {
+      final matchedResult = searchManager.getResult(categoryName, itemName);
+      if (matchedResult != null) {
+        searchManager.selectResult(matchedResult);
+      }
+    }
+
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
