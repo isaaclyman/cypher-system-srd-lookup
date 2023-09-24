@@ -20,7 +20,7 @@ Before submitting a PR, please file an issue describing the feature or fix you'd
 
 ## Generating JSON deserialization code
 
-This is necessary whenever `lib/json_data/types.dart` or `assets/CSRD.json` is changed.
+This is necessary whenever `lib/json_data/types.dart`, `assets/CSRD.json`, or any `*.db.dart` file is changed.
 
 ```sh
 dart run build_runner build
