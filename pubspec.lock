@@ -52,10 +52,9 @@ packages:
   auto_screenshot:
     dependency: "direct dev"
     description:
-      name: auto_screenshot
-      sha256: "90762a1e1e56c43a1c0e861ba0f3f6e87add452cc80187edd67e8170f3be5e4b"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../auto_screenshot"
+      relative: true
+    source: path
     version: "0.0.2"
   azlistview:
     dependency: "direct main"

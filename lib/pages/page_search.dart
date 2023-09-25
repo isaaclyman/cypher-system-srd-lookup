@@ -1,4 +1,3 @@
-import 'package:cypher_system_srd_lookup/navigation/nav_manager.dart';
 import 'package:cypher_system_srd_lookup/pages/page_about.dart';
 import 'package:cypher_system_srd_lookup/search/results.dart';
 import 'package:cypher_system_srd_lookup/search/search_bar.dart';
@@ -28,7 +27,7 @@ class _CPageSearchState extends State<CPageSearch> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        if (!isSearchBarFocused)
+        if (!isSearchBarFocused && !searchManager.hasResults)
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Align(
@@ -36,8 +35,6 @@ class _CPageSearchState extends State<CPageSearch> {
               child: IconButton(
                 color: context.colors.accent,
                 onPressed: () {
-                  Provider.of<CNavManager>(context, listen: false)
-                      .changeRoute(CPageAbout.name);
                   context.pushNamed(CPageAbout.name);
                 },
                 icon: const Icon(Icons.info_outline),

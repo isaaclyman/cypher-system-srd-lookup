@@ -66,7 +66,6 @@ class CFullEntry extends StatelessWidget {
 
 class _EntryBody extends StatelessWidget {
   const _EntryBody({
-    super.key,
     required this.result,
   });
 

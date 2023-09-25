@@ -206,21 +206,24 @@ class CPageShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchManager = Provider.of<CSearchManager>(context, listen: false);
+    final navManager = Provider.of<CNavManager>(context, listen: false);
+    Future.microtask(() => navManager.notifyRoute(routerState.name));
+
+    final handler = Provider.of<CEventHandler>(context, listen: false);
     final params = routerState.uri.queryParameters;
 
     final query = params["query"];
     if (query != null) {
-      searchManager.searchText = query;
+      handler.setSearchQuery(context, query);
     }
 
     final categoryName = params["category"];
     final itemName = params["item"];
     if (itemName != null) {
-      final matchedResult = searchManager.getResult(categoryName, itemName);
-      if (matchedResult != null) {
-        searchManager.selectResult(matchedResult);
-      }
+      Future.microtask(
+          () => handler.goToResult(context, categoryName, itemName));
+    } else if (context.mounted) {
+      Scaffold.of(context).closeEndDrawer();
     }
 
     return Container(

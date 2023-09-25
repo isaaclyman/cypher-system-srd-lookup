@@ -20,6 +20,8 @@ class CPageBookmarks extends StatelessWidget {
         nullDataMessage: "Bookmark table is null.",
         builder: (context, bookmarks) {
           final categoriesByName = <String, CSearchResultCategory>{};
+          final searchManager =
+              Provider.of<CSearchManager>(context, listen: false);
 
           for (var bookmark in bookmarks) {
             final resultCategory = categoriesByName.putIfAbsent(
@@ -35,9 +37,8 @@ class CPageBookmarks extends StatelessWidget {
               header: bookmark.itemName,
               summary: bookmark.itemDescription,
               getRenderables: () {
-                final result = context
-                    .read<CSearchManager>()
-                    .getResult(bookmark.categoryName, bookmark.itemName);
+                final result = searchManager.getResult(
+                    bookmark.categoryName, bookmark.itemName);
                 if (result == null) {
                   ScaffoldMessenger.of(context).showSnackBar(cErrorToast(
                       "Couldn't find this entry in the data file."));

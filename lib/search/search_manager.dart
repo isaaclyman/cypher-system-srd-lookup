@@ -78,12 +78,13 @@ class CSearchManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  void selectResult(CSearchResult? result) {
+  void selectResult(BuildContext context, CSearchResult? result) {
     if (selectedResult != null && selectedResult != result) {
       pastResults.add(selectedResult!);
     }
 
     selectedResult = result;
+    Future.microtask(() => Scaffold.of(context).openEndDrawer());
     notifyListeners();
   }
 

@@ -152,8 +152,7 @@ class CEntrySummary extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
-              searchManager.selectResult(result);
-              Scaffold.of(context).openEndDrawer();
+              searchManager.selectResult(context, result);
             },
             child: Padding(
               padding: EdgeInsets.only(

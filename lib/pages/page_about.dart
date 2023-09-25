@@ -1,5 +1,3 @@
-import 'package:cypher_system_srd_lookup/pages/page_search.dart';
-import 'package:cypher_system_srd_lookup/render/link.dart';
 import 'package:cypher_system_srd_lookup/theme/text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

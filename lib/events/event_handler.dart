@@ -1,11 +1,9 @@
 import 'package:cypher_system_srd_lookup/events/error_toast.dart';
-import 'package:cypher_system_srd_lookup/navigation/nav_manager.dart';
 import 'package:cypher_system_srd_lookup/pages/page_search.dart';
 import 'package:cypher_system_srd_lookup/search/search_manager.dart';
 import 'package:cypher_system_srd_lookup/util/debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 class CEventHandler {
   final CSearchManager searchManager;
@@ -29,10 +27,10 @@ class CEventHandler {
   ) {
     final result = searchManager.getResult(searchableCategoryName, itemName);
     if (result != null) {
-      searchManager.selectResult(result);
+      searchManager.selectResult(context, result);
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(cErrorToast("Couldn't find that item (bad link)."));
+      Future.microtask(() => ScaffoldMessenger.of(context)
+          .showSnackBar(cErrorToast("Couldn't find that item (bad link).")));
     }
   }
 
@@ -44,8 +42,6 @@ class CEventHandler {
   void setSearchQuery(BuildContext context, String query) {
     searchManager.searchText = query;
     debouncedSearch();
-    Provider.of<CNavManager>(context, listen: false)
-        .changeRoute(CPageSearch.name);
     context.goNamed(CPageSearch.name);
   }
 }
