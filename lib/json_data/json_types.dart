@@ -291,9 +291,10 @@ class CJsonFlavor implements CSearchable {
   String get header => name;
 
   @override
-  String get defaultDescription => "";
+  String get defaultDescription => description;
 
   String name;
+  String description;
   List<CJsonAbilityRef> abilities;
 
   @override
@@ -302,9 +303,11 @@ class CJsonFlavor implements CSearchable {
 
   CJsonFlavor({
     required this.name,
+    required this.description,
     required this.abilities,
   }) : searchTextList = [
           "Name: $name",
+          description,
           ...abilities.map((a) => a.searchText),
         ];
 
@@ -313,27 +316,30 @@ class CJsonFlavor implements CSearchable {
 
   @override
   Iterable<Widget> getRenderables() {
-    return abilities
-        .groupListsBy((a) => a.tier)
-        .entries
-        .map(
-          (grp) => CRenderLabeledResultLinkAccordion(
-            label: "Tier ${grp.key} Abilities",
-            links: grp.value
-                .sorted((a, b) => a.preselected == b.preselected
-                    ? 0
-                    : a.preselected
-                        ? -1
-                        : 1)
-                .map((a) => CResultLink(
-                      "${a.name}${a.preselected ? " (preselected)" : ""}",
-                      resultCategory: "Abilities",
-                      resultName: a.name,
-                    ))
-                .toList(),
-          ),
-        )
-        .toList();
+    return [
+      CRenderParagraph(description),
+      ...abilities
+          .groupListsBy((a) => a.tier)
+          .entries
+          .map(
+            (grp) => CRenderLabeledResultLinkAccordion(
+              label: "Tier ${grp.key} Abilities",
+              links: grp.value
+                  .sorted((a, b) => a.preselected == b.preselected
+                      ? 0
+                      : a.preselected
+                          ? -1
+                          : 1)
+                  .map((a) => CResultLink(
+                        "${a.name}${a.preselected ? " (preselected)" : ""}",
+                        resultCategory: "Abilities",
+                        resultName: a.name,
+                      ))
+                  .toList(),
+            ),
+          )
+          .toList(),
+    ];
   }
 }
 

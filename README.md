@@ -32,6 +32,8 @@ dart run build_runner build
 dart run :decode
 ```
 
+(NOTE: This binary hasn't been working lately. It seems like Dart has a bad time when it encounters Flutter code, which used to be a problem, then wasn't for a while, and now is again. Maybe moving this into an integration test would help? Needs more research.)
+
 ## Shout-outs
 
 Thanks to Jon Davis for his hard work compiling the Cypher System SRD to [JSON format](https://github.com/Jon-Davis/Cypher-System-JSON-DB).

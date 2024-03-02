@@ -153,6 +153,7 @@ Map<String, dynamic> _$CJsonSpecialAbilitiesAmountToJson(
 
 CJsonFlavor _$CJsonFlavorFromJson(Map<String, dynamic> json) => CJsonFlavor(
       name: json['name'] as String,
+      description: json['description'] as String,
       abilities: (json['abilities'] as List<dynamic>)
           .map((e) => CJsonAbilityRef.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -161,6 +162,7 @@ CJsonFlavor _$CJsonFlavorFromJson(Map<String, dynamic> json) => CJsonFlavor(
 Map<String, dynamic> _$CJsonFlavorToJson(CJsonFlavor instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'description': instance.description,
       'abilities': instance.abilities,
     };
 

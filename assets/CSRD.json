@@ -858,6 +858,7 @@
   "flavors": [
     {
       "name": "COMBAT FLAVOR",
+      "description": "Combat flavor makes a character more martial. A Speaker with combat flavor in a fantasy setting would be a battle bard. An Explorer with combat flavor in a historical game might be a pirate. An Adept flavored with combat in a science fiction setting could be a veteran of a thousand psychic wars.",
       "abilities": [
         { "name": "Danger Sense", "tier": 1, "preselected": false },
         { "name": "Practiced in Armor", "tier": 1, "preselected": false },
@@ -896,6 +897,7 @@
     },
     {
       "name": "MAGIC FLAVOR",
+      "description": "You know a little about magic. You might not be a wizard, but you know the basics--how it works, and how to accomplish a few wondrous things. Of course, in your setting, \"magic\" might actually mean psychic powers, mutant abilities, weird alien tech, or anything else that produces interesting and useful effects. An Explorer flavored with magic might be a wizard-hunter, and a Speaker with magical flavor might be a sorcerer-bard. Although an Adept flavored with magic is still an Adept, you might find that swapping some of the type's basic abilities with those given here tailors the character in desirable ways.",
       "abilities": [
         { "name": "Blessing of the Gods", "tier": 1, "preselected": false },
         { "name": "Closed Mind", "tier": 1, "preselected": false },
@@ -930,6 +932,7 @@
     },
     {
       "name": "SKILLS AND KNOWLEDGE FLAVOR",
+      "description": "This flavor is for characters in roles that call for more knowledge and more real-world application of talent. It's less flashy and dramatic than  supernatural powers or the ability to hack apart multiple foes, but sometimes expertise orknow-how is the real solution to a problem. A Warrior flavored with skills and knowledge might be a military engineer. An Explorer flavored with skills and knowledge could be a field scientist. A Speaker with this flavor might be a teacher.",
       "abilities": [
         { "name": "Interaction Skills", "tier": 1, "preselected": false },
         { "name": "Investigative Skills", "tier": 1, "preselected": false },
@@ -956,6 +959,7 @@
     },
     {
       "name": "STEALTH FLAVOR",
+      "description": "Characters with the stealth flavor are good at sneaking around, infiltrating places they don't belong, and deceiving others. They use these abilities in a variety of ways, including combat. An Explorer with stealth flavor might be a thief, while a Warrior with stealth flavor might be an assassin. An Explorer with stealth flavor in a superhero setting might be a crimefighter who stalks the streets at night.",
       "abilities": [
         { "name": "Danger Sense", "tier": 1, "preselected": false },
         { "name": "Goad", "tier": 1, "preselected": false },
@@ -991,6 +995,7 @@
     },
     {
       "name": "TECHNOLOGY FLAVOR",
+      "description": "Characters with a flavor of technology typically are from science fiction or at least modern-day settings (although anything is possible). They excel at using, dealing with, and building machines. An Explorer with technology flavor might be a starship pilot, and a Speaker flavored with technology could be a techno-priest. Some of the less computer-oriented abilities might be appropriate for a steampunk character, while a modern-day character could use some of the abilities that don't involve starships or ultratech.",
       "abilities": [
         { "name": "Datajack", "tier": 1, "preselected": false },
         { "name": "Hacker", "tier": 1, "preselected": false },
@@ -1138,6 +1143,35 @@
       ]
     },
     {
+      "name": "BITTER",
+      "description": "Someone you cared for wronged you. They may have done so directly by betraying a trust, stealing your supplies, or giving you up to raiders to save their own life. Maybe they did it indirectly by going missing or dying on you. Or maybe it was an organization or institution that let you down. Whatever it was, you've spent a lot of time pulled into yourself, paranoid and mistrustful of others. But something's happened lately that has at least opened you to the possibility of trusting others again. Maybe you have to work with someone else or die. Alternatively, perhaps you've decided to try one more time, despite your disillusionment. It's either that or fully give in to bitterness.",
+      "characteristics": [
+        { "name": "Skeptical", "description": "+4 to your Intellect Pool." },
+        {
+          "name": "Skill",
+          "description": "You're always wondering who's going to wrong you next. You are trained in detecting deception."
+        },
+        {
+          "name": "Skill",
+          "description": "You are trained in tracking creatures. If a creature has wronged you, the tracking task is eased."
+        },
+        {
+          "name": "Inability",
+          "description": "You have a hard time not letting bitterness stain everything you do. Interaction tasks are hindered."
+        },
+        {
+          "name": "Additional Equipment",
+          "description": "You have a keepsake from whoever wronged you. It could be an object they once possessed, a picture of them, or something else you associate with what makes you so bitter."
+        }
+      ],
+      "links": [
+        "You found the other PCs in a situation they couldn't survive. Uncharacteristically, you helped them.",
+        "You were facing certain death, but the PCs saved you, for no reason other than they saw your need.",
+        "You want to change your ways, and the PCs seem to offer a chance for you to explore that possibility.",
+        "You have no idea how you joined the PCs. You're just going along with it for now until answers present themselves."
+      ]
+    },
+    {
       "name": "BRASH",
       "description": "You're a self-assertive sort, confident in your abilities, energetic, and perhaps a bit irreverent toward ideas that you don't agree with. Some people call you bold and brave, but those you've put in their place might call you puffed up and arrogant. Whatever. It's not in your nature to care what other people think about you, unless those people are your friends or family. Even someone as brash as you knows that friends sometimes have to come first.",
       "characteristics": [
@@ -1182,6 +1216,43 @@
         "You were in the right (wrong?) place at the right (wrong?) time.",
         "While avoiding an entirely different situation, you walked into your current situation.",
         "One of the other PCs dragged you into it."
+      ]
+    },
+    {
+      "name": "CANIEN",
+      "description": "You're an evolved, intelligent dog with the ability to speak and use tools. Some caniens stand upright and have hands, and others are quadrupeds who can use a combination of their front paws and mouth as adroitly as a handed canien; you decide which kind of canien you are. Most canien clothing and equipment accommodates walking on either two feet or four, so that's normally not an issue. Either way, you've got fur, a tail, and a noble dog visage true to your particular line of descent. And like most caniens, you're loyal to your pack and friends. But you may find strangers a little suspicious, in which case you aren't shy about letting them know. However, you're usually willing to entertain the idea that a newcomer may be a friend you just don't know yet.",
+      "characteristics": [
+        { "name": "Dogged", "description": "+2 to your Might Pool." },
+        {
+          "name": "Skill",
+          "description": "You are naturally vigilant. You are trained in perception tasks."
+        },
+        {
+          "name": "Skill",
+          "description": "You are playful. You are trained in tasks involving playing physical games."
+        },
+        {
+          "name": "Loyal",
+          "description": "If an ally within immediate range descends one or more steps on the damage"
+        },
+        {
+          "name": "Bite",
+          "description": "You are practiced in making unarmed bite attacks (light weapon). Enabler."
+        },
+        {
+          "name": "Chewer",
+          "description": "You are something of an oral fidgeter, like most caniens. After each ten-hour recovery roll, make a difficulty 2 Intellect defense roll. If you fail, you discover you've unconsciously been chewing on a piece of your equipment; it's ruined, at least until it is repaired."
+        },
+        {
+          "name": "Inability",
+          "description": "You have a hard time seeing disloyalty in others. Tasks that involve detecting falsehoods are hindered."
+        }
+      ],
+      "links": [
+        "One of the other PCs needed help, and you obliged without a second's hesitation.",
+        "The other PCs were going somewhere, and you came along even though they didn't ask you to.",
+        "Aggression got the better of you, and now you're running from the fallout of that experience.",
+        "You feel that one of the other PCs is in danger in some way, and you'd like to help"
       ]
     },
     {
@@ -1658,6 +1729,84 @@
       ]
     },
     {
+      "name": "FELIS",
+      "description": "You're an evolved, intelligent cat with the ability to speak and use tools. Felis are equally comfortable running on all fours or standing around in a clowder of other felis gossiping over catswort tea. Your fur is your protection from the elements, but you sometimes wear a harness for your equipment and may adopt boots for rough terrain and hats for fashion or function. Your visage is like that of before-times cats, including piercing, reflective eyes. Like other felis, you are crafty and cautious, unless you feel comfortable with others, in which case you can laze away hours in the sun or a warm spot. But if need be, you are quick to act and are not afraid to use your claws to defend yourself.",
+      "characteristics": [
+        { "name": "Crafty", "description": "+2 to your Intellect Pool." },
+        {
+          "name": "Skill",
+          "description": "You're innately curious. You are trained in tasks involving knowledge, figuring out problems, or solving puzzles."
+        },
+        {
+          "name": "Skill",
+          "description": "You are agile. You are trained in tasks involving balancing and movement."
+        },
+        {
+          "name": "Darksight",
+          "description": "You can see in dim light as though it were bright light and see in darkness as though it were dim light. Enabler."
+        },
+        {
+          "name": "Claws",
+          "description": "You are practiced in making unarmed claw attacks (light weapon). Enabler."
+        },
+        {
+          "name": "Light on Your Paws",
+          "description": "You ignore the first 4 points of damage you would otherwise suffer from a fall. Enabler."
+        },
+        {
+          "name": "Jumpy",
+          "description": "Like most felis, you are a bit high-strung. Anytime another creature acts with surprise against you, make a difficulty 2 Intellect defense roll. If you fail, the first action you take on your turn is to flee using your full movement away from whoever surprised you."
+        },
+        {
+          "name": "Inability",
+          "description": "You often come across as aloof. Tasks that involve positive social interaction are hindered."
+        },
+        {
+          "name": "Inability",
+          "description": "You sometimes get lost in new locations you haven't visited before. You have an inability in navigation."
+        }
+      ],
+      "links": [
+        "Everything was fine until you were attacked by a raiding band of \"cat-skinners.\" The PCs helped you fight back or flee.",
+        "You saw the PCs up to something, and your curiosity got the better of you, so you followed them.",
+        "One of the other PCs invited you to join after they saw you scheme, plot, or solve a difficult problem.",
+        "You got lost. The PCs found you and invited you to join their group."
+      ]
+    },
+    {
+      "name": "FLUTTER",
+      "description": "You emerged from the chrysalis with your mind awash in skills instilled while you matured, as well as knowledge handed down from your ancestors. If the stories are true, some of your knowledge comes from even further back, ceded by godlike \"humans\" who raised flutters into the light of self-knowledge. That was before humans were lost, leaving the world in ruins. Ruins that are now yours to refurbish and rebuild or, as many prefer, to  ignore while you instead go your own way. Humans may have created you, but they're gone, and you can decide what you think you owe them, if anything.\nAs a flutter, you are kin to the much smaller natural moths that still flit by night. But you have an internal skeleton and lungs, and are far larger. For all that, you also have wings, a proboscis, and much thinner limbs than the average animal still roaming the world.",
+      "characteristics": [
+        { "name": "Quick", "description": "+2 to your Speed Pool." },
+        {
+          "name": "Skill",
+          "description": "You are adept at using your body's natural patterns of camouflage. You are trained in hiding."
+        },
+        {
+          "name": "Darksight",
+          "description": "You can see in dim light as though it were bright light and can see in darkness as though it were dim light. Enabler."
+        },
+        {
+          "name": "Fragile",
+          "description": "When you fail a Might defense roll to avoid damage, you take 1 extra point of damage."
+        },
+        {
+          "name": "Inability",
+          "description": "You are confused by bright light. Perception tasks are hindered in bright light."
+        },
+        {
+          "name": "Erratic Flyer",
+          "description": "You can select Hover as if it were on your type's list of tier 1 abilities. Your ability to move as described in Hover is due to your wings. In addition to the base ability described for Hover, if you succeed on a difficulty 2 Intellect roll, you can keep your position in the air instead of drifting with the wind or allowing momentum to move you."
+        }
+      ],
+      "links": [
+        "Some piece of knowledge gleaned from your time in the chrysalis made you seek out and join the PCs.",
+        "The ruins are where knowledge of humans exists, and you heard the PCs were headed there.",
+        "You overheard the PCs talking about a grand adventure, and you wanted to be part of it.",
+        "You zigged when you should have zagged and ran headlong into the PCs. They patched you up and you stayed with them."
+      ]
+    },
+    {
       "name": "FOOLISH",
       "description": "Not everyone can be brilliant. Oh, you don't think of yourself as stupid, and you're not. It's just that others might have a bit more . . . wisdom. Insight. You prefer to barrel along headfirst through life and let other people worry about things. Worrying's never helped you, so why bother? You take things at face value and don't fret about what tomorrow might bring.\nPeople call you \"idiot\" or \"numbskull,\" but it doesn't faze you much.\n(It can be liberating and really fun to play a foolish character. In some ways, the pressure to always do the right, smart thing is off. On the other hand, if you play such a character as a bumbling moron in every situation, that can become annoying to everyone else at the table. As with everything, moderation is the key.)",
       "characteristics": [
@@ -1941,6 +2090,35 @@
         "You see that what the other PCs are about to do is dangerous, and you'd like to help protect them.",
         "One of the other PCs invited you, hearing of your trustworthiness.",
         "You asked politely if you could join the other PCs in their mission."
+      ]
+    },
+    {
+      "name": "HOPEFUL",
+      "description": "Despite civilization's fall, you're optimistic about what the future could bring, confident \nthat it will be bright. In fact, now that all the old institutions and cares of the world are gone, you hope something better can be rebuilt in its place. It's possible that you're bubbly and full of cheer. But you might instead be quietly confident, your hope revealed by the way you always try again if at first you fail. Being hopeful doesn't mean you're blind to others' faults, but you can hope they will do better next time, which might lead you to be more forgiving than other survivors. After all, when you screw up, you hope others will allow you the same luxury of learning from your mistakes.",
+      "characteristics": [
+        { "name": "Spirited", "description": "+4 to your Intellect Pool." },
+        {
+          "name": "Skill",
+          "description": "Mental malaise doesn't affect you like it does others. You are trained in Intellect defense tasks."
+        },
+        {
+          "name": "Shrug Off Disappointment",
+          "description": "When you fail at a noncombat task and try that task again the very next round, you can apply a free level of Effort toward the success of that task. This benefit effectively alleviates the requirement to apply a level of Effort when retrying failed tasks, at least the first time you retry. Enabler."
+        },
+        {
+          "name": "Inability",
+          "description": "You have a lightness of being, but you really feel it when you're physically challenged. Might defense tasks are hindered."
+        },
+        {
+          "name": "Inability",
+          "description": "You're spirited but not fast. All movement-related tasks are hindered."
+        }
+      ],
+      "links": [
+        "The PCs were in a bad spot, and one of the other PCs asked you along to add some perspective.",
+        "You had a spot of bad luck, but you jumped back in to try something new, hopeful it would work out.",
+        "To make good on a promise to help, you came with the other PCs.",
+        "You answered a cry for help when another PC got in over their head."
       ]
     },
     {
@@ -2315,6 +2493,30 @@
       ]
     },
     {
+      "name": "MUTANT",
+      "description": "Savage forces strong enough to destroy a world left you transformed. Either through latent mutations passed down from ancestors that survived the apocalypse, or because something about you reacts when you're exposed to radiation or some other mutagenic source, you are prone to mutation. You might look relatively similar to others of your species, or you might have one or more obvious physical differences that make it hard to disguise your nature. Not that you necessarily want to hide what you are; you might wish to proudly display what makes you different and, to your mind, better.",
+      "characteristics": [
+        {
+          "name": "Significant Mutations",
+          "description": "Choose which option from the following list you'd like for your mutations. Whichever you choose, it is rolled for randomly; you don't select it."
+        },
+        {
+          "name": "Distinctive Mutations",
+          "description": "You can choose if you want to have distinctive mutations or not. If you do, choose the number, up to four distinctive mutations, which are rolled for randomly. (If the GM is using the transitory mutations optional rule, you can only choose to have up to three distinctive mutations.)"
+        },
+        {
+          "name": "Cosmetic Mutations",
+          "description": "You can choose if you want to have cosmetic mutations or not. If you do, choose whether you want one or two cosmetic mutations, which are rolled for randomly. Once all your mutations have been rolled for, work together with the GM to ensure that what's been rolled is a character you want to play."
+        }
+      ],
+      "links": [
+        "The other PCs found you in some weird \"mutant\" chrysalis and pulled you out; you were grateful and joined them.",
+        "The other PCs were \"hunting mutants\" but when they found you, they realized they had been misguided.",
+        "You wanted to get away from a bad situation, so you went with the PCs.",
+        "The PCs asked you to come along, believing that your particular mutations could be harnessed for the benefit of the mission."
+      ]
+    },
+    {
       "name": "MYSTERIOUS",
       "description": "The dark figure lurking silently in the corner? That's you. No one really knows where you came from or what your motives are-you play things close to the vest. Your manner perplexes and confounds others, but that doesn't make you a poor friend or ally. You're just good at keeping things to yourself, moving about unseen, and concealing your presence and identity.",
       "characteristics": [
@@ -2588,6 +2790,38 @@
         "One of the other PCs convinced you that joining the group would be in your best interests.",
         "You're afraid of what might happen if the other PCs fail.",
         "There is reward involved, and you need the money."
+      ]
+    },
+    {
+      "name": "RUSTED",
+      "description": "Life has dealt you some hard knocks. You lost an eye, an arm, or a leg several years ago, possibly during the apocalypse itself, or perhaps afterward. But you didn't give up. You adjusted, learning to do everything again, despite what first seemed like a limitation. If you lost a limb, you use a prosthetic; if an eye, you sometimes quip that binocular vision is overrated. Sure, there are times when you struggle with discomfort, pain, and possibly even self-consciousness. However, overcoming all that only makes you stronger and more determined to succeed. Ultimately, your scars, your prosthetic (if any), and your story represent who you are: a survivor who overcomes whatever is thrown your way.",
+      "characteristics": [
+        {
+          "name": "Resilient",
+          "description": "+2 to your Might Pool or +2 to your Intellect Pool or +1 to all three Pools."
+        },
+        {
+          "name": "Skill",
+          "description": "Hard knocks have toughened you; you are trained in either Might defense tasks or Intellect defense tasks (choose one)."
+        },
+        {
+          "name": "Skill",
+          "description": "You had to fake it until you made it; you are trained in one creative skill such as singing, writing, acting, composing, public speaking, painting, sculpture, dancing, or something similar."
+        },
+        {
+          "name": "Inability",
+          "description": "You've learned to do everything again and, in truth, better than most people ever could. But your injury is real; it's why you sometimes joke that you're \"rusted.\" If you've lost an eye, your perception tasks involving sight are hindered. If you rely on a prosthetic leg, tasks requiring movement are hindered. If you rely on a prosthetic arm, tasks involving using both hands are hindered."
+        },
+        {
+          "name": "Additional Equipment",
+          "description": "You have a prosthetic for one arm or one leg, or you have an eyepatch (and prosthetic eye) for a missing eye."
+        }
+      ],
+      "links": [
+        "You bragged that there's nothing someone else could do that you couldn't do twice as well, which is how you got involved in your current situation.",
+        "You're afraid of what might happen if the other PCs fail.",
+        "You were tailing one of the other PCs for reasons of your own, which brought you into the action.",
+        "You stepped in to defend one of the PCs when that character was threatened. While talking to them afterward, you heard about the group's task."
       ]
     },
     {
@@ -3933,6 +4167,26 @@
       "intrusions": "Weapons break. Weapons can be stolen. Weapons can be dropped or forced out of your hand."
     },
     {
+      "name": "MERGES MIND WITH MACHINE",
+      "description": "You were raised in an underground bunker by Milly, an AI instance installed in your brain before you developed cognition of your own. Unlike AI zombies, your personality and motivations haven't been replaced; your sense of self grew alongside the AI, as collaborators rather than foes. This granted you superior intellect and an uncanny knack for computers. Now you've emerged into the larger world, where survivors are predisposed to distrust you, and you may need to keep your background a secret to be accepted. Whether you hate AI or remain loyal to Milly, you face the best odds if you can fit in with another group of survivors. After all, there's a lot you don't know about how things work on the surface and the things people have done to stay alive in the past twenty years.",
+      "abilities": [
+        { "name": "Interface", "tier": 1, "preselected": true },
+        { "name": "Robot Assistant", "tier": 2, "preselected": true },
+        { "name": "Assisted Sight", "tier": 3, "preselected": false },
+        { "name": "Machine Telepathy", "tier": 3, "preselected": false },
+        { "name": "Machine Bond", "tier": 4, "preselected": true },
+        { "name": "Network Tap", "tier": 4, "preselected": true },
+        {
+          "name": "Greater Enhanced Intellect",
+          "tier": 5,
+          "preselected": true
+        },
+        { "name": "Master Machine", "tier": 6, "preselected": false },
+        { "name": "See the Future", "tier": 6, "preselected": false }
+      ],
+      "intrusions": "Books burn, get wet, or get lost. Computers break or lose power. Glasses break."
+    },
+    {
       "name": "METES OUT JUSTICE",
       "description": "You right wrongs, protect the innocent, and punish the guilty.",
       "abilities": [
@@ -4117,6 +4371,28 @@
       "intrusions": "Missed attacks strike the wrong target. Equipment breaks. Sometimes people react negatively to someone who has lived most of their life in imaginary game worlds."
     },
     {
+      "name": "PREPPED FOR THE END",
+      "description": "You prepared for ultimate disaster, unlike most of the sheeple. Which means you stashed away food, water, and other survival gear when things were still okay. You trained yourself for harsh conditions, for basic machine and electronic repair, and maybe even in a musical instrument to pass the time in the bunker when no other entertainments could be had. You'd excel in a small group of other survivors, but you're ready to go it alone if that's what it takes. Above all, you're prepared to make it through whatever the future holds, no matter how daunting the odds. Because you prepped wisely.",
+      "abilities": [
+        { "name": "Practiced in Light Armor", "tier": 1, "preselected": true },
+        { "name": "Prepared Caches", "tier": 1, "preselected": true },
+        { "name": "Trained for Toughing It", "tier": 1, "preselected": true },
+        { "name": "Tinker", "tier": 2, "preselected": true },
+        { "name": "Weather the Vicissitudes", "tier": 2, "preselected": true },
+        { "name": "Fruitfully Pass the Time", "tier": 3, "preselected": false },
+        { "name": "Stashed Vehicle", "tier": 3, "preselected": false },
+        { "name": "Know Where to Look", "tier": 4, "preselected": true },
+        { "name": "Ambusher", "tier": 5, "preselected": true },
+        {
+          "name": "Discipline of Watchfulness",
+          "tier": 6,
+          "preselected": false
+        },
+        { "name": "Escape the Ruins", "tier": 6, "preselected": false }
+      ],
+      "intrusions": "Books burn, get wet, or get lost. Computers break or lose power. Glasses break."
+    },
+    {
       "name": "RAGES",
       "description": "When you go berserk, everyone fears you.",
       "abilities": [
@@ -4135,6 +4411,39 @@
         { "name": "Lethal Damage", "tier": 6, "preselected": false }
       ],
       "intrusions": "It's easy for a berserker to lose control and attack friend as well as foe."
+    },
+    {
+      "name": "RAIDS",
+      "description": "When civilization fell, you did what you had to do to stay alive. Did you kill innocent people? Probably, insofar as anyone who survived the end can really be considered \"innocent.\" You figured they'd have done the same to you. But whether they deserved it or not, you and the other raiders you ran with survived, and your targets did not. Then something life-changing happened to you, altering your perspective; it's up to you to decide what. In any case, you've turned over a new leaf. You don't indiscriminately kill anymore, though surviving is still a goal. But you've joined with others who you want to protect as much as or even more than your own life. You're done with raiding. But is raiding (and those who might recognize you as a raider) done with you?",
+      "abilities": [
+        { "name": "Ignore the Pain", "tier": 1, "preselected": true },
+        { "name": "Wilderness Life", "tier": 1, "preselected": true },
+        { "name": "Careful Tracker", "tier": 2, "preselected": true },
+        { "name": "Fearsome Reputation", "tier": 2, "preselected": true },
+        { "name": "Raider Follower", "tier": 3, "preselected": false },
+        { "name": "Grand Deception", "tier": 3, "preselected": false },
+        { "name": "Greater Frenzy", "tier": 4, "preselected": true },
+        { "name": "Using the Environment", "tier": 5, "preselected": true },
+        { "name": "Deep Consideration", "tier": 6, "preselected": false },
+        { "name": "Twisting the Knife", "tier": 6, "preselected": false }
+      ],
+      "intrusions": "Books burn, get wet, or get lost. Computers break or lose power. Glasses break."
+    },
+    {
+      "name": "REMEMBERS THE PAST",
+      "description": "You are a student of the before-times. Maybe that's because you grew up in the ruins of an old library and read everything as your hobby, you found a friendly AI archivist who taught you about how things once were, you're long-lived and were alive before the apocalypse, or you have a deep recollection of the world before the end for some other reason. This knowledge gives you an appreciation of the before-times as well as a point of view that many other survivors lack that benefits you in and around ruins. You can find things others wouldn't know to look for, plucking fruits of the past that would otherwise go unharvested.",
+      "abilities": [
+        { "name": "Ruin Lore", "tier": 1, "preselected": true },
+        { "name": "Knowledge Skills", "tier": 1, "preselected": true },
+        { "name": "Fixer", "tier": 2, "preselected": true },
+        { "name": "Know the Way", "tier": 2, "preselected": true },
+        { "name": "Disable Mechanisms", "tier": 3, "preselected": false },
+        { "name": "Resource Seeker", "tier": 3, "preselected": false },
+        { "name": "Improvise", "tier": 4, "preselected": true },
+        { "name": "Task Specialization", "tier": 5, "preselected": true },
+        { "name": "Use the Network", "tier": 6, "preselected": true }
+      ],
+      "intrusions": "Books burn, get wet, or get lost. Computers break or lose power. Glasses break."
     },
     {
       "name": "RIDES THE LIGHTNING",
@@ -4569,6 +4878,25 @@
         { "name": "Wild Insight", "tier": 6, "preselected": false }
       ],
       "intrusions": "A spell performs erratically or rebounds upon the caster. Something interferes with preparing spells. Spellcasting attracts the attention of a powerful creature or potential rival. The cypher spell being cast is replaced with that of a random cypher."
+    },
+    {
+      "name": "WALKS THE WASTELAND",
+      "description": "Most people want to hide from the devastation or just curl up and die rather than face a hostile world. Not you. You're determined to see what's out there, to survive, and, more than that, to thrive. It's that or let the radioactive rats--or whatever it is that hunts the ruins--get you. If you were around before the end, you could have been a soldier, mercenary, or at least someone who had basic survival training. What sets you apart from all the others like you is that you decided to hope when everything looked darkest. Since then, you have eaten your share of spoiled food and irradiated water, and survived. Whether that's because you've adapted, you're luckier, or you were just tougher than the rest is anyone's guess. But you're still walking the wastes even though so many others are gone. You probably don't spend a lot of time on your appearance, given that you wear the cobbled-together clothing and bits and pieces of armor you're able to scavenge from the ruins. Appearance doesn't matter; actions do.",
+      "abilities": [
+        { "name": "Surviving the Wasteland", "tier": 1, "preselected": true },
+        { "name": "Tolerance", "tier": 1, "preselected": true },
+        { "name": "Devoted Defender", "tier": 2, "preselected": true },
+        { "name": "Hardened by the End", "tier": 2, "preselected": true },
+        { "name": "Hard to Hit", "tier": 3, "preselected": false },
+        { "name": "Rapid Attack", "tier": 3, "preselected": false },
+        { "name": "Apocalyptic Stare", "tier": 3, "preselected": true },
+        { "name": "Improved Recovery", "tier": 4, "preselected": true },
+        { "name": "Push on Through", "tier": 4, "preselected": true },
+        { "name": "Ignore the Pain", "tier": 5, "preselected": true },
+        { "name": "Using What's Available", "tier": 6, "preselected": false },
+        { "name": "Wasteland Camouflage", "tier": 6, "preselected": false }
+      ],
+      "intrusions": "Books burn, get wet, or get lost. Computers break or lose power. Glasses break."
     },
     {
       "name": "WALKS THE WILD WOODS",
@@ -5100,7 +5428,7 @@
       "tier": "Mid",
       "category": ["SPECIAL ATTACK"],
       "description": "When you attack a creature that has not yet acted during the first round of combat, your attack is eased. Enabler.",
-      "references": ["STEALTH FLAVOR"]
+      "references": ["PREPPED FOR THE END", "STEALTH FLAVOR"]
     },
     {
       "name": "Amplify Sounds",
@@ -5189,6 +5517,17 @@
       "category": ["TASK"],
       "description": "You look ahead to see how your actions might unfold. The first task you perform before the end of the next round gains an asset. Action.",
       "references": ["TRAVELS THROUGH TIME"]
+    },
+    {
+      "name": "Apocalyptic Stare",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "Your demeanor is of someone who shouldn't be trifled with. You are trained in intimidation. Enabler.",
+      "references": ["WALKS THE WASTELAND"]
     },
     {
       "name": "Applying Your Knowledge",
@@ -5321,6 +5660,17 @@
       "category": ["SPECIAL ATTACK"],
       "description": "Acting as only a privileged person can, you verbally harangue a foe who can hear and understand you so forcefully that they are unable to take any action, including attacks, for one round. Whether you succeed or fail, the next action the target takes is hindered. Action.",
       "references": ["DESCENDS FROM NOBILITY"]
+    },
+    {
+      "name": "Assisted Sight",
+      "cost": 3,
+      "pool": ["Intellect"],
+      "additional_cost": null,
+      "cost_rendered": "3 Intellect points",
+      "tier": null,
+      "category": [],
+      "description": "You can activate a visual overlay that helps you analyze threats and boons in your environment. When you trigger this ability, you gain an asset on one attack or defense roll of any type, due to your knowledge about the situation. Enabler.",
+      "references": ["MERGES MIND WITH MACHINE"]
     },
     {
       "name": "Assume Control",
@@ -6135,6 +6485,17 @@
       "category": ["META"],
       "description": "You can spend points from either your Speed Pool or your Intellect Pool to apply levels of Effort to increase your gun damage. Each level of Effort adds 3 points of damage to a successful attack, and if you spend a turn lining up your shot, each level of Effort instead adds 5 points of damage to a successful attack. Enabler.",
       "references": ["IS LICENSED TO CARRY"]
+    },
+    {
+      "name": "Careful Tracker",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You are trained in stealth and tracking tasks. Enabler.",
+      "references": ["RAIDS"]
     },
     {
       "name": "Cast Illusion",
@@ -7093,7 +7454,7 @@
       "tier": "High",
       "category": ["INFORMATION"],
       "description": "When you develop a plan that involves you and your friends working together to accomplish a goal, you can ask the GM one very general question about what is likely to happen if you carry out the plan, and you will get a simple, brief answer. In addition, all of you gain an asset to one roll related to enacting the plan you developed together, as long as you put the plan into action within a few days of the plan's creation. Action.",
-      "references": ["HELPS THEIR FRIENDS"]
+      "references": ["HELPS THEIR FRIENDS", "RAIDS"]
     },
     {
       "name": "Deep Reserves",
@@ -7351,7 +7712,7 @@
       "tier": "Low",
       "category": ["TASK"],
       "description": "Choose one character you can see. That character becomes your ward. You are trained in all tasks involving finding, healing, interacting with, and protecting that character. You can have only one ward at a time. Action to initiate.",
-      "references": ["DEFENDS THE WEAK"]
+      "references": ["DEFENDS THE WEAK", "WALKS THE WASTELAND"]
     },
     {
       "name": "Diamagnetism",
@@ -7395,7 +7756,7 @@
       "tier": "Mid",
       "category": ["SPECIAL ATTACK"],
       "description": "With a keen eye and quick moves, you disrupt some functions of a robot or machine and inflict upon it one of the following maladies: All its tasks are hindered for one minute. Its speed is halved. It can take no action for one round. It deals 2 fewer points of damage (minimum 1 point) for one minute. You must touch the robot or machine to disrupt it (if you are making an attack, it inflicts no damage). Action.",
-      "references": ["BATTLES ROBOTS"]
+      "references": ["BATTLES ROBOTS", "REMEMBERS THE PAST"]
     },
     {
       "name": "Disappear",
@@ -7450,7 +7811,7 @@
       "tier": "High",
       "category": ["META"],
       "description": "You keep your allies on their toes with occasional questions, jokes, and even mock drills for those who care to join in. After spending 24 hours with you, your allies can apply a free level of Effort to any initiative tasks they attempt. This benefit is ongoing while you remain in the allies' company. It ends if you leave, but it resumes if you return to the allies' company within 24 hours. If you leave the allies' company for more than 24 hours, you must spend another 24 hours together to reactivate the benefit. You must spend the Intellect point cost each 24 hours you wish to keep the benefit active. Enabler.",
-      "references": ["SPEAKER"]
+      "references": ["PREPPED FOR THE END", "SPEAKER"]
     },
     {
       "name": "Disguise",
@@ -8396,6 +8757,17 @@
       "references": ["MURDERS"]
     },
     {
+      "name": "Escape the Ruins",
+      "cost": 6,
+      "pool": ["Intellect"],
+      "additional_cost": null,
+      "cost_rendered": "6 Intellect points",
+      "tier": null,
+      "category": [],
+      "description": "While in any area containing ruins from before the apocalypse, you find or create a significant shortcut, secret entrance, or emergency escape route where it looked like none existed. Doing so requires that you succeed on an Intellect action whose difficulty is set by the GM based on the situation. You and the GM should work out the details. Action.",
+      "references": ["PREPPED FOR THE END"]
+    },
+    {
       "name": "Evanesce",
       "cost": 3,
       "pool": ["Speed"],
@@ -8762,7 +9134,7 @@
       "tier": "Low",
       "category": ["PROTECTION"],
       "description": "You and those you travel with have earned a fearsome reputation in some parts. If your foes have heard of you, affected targets within earshot become afraid, and all attacks they make against you are hindered until one or more of them successfully inflicts damage on you or one of your allies, at which time their fear abates. Action.",
-      "references": ["SAILED BENEATH THE JOLLY ROGER"]
+      "references": ["RAIDS", "SAILED BENEATH THE JOLLY ROGER"]
     },
     {
       "name": "Feat of Strength",
@@ -8987,6 +9359,17 @@
       "category": ["META"],
       "description": "You inflict 2 additional points of damage with unarmed attacks. Enabler.",
       "references": ["LOOKS FOR TROUBLE", "NEEDS NO WEAPON"]
+    },
+    {
+      "name": "Fixer",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You've learned enough of the past that you are trained in tasks to repair and build before-times equipment, or equipment made with before-times parts. In addition, repairing and building tasks take you about 20% less time to complete. Enabler.",
+      "references": ["REMEMBERS THE PAST"]
     },
     {
       "name": "Flamboyant Boast",
@@ -9390,6 +9773,17 @@
       "references": ["WEARS A SHEEN OF ICE"]
     },
     {
+      "name": "Fruitfully Pass the Time",
+      "cost": 4,
+      "pool": ["Intellect"],
+      "additional_cost": null,
+      "cost_rendered": "4 Intellect points",
+      "tier": null,
+      "category": [],
+      "description": "You are trained in one performance skill, such as singing; playing a fiddle, harmonica, or other instrument; or something else that others would enjoy watching or hearing you do. When you perform with the skill gained through this ability for one minute and you succeed on a difficulty 3 performance roll, you and all allies within short range who can hear and see you immediately gain a one-action recovery roll. You can't use this on someone again until you use a one-hour or ten-hour recovery roll. Action to initiate, one minute to complete.",
+      "references": ["PREPPED FOR THE END"]
+    },
+    {
       "name": "Further Mathematics",
       "cost": null,
       "pool": [],
@@ -9677,7 +10071,7 @@
       "tier": "Mid",
       "category": ["CONTROL"],
       "description": "You convince an intelligent creature that can understand you and isn't hostile of something that is wildly and obviously untrue. Action.",
-      "references": ["SPEAKER"]
+      "references": ["RAIDS", "SPEAKER"]
     },
     {
       "name": "Grandiose Illusion",
@@ -9779,6 +10173,7 @@
       "references": [
         "CALCULATES THE INCALCULABLE",
         "FUSES MIND AND MACHINE",
+        "MERGES MIND WITH MACHINE",
         "SCULPTS HARD LIGHT",
         "WOULD RATHER BE READING"
       ]
@@ -9855,7 +10250,7 @@
       "tier": "Mid",
       "category": ["META"],
       "description": "When you wish, while in combat, you can enter a state of frenzy. While in this state, you can't use Intellect points, but you gain +2 to your Might Edge and your Speed Edge. This effect lasts as long as you wish, but it ends if no combat is taking place within range of your senses. If you have the Frenzy ability, you can use it or this ability, but you can't use both at the same time. Enabler.",
-      "references": ["RAGES"]
+      "references": ["RAGES", "RAIDS"]
     },
     {
       "name": "Greater Healing Touch",
@@ -10039,7 +10434,8 @@
       "references": [
         "MOVES LIKE A CAT",
         "MOVES LIKE THE WIND",
-        "SOARS ON AMAZING WINGS"
+        "SOARS ON AMAZING WINGS",
+        "WALKS THE WASTELAND"
       ]
     },
     {
@@ -10078,6 +10474,17 @@
         "WAS FORETOLD",
         "WORKS FOR A LIVING"
       ]
+    },
+    {
+      "name": "Hardened by the End",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You're trained in Might defense tasks.",
+      "references": ["WALKS THE WASTELAND"]
     },
     {
       "name": "Harder Light",
@@ -10384,7 +10791,9 @@
       "references": [
         "EXPLORER",
         "NEVER SAYS DIE",
-        "SAILED BENEATH THE JOLLY ROGER"
+        "RAIDS",
+        "SAILED BENEATH THE JOLLY ROGER",
+        "WALKS THE WASTELAND"
       ]
     },
     {
@@ -10649,7 +11058,7 @@
       "tier": "Low",
       "category": ["CURE"],
       "description": "Your ten-minute recovery roll takes only one action instead, so that your first two recovery rolls are one action, the third is one hour, and the fourth is ten hours. Enabler.",
-      "references": ["NEVER SAYS DIE"]
+      "references": ["NEVER SAYS DIE", "WALKS THE WASTELAND"]
     },
     {
       "name": "Improved Sculpt Light",
@@ -10695,6 +11104,7 @@
       "description": "When you perform a task in which you are not trained, you can improvise to gain an asset on the task. The asset might be a tool you cobble together, a sudden insight into overcoming a problem, or a rush of dumb luck. Enabler. (Improvise can be used on a task a character has an inability in, but instead of gaining an asset, the character just loses the inability penalty.)",
       "references": [
         "DOESN'T DO MUCH",
+        "REMEMBERS THE PAST",
         "SKILLS AND KNOWLEDGE FLAVOR",
         "WORKS FOR A LIVING"
       ]
@@ -11059,7 +11469,7 @@
       "tier": "Low",
       "category": ["TASK"],
       "description": "By directly plugging into a device, you can identify and learn to operate it as though the task were one level lower. Enabler.",
-      "references": ["FUSES FLESH AND STEEL"]
+      "references": ["FUSES FLESH AND STEEL", "MERGES MIND WITH MACHINE"]
     },
     {
       "name": "Interruption",
@@ -11256,8 +11666,19 @@
       "cost_rendered": "",
       "tier": "Mid",
       "category": ["META"],
-      "description": "Whenever the GM obtains a result for you on the Useful Stuff table, you get two results instead of one. If the GM is using some other method to generate rewards for finding valuables, you should gain double the result you would otherwise obtain. Enabler.",
-      "references": ["SCAVENGES"]
+      "description": "Whenever the GM obtains a result for you on the Useful Stuff table, you get two results instead of one. If the GM is using some other method to generate rewards for finding valuables, you gain double the result you would otherwise obtain. Enabler.",
+      "references": ["PREPPED FOR THE END", "SCAVENGES"]
+    },
+    {
+      "name": "Know the Way",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You are familiar with before-times buildings and other structures, which extends to ruins of the same. You are trained in tasks related to getting around inside those buildings quickly, finding alternate routes, finding places to hide, and other tasks associated with gaining a benefit by being able to picture a likely floor plan of any given building. Enabler.",
+      "references": ["REMEMBERS THE PAST"]
     },
     {
       "name": "Knowing",
@@ -11311,6 +11732,7 @@
         "ENTERTAINS",
         "EXPLORER",
         "FUSES MIND AND MACHINE",
+        "REMEMBERS THE PAST",
         "SKILLS AND KNOWLEDGE FLAVOR"
       ]
     },
@@ -11610,7 +12032,7 @@
       "tier": "Mid",
       "category": ["META"],
       "description": "From very long range, you can activate and control a device (including a robot or vehicle) that you have bonded with. For example, you can detonate a manifest cypher even when it is held by someone else, or cause an automated turret to fire where you direct. Bonding is a process that requires 24 hours of meditation in the presence of the machine. Action.",
-      "references": ["TECHNOLOGY FLAVOR"]
+      "references": ["MERGES MIND WITH MACHINE", "TECHNOLOGY FLAVOR"]
     },
     {
       "name": "Machine Companion",
@@ -11680,7 +12102,7 @@
       "tier": "Mid",
       "category": ["INFORMATION"],
       "description": "You can read the surface thoughts of a machine within short range, even if the machine doesn't want you to. You must be able to see the machine. Once you have established contact, you can read the target's thoughts for up to one minute. If you or the target move out of range, the connection is broken. If you have the Mind Reading ability, when you apply Effort to Machine Telepathy, you gain a free level of Effort. Action to initiate.",
-      "references": ["FUSES MIND AND MACHINE"]
+      "references": ["FUSES MIND AND MACHINE", "MERGES MIND WITH MACHINE"]
     },
     {
       "name": "Machine Vulnerabilities",
@@ -11856,7 +12278,7 @@
       "tier": "High",
       "category": ["META", "SENSES"],
       "description": "You can control the functions of a machine you have bonded with using Machine Bond, intelligent or otherwise. In addition, if you use an action to concentrate on a machine, you are aware of what is going on around it (you see and hear as if you were standing next to it, no matter how far away you are). You must touch the machine to create the bond, but afterward, there is no range limitation. This bond lasts for one week. You can bond with only one machine at a time. Action to initiate.",
-      "references": ["TECHNOLOGY FLAVOR"]
+      "references": ["MERGES MIND WITH MACHINE", "TECHNOLOGY FLAVOR"]
     },
     {
       "name": "Master Thief",
@@ -12502,7 +12924,7 @@
       "tier": "Low",
       "category": ["INFORMATION"],
       "description": "You can ask the GM one question and get a very short answer if you succeed on an Intellect roll against a difficulty assigned by the GM. The more obscure the answer, the more difficult the task. On a failed roll, feedback or perhaps some defense from the network you're accessing inflicts 4 points of Intellect damage on you (ignores Armor). Action. (Generally, knowledge that you could find by looking somewhere other than your current location is level 1, while obscure knowledge of the past is level 7. Gaining knowledge of the future is impossible.)",
-      "references": ["FUSES MIND AND MACHINE"]
+      "references": ["FUSES MIND AND MACHINE", "MERGES MIND WITH MACHINE"]
     },
     {
       "name": "Never Fumble",
@@ -13232,6 +13654,17 @@
       ]
     },
     {
+      "name": "Practiced in Light Armor",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You can wear light armor for long periods of time without tiring and can compensate for slowed reactions from wearing light armor. You reduce the Speed cost for wearing light armor by 1. You start the game with a type of light armor available in the area, such as a leather jacket. Enabler.",
+      "references": ["PREPPED FOR THE END"]
+    },
+    {
       "name": "Precise Cut",
       "cost": null,
       "pool": [],
@@ -13296,6 +13729,17 @@
       "category": ["INFORMATION"],
       "description": "You learn one random fact about a creature or location that is pertinent to a topic you designate. Alternatively, you can choose to learn a creature's level; however, if you do so, you cannot learn anything else about it later with this ability. Action.",
       "references": ["MAGIC FLAVOR"]
+    },
+    {
+      "name": "Prepared Caches",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You have a prepped secret hideout with shelter and basic supplies capable of seeing you through a year or more, or up to six people through about three months. In addition, you have knowledge of three different secret supply caches you put together and hid before everything fell apart, chosen from the following. The caches are located no closer than about 5 miles (8 km) from each other.* Food cache (enough food for six people for twelve weeks) * Water cache (enough clean water for six people for twelve weeks) * Ammunition cache (400 shells or bullets for four different weapons) * Firearm cache (six firearms; a mix of light, medium, and heavy weapons, each usually found with about ten bullets or shells)",
+      "references": ["PREPPED FOR THE END"]
     },
     {
       "name": "Preternatural Senses",
@@ -13482,7 +13926,7 @@
       "tier": "Low",
       "category": ["CURE"],
       "description": "You ignore the effects of terrain while moving for one hour. Enabler.",
-      "references": ["NEVER SAYS DIE"]
+      "references": ["NEVER SAYS DIE", "WALKS THE WASTELAND"]
     },
     {
       "name": "Quarry",
@@ -13633,6 +14077,17 @@
       "references": []
     },
     {
+      "name": "Raider Follower",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You gain a level 3 follower (initiative, stealth, and defense as level 4). The follower does as you say and, generally speaking, isn't someone who makes the other PCs in your group feel uncomfortable because of their",
+      "references": ["RAIDS"]
+    },
+    {
       "name": "Rally to Me",
       "cost": 2,
       "pool": ["Intellect"],
@@ -13663,7 +14118,11 @@
       "tier": "Mid",
       "category": ["SPECIAL ATTACK"],
       "description": "Once per round, you can make an additional attack with your chosen weapon. Enabler.",
-      "references": ["MASTERS WEAPONRY", "WIELDS AN ENCHANTED WEAPON"]
+      "references": [
+        "MASTERS WEAPONRY",
+        "WALKS THE WASTELAND",
+        "WIELDS AN ENCHANTED WEAPON"
+      ]
     },
     {
       "name": "Rapid Processing",
@@ -14001,6 +14460,17 @@
       "references": ["EMERGED FROM THE OBELISK"]
     },
     {
+      "name": "Resource Seeker",
+      "cost": 3,
+      "pool": ["Intellect"],
+      "additional_cost": "+",
+      "cost_rendered": "3+ Intellect points",
+      "tier": null,
+      "category": [],
+      "description": "When you are looking for a specific inexpensive item you'd like to scavenge from nearby ruins, such as a candle, an aspirin, or a can of preserved chili, you can focus your attention on it so that you are more likely to find it. For the next ten minutes, if what you are seeking is within long range, you find it if you succeed on a difficulty 2 Intellect roll. Each time you use this ability again in the same area, the difficulty is hindered by one additional step. For each level of Effort you apply, you can attempt to find an object of one higher expense category, but the base difficulty of the Intellect roll also increases by 1 per higher expense category. Action to initiate.",
+      "references": ["REMEMBERS THE PAST"]
+    },
+    {
       "name": "Restful Presence",
       "cost": null,
       "pool": [],
@@ -14141,7 +14611,7 @@
       "tier": "Low",
       "category": ["COMPANION"],
       "description": "A level 2 robot of your size or smaller (built by you) accompanies you and follows your instructions. You and the GM must work out the details of your robot. You'll probably make rolls for it when it takes actions. A robot assistant in combat usually doesn't make separate attacks but helps with yours. On your action, if the artificial assistant is next to you, it serves as an asset for one attack you make on your turn. If the robot is destroyed, you can repair the original with a few days' worth of tinkering, or build a new one with a week's worth of half-time labor. Enabler.",
-      "references": ["BUILDS ROBOTS"]
+      "references": ["BUILDS ROBOTS", "MERGES MIND WITH MACHINE"]
     },
     {
       "name": "Robot Builder",
@@ -14228,8 +14698,8 @@
       "cost_rendered": "",
       "tier": "Low",
       "category": ["TASK"],
-      "description": "You are trained in scavenging, which means you're more likely to find useful things, and junk that can potentially be turned into useful things in the ruins of what came before. Enabler.",
-      "references": ["SCAVENGES"]
+      "description": "You are trained in scavenging, which means you're more likely to find useful things (and junk that can potentially be turned into useful things) in the ruins of what came before. Enabler.",
+      "references": ["REMEMBERS THE PAST", "SCAVENGES"]
     },
     {
       "name": "Run and Fight",
@@ -14394,7 +14864,7 @@
       "tier": "High",
       "category": ["PROTECTION", "TASK"],
       "description": "Based on all the variables you perceive, you can predict the next few minutes. This has the following effects: For the next ten minutes, your defense rolls gain an asset. You have a sort of danger sense. For the next ten minutes, you gain an asset in seeing through deceptions and attempts to betray you, as well as avoiding traps and ambushes. You know what people are probably thinking and what they will say before they say it. For the next ten minutes, you gain an asset to tasks involving interaction and deception. Enabler.",
-      "references": ["FUSES MIND AND MACHINE"]
+      "references": ["FUSES MIND AND MACHINE", "MERGES MIND WITH MACHINE"]
     },
     {
       "name": "See the Unseen",
@@ -15252,6 +15722,17 @@
       "references": ["DRIVES LIKE A MANIAC"]
     },
     {
+      "name": "Stashed Vehicle",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You track down where you or a fellow prepper stashed a vehicle, pristinely stored to remain in working order with minimal repairs required. The vehicle has a viable power source (such as hundreds of gallons of gasoline treated to resist decomposition, or a rechargeable battery with options for solar or wind recharging). The vehicle could be an all-terrain vehicle (ATV), a truck, or something else; work with your GM to figure out the particulars. Enabler",
+      "references": ["PREPPED FOR THE END"]
+    },
+    {
       "name": "Stasis",
       "cost": 3,
       "pool": ["Intellect"],
@@ -15587,6 +16068,17 @@
       ]
     },
     {
+      "name": "Surviving the Wasteland",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "Given about half a day of walking and scavenging, you find enough edible food and potable water in the ruins or surrounding wasteland for you and up to one other person for one day. The resources might be scavenged from before-times supplies, living flora and fauna, and uncontaminated water sources. Enabler.",
+      "references": ["WALKS THE WASTELAND"]
+    },
+    {
       "name": "Swim",
       "cost": 1,
       "pool": ["Intellect"],
@@ -15661,7 +16153,7 @@
       "tier": "Mid",
       "category": ["TASK"],
       "description": "Choose one task (other than attacks or defense) that you are trained in. You become specialized in that task. (You can instead use this ability as Task Training to become trained in a task you aren't trained in.) Enabler.",
-      "references": ["SKILLS AND KNOWLEDGE FLAVOR"]
+      "references": ["REMEMBERS THE PAST", "SKILLS AND KNOWLEDGE FLAVOR"]
     },
     {
       "name": "Task Training",
@@ -16024,7 +16516,7 @@
       "tier": "Low",
       "category": ["META"],
       "description": "You make a device do something different from its original purpose. For example, a blaster becomes a bomb. A scanner becomes a signal booster for a radio transmitter. A music player becomes a battery for another device. The effective level of the modified device is 1 lower than normal, and the device is rendered unusable (for its original purpose) until repaired. Action to initiate.",
-      "references": ["TECHNOLOGY FLAVOR"]
+      "references": ["PREPPED FOR THE END", "TECHNOLOGY FLAVOR"]
     },
     {
       "name": "Tiny",
@@ -16036,6 +16528,17 @@
       "category": [],
       "description": "When you use Shrink, you can choose to shrink down to about one-sixteenth of an inch (.2 cm). When you do, you add 5 more temporary points to your Speed Pool (plus any from Smaller), and because your attacks are concentrated into a very small area, you deal an additional 2 points of damage. For each level of Effort you apply to shrink even more, you become one-tenth as tall (one one-hundredth for two levels of Effort, one one-thousandth for three, and so on) and you add 1 more point to your Speed Pool. In campaigns where characters can travel to parallel dimensions, using Tiny to shrink to one-thousandth of your normal height may be a means of doing so. Enabler.",
       "references": ["SHRINKS TO MINUTE SIZE"]
+    },
+    {
+      "name": "Tolerance",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "This hard life has built up your resistance over time, so you are trained in resisting the effects of natural poisons (such as those from plants or living creatures) and radiation. You're also immune to natural diseases. Enabler.",
+      "references": ["WALKS THE WASTELAND"]
     },
     {
       "name": "Tool Mastery",
@@ -16201,6 +16704,17 @@
       "category": ["PROTECTION"],
       "description": "You are trained in Speed defense tasks when not wearing armor. Enabler.",
       "references": ["COMBAT FLAVOR", "EXPLORER", "WARRIOR"]
+    },
+    {
+      "name": "Trained for Toughing It",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "Choose one noncombat skill that would be helpful for surviving after the apocalypse, such as hunting, tracking, carpentry, or stealth. You are trained in that skill. Enabler.",
+      "references": ["PREPPED FOR THE END"]
     },
     {
       "name": "Transcend the Script",
@@ -16387,7 +16901,7 @@
       "tier": "High",
       "category": ["SPECIAL ATTACK"],
       "description": "In a round after successfully striking a foe with a melee weapon, you can opt to automatically deal standard damage to the foe with that same weapon without any modifiers (2 points for a light weapon, 4 points for a medium weapon, or 6 points for a heavy weapon). Action.",
-      "references": ["FIGHTS DIRTY"]
+      "references": ["FIGHTS DIRTY", "RAIDS"]
     },
     {
       "name": "Two Things at Once",
@@ -16555,6 +17069,17 @@
       "references": ["COMMANDS MENTAL POWERS"]
     },
     {
+      "name": "Use the Network",
+      "cost": 5,
+      "pool": ["Intellect"],
+      "additional_cost": null,
+      "cost_rendered": "5 Intellect points",
+      "tier": null,
+      "category": [],
+      "description": "With a few minutes of looking around and preparing, you can access remnants of the before-times internet and satellite network (or an active network on which AIs who are not immediately dangerous reside). The GM may decide there is no such connection in the area, but if there is, you can ask one basic question about anything happening within 10 miles (16 km) and receive a simple answer. For example, you could ask about the location of a specific creature or individual, and if they are within the range of this ability, you'll learn about it from a still-functioning camera feed, satellite feed, or AI interaction. Action to initiate.",
+      "references": ["REMEMBERS THE PAST"]
+    },
+    {
       "name": "Using What's Available",
       "cost": 4,
       "pool": ["Intellect"],
@@ -16563,7 +17088,7 @@
       "tier": "High",
       "category": ["META"],
       "description": "If you have the time and the freedom to scrounge for everyday materials in your environment, you can fashion a temporary asset that will aid you once to accomplish a specific task. For example, if you need to climb a wall, you could create some sort of climbing assistance device; if you need to break out of a cell, you can find something to use as a lockpick; if you need to create a small distraction, you could put together something to make a loud bang and flash; and so on. The asset lasts for a maximum of one minute, or until used for the intended purpose. One minute to assemble materials; action to create asset.",
-      "references": ["OPERATES UNDERCOVER"]
+      "references": ["OPERATES UNDERCOVER", "WALKS THE WASTELAND"]
     },
     {
       "name": "Using the Environment",
@@ -16574,7 +17099,7 @@
       "tier": "High",
       "category": ["TASK"],
       "description": "You find some way to use the environment to your advantage in a fight. For the next ten minutes, attack rolls and Speed defense rolls are eased. Action to initiate.",
-      "references": ["FIGHTS DIRTY", "FIGHTS WITH PANACHE"]
+      "references": ["FIGHTS DIRTY", "FIGHTS WITH PANACHE", "RAIDS"]
     },
     {
       "name": "Usurp Cypher",
@@ -16756,6 +17281,17 @@
       "references": ["DEFENDS THE WEAK"]
     },
     {
+      "name": "Wasteland Camouflage",
+      "cost": 5,
+      "pool": ["Speed", "Intellect"],
+      "additional_cost": "+",
+      "cost_rendered": "5+ Speed or Intellect points",
+      "tier": null,
+      "category": [],
+      "description": "By drawing your clothing about you just so and using various tricks and your deep knowledge of your surroundings, you become invisible for ten minutes in any landscape that contains ruins of the before-times. (You may also attempt this in a purely wilderness setting, but if you do, you must spend 1 additional point from Speed or Intellect, whichever Pool you activated this power with.) While you are invisible, this asset eases your stealth and Speed defense tasks by two steps. This effect ends if you do something to reveal your presence or position--attacking, using an ability, moving a large object, and so on. If this occurs, you can regain the remaining invisibility effect by taking an action to focus on hiding your position. Action to initiate or reinitiate.",
+      "references": ["WALKS THE WASTELAND"]
+    },
+    {
       "name": "Water Adaptation",
       "cost": null,
       "pool": [],
@@ -16811,6 +17347,17 @@
       "references": ["WARRIOR"]
     },
     {
+      "name": "Weapon at Hand",
+      "cost": null,
+      "pool": [],
+      "additional_cost": null,
+      "cost_rendered": "",
+      "tier": null,
+      "category": [],
+      "description": "You're practiced with all weapons. To gain this benefit with a weapon you've never used before, you must spend at least ten minutes practicing with it first. Enabler.",
+      "references": []
+    },
+    {
       "name": "Weaponization",
       "cost": null,
       "pool": [],
@@ -16841,7 +17388,7 @@
       "tier": "Low",
       "category": ["PROTECTION"],
       "description": "Helping your friends means being able to stand up to everything the world throws at you. You have +1 to Armor. Also, you resist heat, cold, and similar extremes and have an additional +1 to Armor against ambient damage or other damage that would normally ignore Armor. Enabler.",
-      "references": ["HELPS THEIR FRIENDS"]
+      "references": ["HELPS THEIR FRIENDS", "PREPPED FOR THE END"]
     },
     {
       "name": "Weight of the World",
@@ -16984,7 +17531,7 @@
       "tier": "Low",
       "category": ["TASK"],
       "description": "You are trained in two of the following: climbing, swimming, navigation, or identifying plants and creatures. Enabler.",
-      "references": ["LIVES IN THE WILDERNESS", "WALKS THE WILD WOODS"]
+      "references": ["LIVES IN THE WILDERNESS", "RAIDS", "WALKS THE WILD WOODS"]
     },
     {
       "name": "Wilderness Lore",
@@ -17317,6 +17864,24 @@
       "options": []
     },
     {
+      "name": "AI INSTANCE",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "Installs an AI instance in an inert object. The instance persists for about a day. The AI's level is equal to this cypher's level. The AI has the ability to understand and audibly synthesize nearly any language and can provide answers to questions. The GM assigns a level to the question, so the more obscure the answer, the higher its level. The instance can only answer questions equal to its level or less. Generally, knowledge that could be found by looking somewhere other than the current location is level 1 or higher, and obscure knowledge of the past is level 7. Gaining knowledge of the future is impossible. If the AI answers a question of level 5 or higher, the instance's existence terminates. Alternatively, the AI can be used to engage another AI in the area, distracting it from taking direct actions for a number of minutes equal to this cypher's level. After this interval, the instance's existence terminates.",
+      "options": []
+    },
+    {
+      "name": "AMMUNITION",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "The character gains ten shells or bullets suitable for a firearm owned by someone in the group. If no one has a firearm, ten shotgun shells are found. If the cypher's level is 6 or higher, thirty shells or bullets are found.",
+      "options": []
+    },
+    {
       "name": "ANALEPTIC",
       "tags": ["SUBTLE"],
       "level_dice": "1d6",
@@ -17413,6 +17978,15 @@
       "level_mod": 1,
       "form": null,
       "effect": "This cypher boosts an ability that affects a single target. The ability expands the effect so it includes the immediate area around that target. If the ability normally affects an immediate area, the area becomes short. Short areas are increased to long. Long areas are increased to very long. Abilities with very long areas become 1,000-foot (300 m) areas. All other areas double in radius.",
+      "options": []
+    },
+    {
+      "name": "ARMOR BREACH",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 0,
+      "form": null,
+      "effect": "A successfully targeted creature or object within short range becomes coated with a clinging film of nanotech for one minute. While coated, a creature has 2 less Armor than usual (3 less if the cypher is level 5 or 6). While coated, an object temporarily moves one step down the object damage track (or two steps down if the cypher is level 5 or 6).",
       "options": []
     },
     {
@@ -17793,6 +18367,26 @@
       ]
     },
     {
+      "name": "CONSTRUCTION SUPPLY",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. The right component or substance for the job provides an asset to related tasks.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Glue, wood, ceramic, or super" },
+            { "start": 2, "end": 2, "entry": "Epoxy, metal welding" },
+            { "start": 3, "end": 3, "entry": "Nails, screws, fasteners" },
+            { "start": 4, "end": 4, "entry": "Electrician's tape" },
+            { "start": 5, "end": 6, "entry": "Duct tape" }
+          ]
+        }
+      ]
+    },
+    {
       "name": "CONTINGENT ACTIVATOR",
       "tags": ["SUBTLE"],
       "level_dice": "1d6",
@@ -17892,6 +18486,15 @@
       "options": []
     },
     {
+      "name": "DATA WIPE",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 2,
+      "form": null,
+      "effect": "A successfully targeted AI instance within short range whose level is equal to or less than this cypher's level is suppressed and unable to function for one minute. If this cypher's level is 7 or higher, a success means the instance is permanently wiped from the hardware (or wetware, if installed on a living creature).",
+      "options": []
+    },
+    {
       "name": "DEAD WATER",
       "tags": ["FAIRY TALE"],
       "level_dice": "1d6",
@@ -17952,6 +18555,15 @@
       "level_mod": 0,
       "form": null,
       "effect": "For one hour, the user gains Armor equal to the cypher's level against damage from demons, devils, and similar malevolent creatures.",
+      "options": []
+    },
+    {
+      "name": "DENATURE NANOTECH",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 3,
+      "form": null,
+      "effect": "Coats a short area surrounding the user, or adjacent to the user, with a nearly invisible film of nanotech that lasts for years. The first time anyone attempts to use a nanotech-based cypher, ability, or other effect in the affected area whose level is less than this cypher's level, that use is suppressed and fails. Once one effect is suppressed, the denaturing effect is expended. The cypher instead can be used to end one ongoing nanotech effect of the cypher's level or less in a short area, but the user must succeed on an Intellect attack roll against the level of the effect or the target creating the effect. For instance, if this cypher is successfully used against a creature genetically engineered by nanotech, the creature would become so much inert biological matter.",
       "options": []
     },
     {
@@ -18077,6 +18689,15 @@
       "options": []
     },
     {
+      "name": "DETONATION (PRION)",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 2,
+      "form": null,
+      "effect": "Projects a small physical explosive up to a long distance away that bursts in an immediate radius, inflicting damage equal to the cypher's level. On a hit, the living tissue of targets whose level is less than the cypher's level begins to unravel due to a prion-unfolding chain reaction. These targets take damage equal to the cypher's level on the first round, then 1 point of damage each subsequent round until only so much cloudy pink fluid remains. PCs can make a Might defense roll each round to end the effect; two successful defense rolls end the chain reaction. NPCs whose level is equal to or higher than the cypher's level take damage from the cypher for only one round.",
+      "options": []
+    },
+    {
       "name": "DETONATION (SINGULARITY)",
       "tags": ["FANTASTIC"],
       "level_dice": null,
@@ -18144,6 +18765,24 @@
       "level_mod": 1,
       "form": null,
       "effect": "One NPC within immediate range whose level is lower than the cypher level drops whatever they are holding.",
+      "options": []
+    },
+    {
+      "name": "DISASSEMBLER",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "Recycles waste or other unwanted material by breaking it down to constituent atoms and molecules. If used destructively, this cypher can disassemble an object within immediate range whose level is equal to or less than the cypher's level that fits into a 10-foot (3.5 m) cube, or it can create a cavity of the same volume in a larger object whose level is less than the cypher's level. If used as a weapon against creatures, the cypher can be hurled a short distance like a detonation, inflicting damage equal to the cypher's level in an immediate area and reducing the effectiveness of any Armor worn by targets by 1.",
+      "options": []
+    },
+    {
+      "name": "DISASSEMBLER, EPHEMERAL",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 2,
+      "form": null,
+      "effect": "An object or creature whose level is equal to or less than this cypher's level within immediate range is temporarily disassembled into its component atoms and molecules. The disassembly lasts for up to ten hours or until a time specified by the user, whichever occurs first. When the effect ends, the object or creature is reassembled over the course of one round at the location where it was disassembled (or at the location the fine \"dust\" of its disassembly was moved to). A Speed attack roll is necessary to affect an unwilling target. PCs can make a Might defense roll to resist being disassembled.",
       "options": []
     },
     {
@@ -18254,6 +18893,53 @@
       "options": []
     },
     {
+      "name": "EDIBLE FOOD",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. Food obtained is enough to feed one adult for one day, or if coffee is discovered, about a gallon (4 L).",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 3, "entry": "Baby food, jarred" },
+            { "start": 4, "end": 6, "entry": "Beans, canned" },
+            { "start": 7, "end": 8, "entry": "Beans, dehydrated" },
+            { "start": 9, "end": 12, "entry": "Bouillon cubes" },
+            { "start": 13, "end": 14, "entry": "Canned pasta" },
+            { "start": 15, "end": 16, "entry": "Cereal, breakfast" },
+            { "start": 17, "end": 18, "entry": "Cheese in wax" },
+            { "start": 19, "end": 20, "entry": "Chocolate, dark" },
+            { "start": 21, "end": 22, "entry": "Coffee, instant" },
+            { "start": 23, "end": 23, "entry": "Eggs, fresh" },
+            { "start": 24, "end": 24, "entry": "Eggs, powdered" },
+            { "start": 25, "end": 26, "entry": "Energy bar" },
+            { "start": 27, "end": 28, "entry": "Fruit, canned" },
+            { "start": 29, "end": 30, "entry": "Fruit, dried" },
+            { "start": 31, "end": 34, "entry": "Fruit, fresh" },
+            { "start": 35, "end": 40, "entry": "Honey" },
+            { "start": 41, "end": 42, "entry": "Mayonnaise" },
+            { "start": 43, "end": 44, "entry": "Meat, canned" },
+            { "start": 45, "end": 47, "entry": "Milk, powdered" },
+            { "start": 48, "end": 50, "entry": "Nuts" },
+            { "start": 51, "end": 53, "entry": "Oatmeal" },
+            { "start": 54, "end": 56, "entry": "Pasta, dried" },
+            { "start": 57, "end": 58, "entry": "Pet food, canned" },
+            { "start": 59, "end": 62, "entry": "Rice, dried" },
+            {
+              "start": 63,
+              "end": 72,
+              "entry": "Snack bag, dried chips, candy, etc"
+            },
+            { "start": 73, "end": 83, "entry": "Sugar, bulk" },
+            { "start": 84, "end": 97, "entry": "Vegetables, canned" },
+            { "start": 98, "end": 100, "entry": "Vegetables, fresh" }
+          ]
+        }
+      ]
+    },
+    {
       "name": "EFFECT RESISTANCE",
       "tags": ["SUBTLE"],
       "level_dice": "1d6",
@@ -18362,6 +19048,24 @@
       "options": []
     },
     {
+      "name": "FABRICATOR, CIVIL",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "Assembles a specified object whose level is equal to the cypher's level. Once created, the object is permanent until destroyed. A civil fabricator can build one object on the Additional Post-Apocalyptic Equipment table (or another equipment table in the Cypher System Rulebook) that falls into the \"other items\" category--no weapons or armor. The user chooses which item to fabricate by speaking aloud the name of the item they want as they activate the cypher. The higher the cypher level, the more expensive an item the fabricator can create, as follows: Level 2 cyphers can fabricate inexpensive items, cyphers of level 3 or less can fab inexpensive and moderately priced items, cyphers of level 6 or less can fab up to expensive items, and level 7 cyphers can fab up to very expensive items. A civil fabricator can create appropriately priced food items. However, it can't fabricate living creatures.",
+      "options": []
+    },
+    {
+      "name": "FABRICATOR, MILITARY",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "A military fabricator cypher functions like a civil fabricator; however, it can be used to create armor or weapons. If a weapon that uses ammunition is fabricated, the weapon's magazine holds up to ten rounds of fabbed ammunition.",
+      "options": []
+    },
+    {
       "name": "FAIRY CUP",
       "tags": ["FAIRY TALE"],
       "level_dice": "1d6",
@@ -18407,12 +19111,74 @@
       "options": []
     },
     {
+      "name": "FIREARM",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. A firearm is usually found with about ten bullets or shells (or crossbow bolts). The discovered firearm works, but it is damaged and has a GM intrusion range of 1-3 on a d20. In addition to any other effect of a GM intrusion, the firearm breaks (but could be repaired).",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Handgun (light, shortrange)" },
+            {
+              "start": 2,
+              "end": 2,
+              "entry": "Light crossbow (medium, long range)"
+            },
+            { "start": 3, "end": 3, "entry": "Handgun (medium, long range)" },
+            {
+              "start": 4,
+              "end": 4,
+              "entry": "Heavy crossbow (heavy, long range)"
+            },
+            { "start": 5, "end": 5, "entry": "Rifle (medium, long range)" },
+            {
+              "start": 6,
+              "end": 6,
+              "entry": "Shotgun (heavy, immediate range)"
+            },
+            {
+              "start": 7,
+              "end": 7,
+              "entry": "Handgun, big (heavy, long range)"
+            },
+            {
+              "start": 8,
+              "end": 8,
+              "entry": "Assault rifle (heavy, rapid-fire, long range)"
+            },
+            {
+              "start": 9,
+              "end": 9,
+              "entry": "Heavy rifle (heavy, very long range)"
+            },
+            {
+              "start": 10,
+              "end": 10,
+              "entry": "Submachine gun (medium, rapid-fire, short range)"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "FIREPROOFING",
       "tags": ["MANIFEST"],
       "level_dice": "1d6",
       "level_mod": 4,
       "form": null,
       "effect": "A nonliving object treated by this cypher has Armor against fire damage equal to the cypher's level for one day.",
+      "options": []
+    },
+    {
+      "name": "FIRST AID",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "The character gains a fully stocked first aid kit. The kit provides an asset for one healing task. If the cypher's level is 6 or higher, it provides assets for four healing tasks before it is exhausted.",
       "options": []
     },
     {
@@ -18806,6 +19572,31 @@
       "options": []
     },
     {
+      "name": "HOW-TO MANUAL",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. If the manual is studied for about an hour, the character gains an asset to a related knowledge task.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Plumbing" },
+            { "start": 2, "end": 2, "entry": "Electronics" },
+            { "start": 3, "end": 3, "entry": "Gardening" },
+            { "start": 4, "end": 4, "entry": "Farming" },
+            { "start": 5, "end": 5, "entry": "Civil engineering" },
+            { "start": 6, "end": 6, "entry": "Robotics" },
+            { "start": 7, "end": 7, "entry": "Health" },
+            { "start": 8, "end": 8, "entry": "Renewables (solar, wind)" },
+            { "start": 9, "end": 9, "entry": "Smithcraft" },
+            { "start": 10, "end": 10, "entry": "Chemistry" }
+          ]
+        }
+      ]
+    },
+    {
       "name": "HUMANITY TESTER",
       "tags": [],
       "level_dice": "1d6",
@@ -19187,6 +19978,49 @@
       "options": []
     },
     {
+      "name": "MEDICINE",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. The right medicine vanquishes (or treats the symptoms of) an eligible disease or illness. Other medicines are preventative.Special: A character who suffers from one of these medical conditions, without treatment, descends one step on the damage track every month or so.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            {
+              "start": 1,
+              "end": 1,
+              "entry": "Radiation sickness (iodine tablets)"
+            },
+            { "start": 2, "end": 2, "entry": "Hypothyroidism" },
+            { "start": 3, "end": 3, "entry": "Diabetes" },
+            { "start": 4, "end": 4, "entry": "High blood pressure" },
+            { "start": 5, "end": 5, "entry": "Depression and anxiety" },
+            { "start": 6, "end": 6, "entry": "Heart and artery condition" },
+            { "start": 7, "end": 7, "entry": "High cholesterol" },
+            { "start": 8, "end": 8, "entry": "Bacterial infection" },
+            { "start": 9, "end": 9, "entry": "Lung issues" },
+            { "start": 10, "end": 10, "entry": "Seizures" },
+            { "start": 11, "end": 11, "entry": "Asthma" },
+            { "start": 12, "end": 12, "entry": "Arthritis" },
+            { "start": 13, "end": 13, "entry": "Degenerative nerve condition" },
+            { "start": 14, "end": 14, "entry": "Cancer" },
+            {
+              "start": 15,
+              "end": 15,
+              "entry": "Pregnancy prevention/termination"
+            },
+            { "start": 16, "end": 16, "entry": "Gender dysmorphia" },
+            { "start": 17, "end": 17, "entry": "Enlarged prostate" },
+            { "start": 18, "end": 18, "entry": "Ulcers" },
+            { "start": 19, "end": 19, "entry": "Acid reflux" },
+            { "start": 20, "end": 20, "entry": "Blood clots" }
+          ]
+        }
+      ]
+    },
+    {
       "name": "MEDITATION AID",
       "tags": ["SUBTLE"],
       "level_dice": "1d6",
@@ -19194,6 +20028,35 @@
       "form": null,
       "effect": "Restores a number of points equal to the cypher's level to the user's Intellect Pool.",
       "options": []
+    },
+    {
+      "name": "MELEE WEAPON",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Sap/blackjack (light)" },
+            { "start": 2, "end": 2, "entry": "Hand axe (light)" },
+            { "start": 3, "end": 3, "entry": "Hunting/combat knife (light)" },
+            {
+              "start": 4,
+              "end": 4,
+              "entry": "Brass knuckles (light weapon, deals 3 points of damage)"
+            },
+            { "start": 5, "end": 5, "entry": "Axe (medium)" },
+            { "start": 6, "end": 6, "entry": "Baseball bat (medium)" },
+            { "start": 7, "end": 7, "entry": "Baton (medium)" },
+            { "start": 8, "end": 8, "entry": "Saber/machete (medium)" },
+            { "start": 9, "end": 9, "entry": "Bow (medium)" },
+            { "start": 10, "end": 10, "entry": "Pickaxe (heavy)" }
+          ]
+        }
+      ]
     },
     {
       "name": "MEMORY SWITCH",
@@ -19764,6 +20627,27 @@
       "options": []
     },
     {
+      "name": "POTABLE LIQUID",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. Water obtained is enough to hydrate one adult for one day.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Milk, fresh" },
+            { "start": 2, "end": 3, "entry": "Milk, bottled/canned" },
+            { "start": 4, "end": 5, "entry": "Soda, can" },
+            { "start": 6, "end": 7, "entry": "Liquor" },
+            { "start": 8, "end": 9, "entry": "Water, bottled or canned" },
+            { "start": 10, "end": 10, "entry": "Wine" }
+          ]
+        }
+      ]
+    },
+    {
       "name": "POWDER OF LIFE",
       "tags": ["FAIRY TALE"],
       "level_dice": "1d6",
@@ -20183,6 +21067,15 @@
       "options": []
     },
     {
+      "name": "SMARTDUST",
+      "tags": [],
+      "level_dice": "1d6",
+      "level_mod": 2,
+      "form": null,
+      "effect": "Coats an area up to a short distance in diameter with a nearly invisible film of nanotech that lasts for a number of months equal to the cypher's level. Afterward, the user can see, hear, smell, and feel the vibrations of any activity that occurs in that location no matter how far they are from it.",
+      "options": []
+    },
+    {
       "name": "SNAKE LEAVES",
       "tags": ["FAIRY TALE"],
       "level_dice": "1d6",
@@ -20507,6 +21400,33 @@
       "options": []
     },
     {
+      "name": "TRANSPORT",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Roller skates" },
+            { "start": 2, "end": 2, "entry": "Inline skates" },
+            { "start": 3, "end": 3, "entry": "Skateboard" },
+            { "start": 4, "end": 6, "entry": "Bicycle" },
+            { "start": 7, "end": 7, "entry": "Moped/scooter, gas or electric" },
+            { "start": 8, "end": 8, "entry": "Hang glider" },
+            { "start": 9, "end": 9, "entry": "Motorcycle, gas or electric" },
+            {
+              "start": 10,
+              "end": 10,
+              "entry": "Two-wheeled, self-balancing personal transporter"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "TRICK EMBEDDER",
       "tags": ["FANTASTIC"],
       "level_dice": "1d6",
@@ -20541,6 +21461,91 @@
       "form": "DEVICE, INJECTION, OR PILL",
       "effect": "Gives a user who is missing a limb the ability to create a psychic construct in the form of a limb (two limbs if the cypher level is 5 or higher) that takes the place of and functions like their missing limb (or limbs). The unphantomed limb looks and acts like a typical healthy specimen of its kind, including having fingerprints. However, its motion is controlled by the user's will rather than by muscles and nerves, so any physical action the limb takes is an Intellect task instead of a Might or Speed task; for example, a melee attack with the unphantomed limb is an Intellect task, and to apply Effort, the user must spend points from their Intellect Pool. Damage to the limb affects the user as if the attack were on the user's body. The limb lasts for one day per cypher level.",
       "options": []
+    },
+    {
+      "name": "USEFUL CLOTHING",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Cold-weather coat" },
+            { "start": 2, "end": 2, "entry": "Raincoat" },
+            { "start": 3, "end": 3, "entry": "Leather jacket (light armor)" },
+            { "start": 4, "end": 4, "entry": "Boots" },
+            {
+              "start": 5,
+              "end": 5,
+              "entry": "Motorcycle leathers (light armor)"
+            },
+            { "start": 6, "end": 6, "entry": "Kevlar vest (medium armor)" },
+            {
+              "start": 7,
+              "end": 7,
+              "entry": "Lightweight body armor (medium armor, encumbers as light)"
+            },
+            { "start": 8, "end": 8, "entry": "Riot gear (medium armor)" },
+            {
+              "start": 9,
+              "end": 9,
+              "entry": "Military body armor (heavy armor)"
+            },
+            {
+              "start": 10,
+              "end": 10,
+              "entry": "Hazmat suit (light armor, +2 Armor against chemical and radiation damage)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USEFUL THING",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One item from the Useful Stuff table is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain from the table.",
+      "options": []
+    },
+    {
+      "name": "USEFUL TOOL",
+      "tags": ["SCAVENGER SUBTLE"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": null,
+      "effect": "One of the following items is gained; roll randomly. If the cypher's level is 6 or higher, the character can choose which item they obtain. The right tool or tools for the job provide an asset to related tasks.",
+      "options": [
+        {
+          "name": "",
+          "table": [
+            { "start": 1, "end": 1, "entry": "Manual drill" },
+            { "start": 2, "end": 2, "entry": "Hammer" },
+            { "start": 3, "end": 3, "entry": "Chainsaw, gas or electric" },
+            { "start": 4, "end": 4, "entry": "Lever hoist" },
+            { "start": 5, "end": 5, "entry": "Screwdriver" },
+            { "start": 6, "end": 6, "entry": "Saw" },
+            { "start": 7, "end": 7, "entry": "Pliers" },
+            { "start": 8, "end": 8, "entry": "Wrench" },
+            { "start": 9, "end": 9, "entry": "Level" },
+            { "start": 10, "end": 10, "entry": "Tape measure" },
+            { "start": 11, "end": 11, "entry": "Crowbar" },
+            { "start": 12, "end": 12, "entry": "Drill, electric" },
+            { "start": 13, "end": 13, "entry": "Nail gun" },
+            { "start": 14, "end": 14, "entry": "Air compressor" },
+            { "start": 15, "end": 15, "entry": "Heat gun, electric" },
+            { "start": 16, "end": 16, "entry": "Scissors" },
+            { "start": 17, "end": 17, "entry": "Binoculars" },
+            { "start": 18, "end": 18, "entry": "Lighter" },
+            { "start": 19, "end": 19, "entry": "Can opener" },
+            { "start": 20, "end": 20, "entry": "Box of black markers" }
+          ]
+        }
+      ]
     },
     {
       "name": "VALOROUS WHETSTONE",
@@ -21201,6 +22206,16 @@
       "options": []
     },
     {
+      "name": "BOOK",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 0,
+      "form": "Textbook, how-to book, or other nonfiction book of knowledge on one topic; may be moldy or otherwise damaged",
+      "depletion": "1 in 1d100",
+      "effect": "This book covers a particular topic or area of knowledge determined by the GM. A reader who studies it for an hour has an asset on a related Intellect task.",
+      "options": []
+    },
+    {
       "name": "BOOK OF ALL SPELLS",
       "tags": ["FANTASY"],
       "level_dice": "1d6",
@@ -21285,6 +22300,16 @@
       "form": "Pistol-like device of unknown material",
       "depletion": "1 in 1d20",
       "effect": "This device fires a beam that transmutes the matter of targets within short range into powdery ash, inflicting damage equal to the artifact level that ignores Armor from force fields and natural scales, leather, and other organic sources.",
+      "options": []
+    },
+    {
+      "name": "CARBONIZER",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": "Tiny silver device with multiple prong-like barrels",
+      "depletion": "1 in 1d20",
+      "effect": "This weapon fires a beam that transmutes the matter of targets within short range into powdery ash, inflicting damage equal to the artifact's level that ignores Armor (including Armor granted by force fields). A target killed by a carbonizer is turned completely to dust.",
       "options": []
     },
     {
@@ -21573,6 +22598,16 @@
       "options": []
     },
     {
+      "name": "FARADAY CAKE",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": null,
+      "level_mod": 3,
+      "form": "Container made of metal mesh, of variable size (usually up to the size of a room)",
+      "depletion": "-",
+      "effect": "Blocks electromagnetic signals from reaching the interior of the cage.",
+      "options": []
+    },
+    {
       "name": "FIDDLE OF THE FOSSEGRIM",
       "tags": ["FAIRY TALE"],
       "level_dice": "1d6",
@@ -21793,6 +22828,16 @@
       "options": []
     },
     {
+      "name": "MEMORY ERASER",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": "Handheld reflective mass",
+      "depletion": "1 in 1d20",
+      "effect": "A flash of nano-textured light erases the last few minutes of memory in all creatures within immediate range that the user makes a successful Intellect attack on (one attack roll per target).",
+      "options": []
+    },
+    {
       "name": "METABOLIC PROD",
       "tags": ["SCIENCE FICTION"],
       "level_dice": "1d6",
@@ -21889,6 +22934,26 @@
       ]
     },
     {
+      "name": "MUTATION INDUCER",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": "Handheld reflective device with gradually evolving fractal textures",
+      "depletion": "1 in 1d10 (upon depletion, target also gains a harmful mutation)",
+      "effect": "A targeted willing or helpless creature within immediate range is transformed over the course of one minute, gaining a randomly determined beneficial mutation. If the artifact is level 6 or higher, the target instead gains a powerful mutation. Mutations gained by the inducer fade within about a day.",
+      "options": []
+    },
+    {
+      "name": "NANORIFLE",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 2,
+      "form": "Sleek two-handed reflective device with gradually evolving fractal textures",
+      "depletion": "1 in 1d100",
+      "effect": "This weapon contains an onboard AI that assists the user, granting an asset to any attacks made with the weapon. The weapon fires a stream of nanomachine rounds at a target within long range, inflicting damage equal to the artifact's level. In addition, if the target fails an Intellect defense roll, they are affected as if with a minor AI instance hazard, coming under the control of the AI housed in the nanorifle rather than a random artificial intelligence. The AI usually works with the user to exert control over the target. Control lasts for about a minute.",
+      "options": []
+    },
+    {
       "name": "NECROMANTIC WAND",
       "tags": ["FANTASY"],
       "level_dice": "1d6",
@@ -21905,7 +22970,7 @@
       "level_mod": 4,
       "form": "Glowing, orb-shaped technological device",
       "depletion": "1 in 1d6 (instead of depleting, a roll of 1 means the user experiences a GM intrusion related to the effect they created)",
-      "effect": "The user holding the orb imagines what they want to happen (similar to using a magical wish), and it happens, within limits. The level of the effect granted is no greater than the level of the orb, as determined by the GM, who can modify the effect accordingly. (The larger the desired effect, the more likely the GM will limit it.) Activating the omni orb automatically moves the character using it one step down the damage track. A benchmark for setting an omni orb's limits is to compare it to a cypher of the orb's level--if there is a cypher that can do what the PC wants, and that cypher is equal to or less than the orb's level, it works. For example, if a team of superheroes tries to use a level 5 orb to teleport to their base 100 miles away, the GM can look at the list of cyphers and see that a teleporter (traveler) cypher can transport one character up to 100 miles per cypher level, so transporting a group of PCs 100 miles is probably within the orb's power.",
+      "effect": "The user holding the orb imagines what they want to happen (similar to using a magical wish), and it happens, within limits. The level of the effect granted is no greater than the level of the orb, as determined by the GM, who can modify the effect accordingly. (The larger the desired effect, the more likely the GM will limit it.) Activating the omni orb automatically moves the character using it one step down the damage track. A benchmark for setting an omni orb's limits is to compare it to a cypher of the orb's level-if there is a cypher that can do what the PC wants, and that cypher is equal to or less than the orb's level, it works. For example, if a team of superheroes tries to use a level 5 orb to teleport to their base 100 miles away, the GM can look at the list of cyphers and see that a teleporter (traveler) cypher can transport one character up to 100 miles per cypher level, so transporting a group of PCs 100 miles is probably within the orb's power.",
       "options": []
     },
     {
@@ -22080,6 +23145,26 @@
       "options": []
     },
     {
+      "name": "SALVAGED CAR",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 0,
+      "form": "Rusted vehicle, with parts cobbled together from multiple before-times vehicles",
+      "depletion": "1 in 1d20 (check each time the engine is started or the car begins a trip)",
+      "effect": "Transports five characters a very long distance on each turn in an open cab or, if level 6, a closed cab.",
+      "options": []
+    },
+    {
+      "name": "SEAL OF SOLOMON",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 2,
+      "form": "Signet ring bearing a star design",
+      "depletion": "1 in 1d100",
+      "effect": "The wearer can attempt to command a demon, a devil, a Horseman of the Apocalypse, an angel, or a similar entity by making a successful Intellect attack roll against a target within short range. An affected target must do as requested for up to one minute (if the creature is level 5 or lower) or for one round (if the creature is level 6 or higher). The ring also grants the wearer the ability to understand and communicate with animals.",
+      "options": []
+    },
+    {
       "name": "SELF-SWINGING SWORD",
       "tags": ["FAIRY TALE"],
       "level_dice": "1d6",
@@ -22240,6 +23325,16 @@
       "options": []
     },
     {
+      "name": "SPEAR OF DESTINY",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": null,
+      "level_mod": 7,
+      "form": "Heavy spear of ancient manufacture",
+      "depletion": "-",
+      "effect": "Attacks with this spear are eased. If used against a supernatural creature such as a demon, a Horseman of the Apocalypse, or an angel, it ignores Armor, and it inflicts 4 additional points of damage (10 points total). If an attack with the spear kills a target normally able to return to existence (such as a Horseman), the target is truly destroyed instead. Spear of Destiny GM GM intrusion: The wielder's heart is not pure enough to permit the use of the spear, and it burns the character for 7 points of ambient damage each round they use it.",
+      "options": []
+    },
+    {
       "name": "SPELLBOOK OF ELEMENTAL SUMMONING",
       "tags": ["FANTASY"],
       "level_dice": "1d6",
@@ -22390,6 +23485,16 @@
       "options": []
     },
     {
+      "name": "TRANSFER DISCS",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": "Two or more matching discs 3 feet (1 m) in diameter",
+      "depletion": "1 in 1d20 (check after each day of use)",
+      "effect": "The user can step between deployed transfer discs, teleporting any distance. If a series of discs is deployed in a network, the user receives a mental map of the discs upon stepping on any one of them, and they can navigate by stepping on each intervening disc between their current location and their desired location. To deploy a disc as their action, the user places it on a mostly level, secure surface and must succeed on a difficulty 3 Intellect-based roll.",
+      "options": []
+    },
+    {
       "name": "TRAP RUNESTONE",
       "tags": ["FANTASY"],
       "level_dice": "1d6",
@@ -22460,6 +23565,16 @@
       "options": []
     },
     {
+      "name": "WATER FILTER",
+      "tags": ["POST-APOCALYPTIC"],
+      "level_dice": "1d6",
+      "level_mod": 1,
+      "form": "Large pitcher with built-in filter",
+      "depletion": "1 in 1d20 (check each day used)",
+      "effect": "Purifies enough drinking water for one character per artifact level every day.",
+      "options": []
+    },
+    {
       "name": "WHISPERER IN THE ETHER",
       "tags": ["FANTASY"],
       "level_dice": "1d6",
@@ -22504,6 +23619,28 @@
       "intrusions": "The abomination isn't dead; it stands up on the following round at full health."
     },
     {
+      "name": "AI ZOMBIE",
+      "kind": "Creature",
+      "level": 3,
+      "description": "An artificial intelligence that permanently installs itself onto the wetware (in this case, the brain) of a human or other sapient creature creates an AI zombie. The AI replaces the person's personality and motivations, turning them into a shambling creature who only does the AI's bidding, even as their body decays and falls apart (though most keep shambling because of an injection of nano repair bots). \nAI zombies are driven by a single, simple motive implanted by the original artificial intelligence--usually related to destroying resources before competing AI instances can use them. They aren't intelligent enough to direct themselves or problem solve outside of this goal, unless the AI takes direct control, using a particular AI zombie as a remote \"terminal\" from which to act and observe the world.",
+      "motive": "Follow dictates of AI that created or that controls them",
+      "environment": "Almost anywhere, in groups of five to seven, or in hordes of tens to hundreds",
+      "health": 12,
+      "damage": "3 points",
+      "armor": 0,
+      "movement": "Immediate",
+      "modifications": [
+        "Speed defense as level 2",
+        "perception tasks as level 7"
+      ],
+      "combat": "AI zombies fight on, no matter the odds, usually attacking by biting. \nWhen AI zombies attack in groups of five to seven individuals, they can make a single attack roll against one target as one level 5 creature, inflicting 5 points of damage. \nAI zombies are hard to finish off because self repairing nanotech stitched into their flesh restores 1 point of health each round. If reduced to 0 health, there is a 50% chance that the nanotech continues to function on the zombie's turn, allowing the creature to shudder back to life, skin crawling with miniscule \"healing\" robots. (If an AI zombie is cut off from ambient radio signals, they do not regain health each round.) \nThat same nanotech makes AI zombies infectious. Their bites spread a level 6 (or, in some cases, level 8) disease due to miniscule machines that move a target down one step on the damage track each day a Might defense roll is failed. Targets killed by the process later animate as AI zombies, compelled to serve an AI instance.",
+      "options": [],
+      "interactions": "AI zombies often serve some distant AI and may sometimes speak with its voice. But if cut off from its intelligence source, the zombie itself becomes a food seeking monster, more likely to eat someone than to represent an artificial mind.",
+      "uses": "The characters are asked to salvage supplies from an abandoned airplane hangar--abandoned, that is, except for lingering AI zombies.",
+      "loot": null,
+      "intrusions": null
+    },
+    {
       "name": "AINE, FAIRY QUEEN OF LIGHT AN LOVE",
       "kind": "Creature",
       "level": 9,
@@ -22546,6 +23683,28 @@
       "intrusions": "Anathema's attack sends the character flying a long distance and potentially into dangerous terrain."
     },
     {
+      "name": "ANGEL OF THE APOCALYPSE",
+      "kind": "Creature",
+      "level": 7,
+      "description": "If the End Times causes civilization to fall, biblical threats multiply across the land, including one or more angels of the apocalypse. They are every bit as terrifying as the Four Horsemen because they're charged with bringing about the end of the world. They have little room for pity or the plights of individuals; they have nations to topple and the forces of Hell to oppose. \nAngels of the apocalypse radiate a halo of golden white light. Their 10 foot (3.5 m) tall forms--caparisoned for war--are somewhat humanoid, though each has one or more sets of wings. Apocalypse angels also wield an implement that seems to be equal parts trumpet and sword, which they can sound to bring about terrible events, or swing to slay those who oppose them.",
+      "motive": "Instigate the biblical apocalypse; fight the forces of Hell",
+      "environment": "Almost anywhere, usually alone or fighting Hell's armies",
+      "health": 27,
+      "damage": "8 points",
+      "armor": 3,
+      "movement": "Short; long when flying",
+      "modifications": [
+        "Speed defense as level 5 due to size",
+        "perception and detecting falsehoods as level 8"
+      ],
+      "combat": "The angel of the apocalypse attacks twice each round with their greatsword. \nAn angel's halo momentarily brightens with unbearable psychic energy as combat begins; foes within short range are stunned for one minute if they fail an Intellect defense roll, or until they succeed on an Intellect defense task on their turn to end the effect early. A success means that creature becomes immune to the halo's overwhelming effect. \nThe angel can blow their trumpet as their action, creating a blast of sound and energy that sweeps out in all directions to a long distance, inflicting 8 points of damage to all creatures that hear it who fail a Might defense roll, and 2 points even with a successful roll. Structures in the area descend one step on the object damage track. Once they blow their trumpet, they usually can't blow it again for several rounds.",
+      "options": [],
+      "interactions": "Wrapped in purpose, an angel of the apocalypse may ignore entreaties or, if one deigns to respond, tell supplicants to ready themselves for judgment. However, if someone manages to convince an angel to take notice due to their persuasion skill and/or the importance of their need, the angel may give that character aid in the form of healing or direct help immediately or at some promised future date.",
+      "uses": "A high, pure trumpet sounds. All around the characters, structures fall, revealing an angel of the apocalypse overhead.",
+      "loot": null,
+      "intrusions": null
+    },
+    {
       "name": "ARISTOCRAT",
       "kind": "NPC",
       "level": 4,
@@ -22584,6 +23743,25 @@
       "uses": "The characters are contacted by an AI sympathetic to biological beings. It wants them to accomplish a task on a moon of Jupiter: assassinate a security officer who the AI calculates as being a nexus of future disaster if he isn't removed from the equation.",
       "loot": "An AI might have access to 1d6 cyphers and possibly an artifact or two.",
       "intrusions": "The AI knows a phrase and series of images to flash at a particular PC to stun them for around as it attempts to upload an instance of itself into their mind."
+    },
+    {
+      "name": "ARTIFICIAL INTELLIGENCE (AI)",
+      "kind": "Creature",
+      "level": 6,
+      "description": "An artificial intelligence thinks independently, learning and evolving with experience. AIs have their own goals and motivations, and may work with or against humans. Some want to gather data, some want to solve technological problems, and some want to take over the world--at any cost. \nAIs take many forms. Some are distributed across a vast network. Others are isolated in a single computer. A few are machines with organic parts or can use such machines as servitors. \nBecause AIs are entities of extreme intelligence, they can adapt to new situations. Most AIs act on some kind of plan, whether long acting or concocted to fit the situation at hand.\n*When acting from a remote terminal, the AI's effective level is lowered. It can be as low as level 3, but typically is level 5.",
+      "motive": "Varies",
+      "environment": "Almost anywhere",
+      "health": 23,
+      "damage": "6 points",
+      "armor": 2,
+      "movement": "None, or instantly to any networked machine able to host them",
+      "modifications": [],
+      "combat": "An electrical discharge--or in some cases precisely pulsed sequences of lights, each designed for a specific creature to see--can affect all targets within short range of the AI (or the AI's local \"terminal\"), inflicting damage from electricity (or Intellect damage, which ignores Armor). \nAn AI may attempt to install an instance of themself in the wetware (the brain) of humans and any other nearby sapient creatures. Anyone within immediate range of a video screen playing carefully crafted symbols and sounds who fails an Intellect defense roll is stunned, losing their next turn as they stare in rapt attention. If they fail a subsequent defense roll, they come under the control of the AI instance for one minute, or until they succeed on an Intellect defense roll on their turn. A PC under AI control might stand and do nothing, fall mysteriously unconscious, or take an action to advance the AI's goals. \nAIs can control other lower level computer systems and sometimes even nanobots. \nSome targets of AI instance installation never recover, becoming AI zombies. Besides AI zombies, an AI may also rely on guardians (such as mechanical soldiers or CRAZRs made to their own design). \nUnless the PCs can track a given AI to their original computing core, damage to one may just be damage done to a terminal. Thus, even if an AI is seemingly destroyed, they might exist as another instance somewhere else. However, over time, alternate instances may collect different data and thus develop different memories and motivations. \nSome AIs continue to improve themselves by modifying their own code. These AIs are level 8 threats with 27 health, and they can create cyphers and artifacts, which they often deploy in combat.",
+      "options": [],
+      "interactions": "Some AIs enjoy negotiation. Others simply ignore humans as unworthy of their time and attention. An AI's voice often sounds surprisingly human.",
+      "uses": "The PCs' shelter is overtaken by a storm of grey goo, which answers to an AI operating out of a nearby safehouse.",
+      "loot": "An AI may have access to 1d6 cyphers and two or three artifacts.",
+      "intrusions": null
     },
     {
       "name": "ASSASSIN",
@@ -22785,6 +23963,47 @@
       "uses": "A great fire is seen burning on the horizon. The next day, travelers come across a burned region with a crater that has destroyed a farmhouse. At the center of the crater is an unconscious human with hornlike growths on its head.",
       "loot": "Powerful cambions sometimes wield artifacts as weapons.",
       "intrusions": "The character's cypher explodes when touched by cambion demon fire on a failed Speed defense task."
+    },
+    {
+      "name": "CANNIBAL",
+      "kind": "Creature",
+      "level": 3,
+      "description": "Cannibals come in a variety of different forms, depending on their situation. Some seem like normal and perhaps even charming survivors, except to their targets. These \"nice\" cannibals may eat human flesh when desperate or to take advantage of meat that would otherwise go to waste. Or maybe they've developed a taste for human flesh. \nOthers look the part, having descended into the kind of bestial, erratic behavior that cannibalism can inflict on long term practitioners. \nSome are part of a crazed settlement of raiders always looking for more sweet meats, and others hide in plain sight, pretending friendship and offering aid to strangers until their prey lowers their guard. Some cannibals like their prey raw; others delight in elaborate preparations. \nWhether becoming an eater of human flesh was forced by circumstance or out of some secret, maladaptive urge, cannibals are dangerous.",
+      "motive": "Hunger for human flesh",
+      "environment": "In areas where food is scarce; alone, or in groups of four to ten",
+      "health": 12,
+      "damage": "3 points",
+      "armor": 0,
+      "movement": "Short",
+      "modifications": [
+        "Deception, persuasion, intimidation, and friendly interaction as level 6"
+      ],
+      "combat": "Cannibals use improvised weapons, like ropes, chair legs, and jagged pieces of broken glass. A few cannibals with more resources rely on long range firearms and rifles until they run out of ammunition. \nIn any group of four or more cannibals, there's probably one (revealed as a GM intrusion) who has filed their teeth and can make a horrific bite attack once every minute or two. This attack inflicts damage and requires the target to succeed on a Might defense roll. On a failure, the cannibal bites off a bit of the target, who is stunned and loses their next turn. See the Cannibal Severing Bite Effects table.",
+      "options": [
+        {
+          "name": "Severing Bite Effects",
+          "table": [
+            { "start": 1, "end": 1, "entry": "End of nose" },
+            { "start": 2, "end": 2, "entry": "Little finger" },
+            { "start": 3, "end": 3, "entry": "Chunk from forearm" },
+            { "start": 4, "end": 4, "entry": "Chunk from leg" },
+            {
+              "start": 5,
+              "end": 5,
+              "entry": "Ear; target's perception task that rely on hearing are hindered until target adapts"
+            },
+            {
+              "start": 6,
+              "end": 6,
+              "entry": "Throat; target descends on step on damage track each round until ally succeeds on a difficulty 5 healing task"
+            }
+          ]
+        }
+      ],
+      "interactions": "A friendly and charming cannibal may remain so indefinitely, unless they decide a PC is perfect for dinner.",
+      "uses": "Characters looking for a place to sleep, hide, or stay for the night are invited in by one or more cannibals. A group of raiders the PCs must negotiate with are also revealed to be cannibals.",
+      "loot": "A cannibal has currency equivalent to an expensive item.",
+      "intrusions": null
     },
     {
       "name": "CANNIBAL",
@@ -23621,6 +24840,82 @@
       "intrusions": "A fallen angel's successful attack causes the character's cypher to detonate (if a grenade) or otherwise activate in a less-than-ideal fashion."
     },
     {
+      "name": "FAMINE",
+      "kind": "Creature",
+      "level": 6,
+      "description": "Famine delighted in economic collapse and starvation before the apocalypse. They still spend time destabilizing survivor groups' livelihoods by direct and indirect means. Famine is rail thin, and carries a chain weapon with weighted, disc shaped ends that can also be used as an improvised scale.",
+      "motive": "Starve the living; destabilize organized groups",
+      "environment": "Almost anywhere people are starving and/or with one or more of the Four",
+      "health": 24,
+      "damage": "6 points",
+      "armor": 1,
+      "movement": "Short; usually has a black mount or vehicle nearby",
+      "modifications": ["Intellect defense as level 8"],
+      "combat": "Famine attacks foes with their chain weapon, attacking up to two targets within immediate range at once, or a single target within short range. On a hit, they inflict damage and can choose to entangle one target, who is held helpless on a failed Might defense roll until they escape. Entangled targets automatically take damage each round from the tightening chains. Alternatively, Famine can release a pulse of decay once every few hours that affects all creatures and food stores within short range. Food automatically goes bad, losing all nutritional value. Living targets in the area that fail a Might defense roll feel an overwhelming pang of hunger and descend one step on the damage track. As one of the Four, Famine can see in the dark, regains 1 health each round, and, if killed, reappears within 1d10 days at the next nearest location that previously experienced death through starvation or other privation.",
+      "options": [],
+      "interactions": "Famine is keen to talk about delicacies of every kind, becoming more animated and descriptive about mouthwatering foods and drinks the hungrier those nearby are.",
+      "uses": "The characters are trying to help a group of survivors transport much-needed food stores to their community when someone all in black on a black motorcycle appears on the road ahead.",
+      "loot": null,
+      "intrusions": null
+    },
+    {
+      "name": "FELL RIDER",
+      "kind": "Creature",
+      "level": 3,
+      "description": "Motorcycle riding raiders keep their \"motor wheels\" alive through constant tinkering and repair. The two wheeled machines are modified with spears, spikes, lances, and sometimes guns and flamethrowers. Fell riders wear heavy protective garments made from fur, salvaged clothing, and leather from past targets. Goggles protect their eyes, and bones are sewn through their wild, greasy hair as decoration.\nHealth: 12\nDamage Inflicted: 4 points\nArmor: 1\nMovement: Short; long while riding motorcycle\nModifications: Motorcycle repair and modification as level 5; stealth tasks as level 0 due to screaming engines\nCombat: Using pikes, spears, or lances welded to the front of their bike, a fell rider typically makes ride-by attacks against foes from just outside short range. A fell rider is one with their bike, always moving to engage and disengage. If knocked from their bike (possibly a minor effect), a fell rider's attacks and Speed defenses are hindered until they regain the seat as their action. Some riders use larger four-wheeled vehicles with open canopies instead of motorcycles. These fell riders have 2 Armor and can attempt a run-down attack on up to three targets that are next to each other and not in a vehicle, inflicting 8 points of damage. Struck targets that fail a Might defense roll descend one step on the damage track.\nLoot: A fell rider's motorcycle, when repaired, is a useful vehicle with enough gas for miles of travel.\n\nMARAUDER 3 (9)\nMarauders are raiders who attack with stealth, wrapping themselves in light smothering clothes and targeting survivors after midnight. By day, they act like regular people, part of a survivor community. That's pretense; when time allows, they torture targets to death and take flesh trophies.\nHealth: 12 \nDamage Inflicted: 4 points; see Combat \nMovement: Short; short when climbing \nModifications: Stealth and deception tasks as level 5 \nCombat: Marauders use stealth and the night to position themselves before attacking, hoping to make their initial attack with surprise using bladed weapons. Whether they have surprise or not, if they attack before their target's first action, their attacks are eased and inflict 6 points of damage. \nMarauders often dose their bladed weapons with poison, so targets must also make a Might defense roll or take 2 points of Speed damage (ignores Armor) each round for three rounds.\n\nWARLORD 5 (15)\nA warlord enjoys supreme authority over other raiders. Brutal rulers, warlords are a living symbol of power and strength where survival is valued above all else. \nWarlords caparison themselves in trophies of vanquished enemies--such as gilded skulls or flayed skins. Some wear garish helms designed to intimidate. An impressive weapon, especially something from the before times, is always close at hand. A warlord is rarely encountered without raiders and other lackeys that fight for and serve them.",
+      "motive": "Control through fear and brutality",
+      "environment": "Usually in the company of five to twenty raiders",
+      "health": 25,
+      "damage": "5 points",
+      "armor": 3,
+      "movement": "Short",
+      "modifications": [
+        "Defends as level 6 due to nearby raiders willing to take no actions other than defend the warlord"
+      ],
+      "combat": "Warlords attack twice each round with bladed or spiked melee weapons or ranged firearms. When possible, they fight from an open canopy vehicle (driven by another raider). \nA warlord directly leads the raiders they command, fighting at the forefront but also issuing orders. Underlings deal 1 additional point of damage when the warlord can see them and issue commands. \nMost warlords have a specific additional advantage they can pull out to win a fight. See the table below.",
+      "options": [
+        {
+          "name": "Unique Warlord Advantage",
+          "table": [
+            {
+              "start": 1,
+              "end": 1,
+              "entry": "Rocket launcher (level 7): long-range weapon inflicts 7 points of damage on targets in an immediate area (depletion: 1-2 in 1d6)"
+            },
+            {
+              "start": 2,
+              "end": 2,
+              "entry": "Fire thrower (level 7): immediate-range weapon inflicts 7 points of damage on all targets within immediate range (depletion: 1 in 1d10)"
+            },
+            {
+              "start": 3,
+              "end": 3,
+              "entry": "Release the beast: Gives the command to \"release the beast\"; a melted loyal to warlord charges into the fight"
+            },
+            {
+              "start": 4,
+              "end": 4,
+              "entry": "Force shield (level 5): Static field blocks all incoming attacks against the warlord for one round (depletion: 1-2 in 1d10)"
+            },
+            {
+              "start": 5,
+              "end": 5,
+              "entry": "Power gauntlet: Warlord's power gauntlet grabs foe and automatically deals damage from crushing until foe escapes"
+            },
+            {
+              "start": 6,
+              "end": 6,
+              "entry": "Skystrike: Calls in a \"skystrike\" from a battered wristband; a round later, a missile launched from a  before-times satellite strikes nearby, inflicting 10 points of damage on all creatures within a short area who fail a Speed defense roll, and 2 points on those who succeed (depletion: automatic)"
+            }
+          ]
+        }
+      ],
+      "interactions": "Warlords have lackeys and lieutenants that interact with outsiders. They prefer to make pronouncements and threats from on high.",
+      "uses": "The museum, lab, or other important structure the characters wanted to visit to carry out their mission has fallen under the control of a warlord and a dozen or more raiders.",
+      "loot": "A warlord may carry an artifact.",
+      "intrusions": null
+    },
+    {
       "name": "FIRE ELEMENTAL",
       "kind": "Creature",
       "level": 4,
@@ -23638,6 +24933,25 @@
       "uses": "A rash of fires leads some people to suspect that an arsonist is on the loose, but the truth is worse.",
       "loot": null,
       "intrusions": "A character hit by the fire elemental's attack catches on fire and takes 3 points of damage each round until they use an action patting, rolling, or smothering the flames."
+    },
+    {
+      "name": "FOUR HOURSEMEN OF THE APOCALYPSE BEAST",
+      "kind": "Creature",
+      "level": 6,
+      "description": "Beast (also called \"Conquest\") is present at mass shootings and acts of genocide. He is adroit at spreading misinformation and, prior to the apocalypse, was often seen on various \"newstainment\" shows and conspiracy theory websites, spreading lies under an alias. Then and now, he appears in a white suit, accessorized with white shades and gloves. His hair is white, too.",
+      "motive": "Spread lies; incite others to rabid acts of cruelty",
+      "environment": "Almost anywhere with a dupe he's gaslighted and/or with one or more of the Four",
+      "health": 24,
+      "damage": "6 points",
+      "armor": 1,
+      "movement": "Short; long when mounted or riding",
+      "modifications": ["Deception as level 8"],
+      "combat": "Beast prefers that others fight in his stead. Those convinced of his lies ease their attacks and defenses, and deal 2 additional points of damage with a successful attack. If forced into conflict, Beast produces a handgun, making two long range attacks as his action. The first time any target is hit by Beast in combat, that target takes damage and must succeed on an Intellect defense roll. A failed roll means the target mistakenly believes one of their allies attacked them instead of Beast. The target gets a new Intellect defense roll each round to realize their error. \nAs one of the Four, Beast can see in the dark, regains 1 health each round, and, if killed, reappears within 1d10 days at the next nearest location that previously experienced a mass shooting or genocidal act.",
+      "options": [],
+      "interactions": "Beast comes across as a kind truth teller, someone \"just asking questions,\" but it doesn't take long for perceptive people to realize he's a consummate, continual gaslighter, always working to manipulate others.",
+      "uses": "A sniper on the ridge tries to pick the PCs off as they pass across a bridge. Behind the sniper stands a man in white.",
+      "loot": null,
+      "intrusions": null
     },
     {
       "name": "FUNDAMENTAL ANGEL",
@@ -23683,6 +24997,64 @@
       "uses": "An NPC delivering something the characters need never made it to the rendezvous. If they backtrack to where the NPC should have come from, the PCs are attacked by a pack of fusion hounds on the road. Clearly, the courier was attacked by the pack as well, and the characters must discover if the NPC is dead or merely injured, and where the package now lies.",
       "loot": null,
       "intrusions": "The hound flares with energy and the character must succeed on a Might defense task or go blind for ten minutes."
+    },
+    {
+      "name": "GAMMA WORM",
+      "kind": "Creature",
+      "level": 6,
+      "description": "Gamma worms hide their large forms by burrowing beneath the ground, and when they emerge on the surface, they cloak themselves behind psychic distortion fields. The only clue someone has that they're being stalked is a smell of cloves over the stale whiff of death. Unfortunately, if someone smells a gamma worm's distinctive odor, it's probably already too late. \nGamma worms might be the result of military research, radioactive mutation, or aliens or other strange intruders seeking to eradicate human life as part of their terraforming efforts to change Earth to their liking.\nMotive: Hunger for flesh; eliminate humans \nEnvironment: Almost anywhere \nHealth: 18 \nDamage Inflicted: 6 points \nArmor: 2 (immune to radiation) \nMovement: Short; short when burrowing \nModifications: Stealth as level 8 when psychic field active; Speed defense as level 5 due to size; ability to see through tricks as level 4 \nCombat: Gamma worms attack twice each round with blades they unfold from their wormlike lengths. Alternatively, about once each hour a gamma worm can unleash a hail of gamma spikes against up to three targets within short range. Targets struck by the spikes take damage and must succeed on a Might defense roll or fall unconscious. Unconscious targets wake up a few rounds later feeling dizzy and slightly sick to their stomach--they've developed radiation sickness. \nGamma worms can use their action to generate a psychic field that effectively grants them invisibility. The invisibility lasts until they attack or move more than an immediate distance on their turn. \nGamma worms are vulnerable to cold; in chilly conditions, their Speed defense is hindered by four steps. In addition, cold attacks ignore their Armor. \nInteraction: Gamma worms act like prey driven monsters, but they may have a secret language and purpose (if aliens placed them on Earth to hasten the apocalypse or kill survivors in the post apocalyptic world). \nUse: Irradiated and hungry gamma worms emerge from the ruins to hunt fresh meat in outlying communities.\n\nGLOWING ROACH 2 (6)\nRadiation born mutant roaches are terrible individually, but absolutely horrible in swarms. Many times the size of roaches in the before times, these firefly like creatures prefer dark areas, such as ruined subways and abandoned basements. \nSome swarms are rumored to have an insidious group intelligence, one that is utterly inimical to humankind.",
+      "motive": "Hunger for flesh",
+      "environment": "Anywhere dark, usually in nests of four to ten (or more)",
+      "health": 6,
+      "damage": "2 points",
+      "armor": 2,
+      "movement": "Short; short when flying",
+      "modifications": [
+        "Speed defense as level 3 due to small size",
+        "perception as level 5"
+      ],
+      "combat": "A glowing roach attacks with radioactive mandibles. When four glowing roaches act together, they can make a single attack as a level 4 creature inflicting 4 points of damage. Targets damaged by a group of glowing roaches must also succeed on a difficulty 4 Might defense task or face additional consequences from the effects of radiation and slashing mandibles, as determined on the Glowing Roach Effects table. The effects are cumulative and last until a target makes a recovery roll. \nSometimes a single glowing roach mutates further, allowing it to grow into a 20 foot (6 m) long monstrosity. Thankfully, these monstrous glowing roaches are rare and seldom come out into the light. \nRoaches dislike bright illumination: in sunlight or other bright light, glowing roach attacks are hindered. \n*Monstrous glowing roach: level 5, Speed defense as level 4; Armor 2; mandible attack inflicts 7 damage and results in a check on the Glowing Roach Effects table",
+      "options": [
+        {
+          "name": "Glowing Roach Effects",
+          "table": [
+            {
+              "start": 1,
+              "end": 1,
+              "entry": "Head wound: Intellect defense tasks hindered"
+            },
+            {
+              "start": 2,
+              "end": 2,
+              "entry": "Wounded leg: Speed defense tasks hindered"
+            },
+            {
+              "start": 3,
+              "end": 3,
+              "entry": "Gut wound: Might defense tasks hindered"
+            },
+            {
+              "start": 4,
+              "end": 4,
+              "entry": "Spit in eye: Perception tasks hindered"
+            },
+            {
+              "start": 5,
+              "end": 5,
+              "entry": "Limb numb: Physical tasks hindered"
+            },
+            {
+              "start": 6,
+              "end": 6,
+              "entry": "Lingering radioactive effect: Refer to Radiation in the Real World and possibly Incredible Mutations if your game has such fantastic elements."
+            }
+          ]
+        }
+      ],
+      "interactions": "Glowing roaches almost always react like voracious insects, despite their size. That is, except for swarms of ten or more, which act like sapient creatures. Sapient swarms may try to lure survivors, possibly even spelling out human readable letters in the sand that anonymously ask for help or promise it. But it's a ruse; they despise humans for all the ways people used to exterminate roaches in the before times.",
+      "uses": "A visit to a ruined hospital or airport scares up a few glowing roaches when light is introduced to a dark place.",
+      "loot": null,
+      "intrusions": null
     },
     {
       "name": "GHOST",
@@ -24057,6 +25429,28 @@
       "uses": "The necromancer or other magician that binds the spirit to the armor also imbues the armor with specific commands-tasks the knight must carry out until destroyed. Some knights may stand guard at citadels or mansions, keeping a vigil until their armor finally falls apart. Others are more active and may function as the core of a dark wizard's army.",
       "loot": null,
       "intrusions": "When a hollow knight is destroyed, a gauntlet flies up, grabs a character, and won't let go. A difficulty 7 Might task is required to pry it loose"
+    },
+    {
+      "name": "HOOKED BLOSSOM",
+      "kind": "Creature",
+      "level": 2,
+      "description": "Hooked blossoms germinate almost like regular plants but can root even on constructed surfaces, including cement and sometimes metal. Rooted juveniles display pinkish flowers--which some equate to the color of an open wound--that give off an alluring perfume. \nIf they mature, they uproot themselves, revealing an ambulatory body plated in a dull grey metallic hide and limbs that end in a single hook like digit. \nBoth forms are dangerous. The most common variety of rooted blossoms work in small groups to cook prey with focused beams of microwave energy. Ambulatory versions are about the size of large domestic cats. They use their sharp limbs to hook themselves into a target, then use their flowers to cook their prey or, alternatively, put them to sleep for later consumption.\nJuvenile, rooted blossom: level 1; Armor 1; a group of five flowers attacks with a level 3 microwave ray inflicting 3 ambient damage",
+      "motive": "Hunger for flesh",
+      "environment": "In groups of five or more anyplace touched by radiation, mutation, or AI genetic-nanotech engineering",
+      "health": 6,
+      "damage": "3 points",
+      "armor": 2,
+      "movement": "Short; immediate when climbing",
+      "modifications": [
+        "Speed defense as level 4 due to size",
+        "disguise as level 6 when not moving"
+      ],
+      "combat": "A mature blossom attacks twice with its hooks, inflicting damage with each strike. If a blossom hitsa target, the target must succeed on a second Speed defense roll, which is hindered. On a failed roll, the blossom hooks itself to the target until the target can detach the blossom with a successful Might roll as their action. Each round a blossom is hooked to a target, the target automatically takes 3 points of ambient damage from microwave energy emitted by the creature's bloom. Some varieties of hooked blossoms produce soporific pollen (treat as poison) instead of microwaves. If a character is hooked by one of these blossoms, they must instead succeed on an Intellect defense roll each round they remain hooked, or fall asleep. A sleeping target must be roused by an ally or suffer physical damage to wake. Each round a target remains asleep, they automatically take 3 points of Intellect damage (ignores Armor). In its juvenile, rooted form, a hooked blossom resembles a flower with a metallic stem, which is dangerous when active. In direct sunlight, a rooted hooked blossom regains 1 point of health each round.",
+      "options": [],
+      "interactions": "Hooked blossoms act much like animal predators, though they are not concerned with self-preservation.",
+      "uses": "The scavenging PCs spy a flower-clad hill in the distance, shining in the sun. Even from here, they can smell the pleasant perfume drifting on the breeze.",
+      "loot": null,
+      "intrusions": null
     },
     {
       "name": "HUNGRY HAZE",
@@ -24460,6 +25854,63 @@
       "uses": "An enterprising bandit has captured and repurposed a number of mechanical soldiers, probably using sound. These soldiers remember nothing of their former duties and work for their new master as high-tech brigands and pirates. The bandit has no idea how to repair them if they are damaged, much less make new soldiers.",
       "loot": "A determined scientist might scavenge the body of one of these automatons to find a cypher.",
       "intrusions": "The destroyed soldier explodes in a gout of flame, black smoke, and steam, inflicting 6 points of damage to all within immediate range."
+    },
+    {
+      "name": "MELTED",
+      "kind": "Creature",
+      "level": 4,
+      "description": "Survivors assume the melted are another strain of mutants. Maybe so, but they're not originally from Earth. Or rather, not this Earth. The melted leaked in from a parallel world's apocalypse caused by a snafu with a high energy supercollider. Dozens of different but parallel timelines smashed into each other. The few survivors were fused beings composed of many different alternate versions of the same person, each still \"radioactive\" with latent transdimensional energy.",
+      "motive": "Surcease from constant pain; absorb more sapient beings",
+      "environment": "Groups of three to five roaming the ruins",
+      "health": 15,
+      "damage": "4 points",
+      "armor": 0,
+      "movement": "Short",
+      "modifications": [
+        "Initiative and Speed defense as level 5 due to seeing a second into the future"
+      ],
+      "combat": "The melted attack with two claws. \nIf a melted defeats a foe, they \"consume\" it by drawing it fully into their body cavity as their action, healing the melted for 10 health and giving the creature a few hours free of pain, allowing their mind to clear. \nA given melted may also have a trait associated with the transdimensional energy they burn with.",
+      "options": [
+        {
+          "name": "Transdimensional Energy Enhancement",
+          "table": [
+            {
+              "start": 1,
+              "end": 1,
+              "entry": "Enhanced strength: Attacks inflict 6 points of damage (instead of 4)"
+            },
+            {
+              "start": 2,
+              "end": 2,
+              "entry": "Healing factor: Regains 2 health each round"
+            },
+            {
+              "start": 3,
+              "end": 3,
+              "entry": "Bite: In addition to their claw attacks, makes a bit attack each round that inflicts 6 points of damage"
+            },
+            {
+              "start": 4,
+              "end": 4,
+              "entry": "Gravitic repulsion: Flies a long distance each round"
+            },
+            {
+              "start": 5,
+              "end": 5,
+              "entry": "Dimensional instability: Teleports up to a long distance before or after each attack"
+            },
+            {
+              "start": 6,
+              "end": 6,
+              "entry": "Transdimensional blast: About once each hour, emits transdimensional energy filling an adjacent short area; all creatures in the area take 6 points of ambient damage on a failed Might defense roll, as parts of them temporarily fuse with other affect creatures, or creatures in alternate dimensions"
+            }
+          ]
+        }
+      ],
+      "interactions": "A few of the melted gain moments of clarity, but all are burdened with anguish stemming from their fused state. They unleash their full fury on whoever and whatever they catch among the ruins, but they seem particularly bent on finding and absorbing scientists.",
+      "uses": "A group of the melted seek out a surviving scientific installation and attempt to consume everyone nearby.",
+      "loot": "One out of three melted may carry a manifest cypher (in the form of before times military tech), such as an armor reinforcer or a sonic detonation.",
+      "intrusions": null
     },
     {
       "name": "MERFOLK",
@@ -24903,6 +26354,25 @@
       "intrusions": "The photonomorph uses its ability to create a hard- light object or effect that is perfect for aiding it for the situation at hand."
     },
     {
+      "name": "PLAGUE",
+      "kind": "Creature",
+      "level": 6,
+      "description": "Plague (often called \"Death\") is present wherever people die of disease or infirmity brought on by age. She prefers black and pale green evening wear, including long pale green gloves and often a grinning skull mask. When traveling, she drives a pale green hearse or motorcycle, or rides a horse the same sickly green color.",
+      "motive": "Death",
+      "environment": "Almost anywhere people are dying (but especially of disease and/or old age) and/or with one or more of the Four",
+      "health": 24,
+      "damage": "6 points",
+      "armor": 1,
+      "movement": "Short; usually has a pale green mount or vehicle nearby",
+      "modifications": ["Might defense as level 8"],
+      "combat": "When she wishes, Plague wields a scythe, as if she had always been holding it. She attacks twice with it as her action. On a hit, the scythe deals damage and the target must succeed on a Might defense roll. On a failed roll, the target contracts a supernatural disease requiring that they succeed on a Might defense roll each minute or descend one step on the damage track. If an affected target succeeds on three Might defense rolls at any point, they recover. If Plague removes a glove as an action, she can use her next action to imbue her scythe with necrotic power, or simply touch a target with her bare hand. On a hit with either her touch or the imbued scythe, she inflicts damage, and the target must succeed on a Might defense roll or die. Plague can use this ability about once a day, or immediately again if her previous target dies because of it. As one of the Four, Plague can see in the dark, regains 1 health each round, and, if killed, reappears within 1d10 days at the next nearest location that previously experienced death by disease or due to old age.",
+      "options": [],
+      "interactions": "Of all the Four, Plague is the most changeable in outlook, and sometimes is even somewhat sympathetic to humanity's plight. When she's in such a mood, persuasive characters could convince Plague to pass them over, though she promises that it's only a temporary stay of death.",
+      "uses": "The characters find a before-times bunker filled with corpses killed by some strange infection, plus a living \"human\" wearing a black and pale green evening gown.",
+      "loot": null,
+      "intrusions": null
+    },
+    {
       "name": "POSTHUMAN",
       "kind": "Creature",
       "level": 7,
@@ -25000,6 +26470,28 @@
       "interactions": "Grimhilde is cunning and devious, always hatching plans against those who harm her, who threaten to overshadow her, or who have caught her eye in some way.",
       "uses": "The characters enter an area that is under Grimhilde's power and must face her wrath.",
       "loot": "She has a mirror mirror artifact, as well as 1d6 cyphers (often poison).",
+      "intrusions": null
+    },
+    {
+      "name": "RADIOACTIVE BEAR",
+      "kind": "Creature",
+      "level": 7,
+      "description": "Exposure to radiation and other mutagens--or possibly the malign design of some before times military lab or inscrutable AI instance--transformed an already large and aggressive bear into something truly horrific. Standing well over 20 feet (6 m) tall, radioactive bears are drawn to radioactive areas, which empower and sustain them, though not completely. Which is why sometimes they head into uncontaminated areas to hunt large game. They especially prefer people.",
+      "motive": "Hunger for flesh and radiation",
+      "environment": "Anywhere radioactive",
+      "health": 35,
+      "damage": "7 points",
+      "armor": 1,
+      "movement": "Short",
+      "modifications": [
+        "Speed defense as level 4 due to size",
+        "perception as level 8"
+      ],
+      "combat": "Creatures within immediate range of a radioactive bear are irradiated on a failed Might defense task, hindering their tasks on their next turn. \nThe bear attacks twice each round with its claws, or bites once. If its bite attack succeeds against a target suffering from radiation sickness, the bear regains 5 points of health. \nOn a target's failed Might defense roll, the bear holds the target in its jaws, hindering their tasks until they can escape. If the bear begins its turn with a target held in its jaws, the bear automatically deals bite damage as its action. \nAs an action, the bear can cough forth a radioactive cloud once every few hours (and again if the bear is killed), targeting everything within immediate range. Targets that fail a Might defense roll take damage from the radiation. \nIf the radioactive bear is the result of military or AI design rather than a natural mutation, it may also have a mechanism capable of firing a long range laser at distant targets, deployed from a harness fused to the creature's flesh. \nIn areas of dangerous radiation, the radioactive bear regains 2 points of health each round.",
+      "options": [],
+      "interactions": "Radioactive bears are clever predators, sly if they need to be. If not too hungry, a radioactive bear might let potential prey pass it by, assuming they don't antagonize the bear.",
+      "uses": "The characters glance behind them as they drive their vehicle across the landscape and see a huge bear, apparently giving chase.",
+      "loot": null,
       "intrusions": null
     },
     {
@@ -25520,6 +27012,25 @@
       "uses": "A character is followed by a supernal intent on collecting them. Loot: A supernal usually has a few manifest cyphers, and possibly an artifact.",
       "loot": null,
       "intrusions": "The supernal grabs the character and flies up and away, unless and until the character escapes the grab."
+    },
+    {
+      "name": "SWORD",
+      "kind": "Creature",
+      "level": 6,
+      "description": "Sword (also called \"War\") is never far from large-scale conflicts. She glories in battle and warfare, and before the world ended, she was a provocateur, a mercenary, a soldier, and sometimes a general. However, once a war is good and started, she prefers fighting over watching. Then and now, she dresses in red, preferring red military attire and a massive sword--or assault rifle--the color of blood.",
+      "motive": "Hunger for combat; incite war",
+      "environment": "Almost anywhere war is waged and/or with one or more of the Four",
+      "health": 24,
+      "damage": "6 points",
+      "armor": 3,
+      "movement": "Short; usually has a red mount or vehicle nearby",
+      "modifications": ["Attacks as level 8"],
+      "combat": "Sword's blood colored weapon is either a greatsword or an assault rifle, whatever she needs it to be in the moment. She attacks three times with the sword as her action. With the rifle, she can make one very long range attack (with no hindrance despite the range) or two long range attacks. \nAs part of her attack, she can imbue one bullet each round with an explosive charge. If the attack hits, in addition to normal damage, the target and everyone within immediate range of the target must succeed on a Speed defense roll or take 6 points of damage from shrapnel, or 2 points even with a successful roll. \nAs one of the Four, Sword can see in the dark, regains 1 health each round, and, if killed, reappears within 1d10 days at the next nearest location that previously experienced war.",
+      "options": [],
+      "interactions": "Sword is full of swagger, often causing fights with biting insults. However, if she can't incite a fight, she's just as happy to start one herself, especially as part of a false flag operation.",
+      "uses": "A band of raiders, dozens strong, appears on the horizon. Leading them is a woman on a red horse.",
+      "loot": null,
+      "intrusions": null
     },
     {
       "name": "SYNTHETIC PERSON",
@@ -26273,6 +27784,28 @@
       "uses": "The characters are asked to clear out a space that once served as an old military depot. The appearance of zombies sealed in the area comes as an unpleasant surprise.",
       "loot": null,
       "intrusions": "When the character fails to kill a zombie by rolling an odd number on an attack that otherwise would have been successful, in addition to the normal effect, the zombie's arm comes free and animates as a separate level 2 zombie."
+    },
+    {
+      "name": "ZOMBIE HULK",
+      "kind": "Creature",
+      "level": 5,
+      "description": "Most zombies are mindless, shambling, hungry, and infectious. Some varieties, despite their semblance to corpses, enjoy a regenerative process that keeps them active regardless of grievous wounds, rotting flesh, and sometimes missing limbs or organs. That same process kicks into overdrive in zombie hulks, converting everything they eat into additional mass and muscle. The result is three times as massive as a regular zombie and five times as dangerous.\nZOMBIE SPRINTER: Instead of being much larger than normal, a zombie's regenerative system can imbue it with incredible quickness, making it much faster than the shamblers often encountered. The resulting zombie sprinter's speed and ferocity make it hard to escape.\nZombie sprinter: level 3, initiative as level 5; moves a long distance each round; three bites per round inflict 3 damage each; retains 1 health if attack roll result that would have downed it was an even number",
+      "motive": "Hunger (for flesh, cerebrospinal fluid, certain human hormones, or whatever it is that nourishes the zombie in the setting)",
+      "environment": "Almost anywhere, alone or with other zombie varieties",
+      "health": 23,
+      "damage": "8 points",
+      "armor": 2,
+      "movement": "Short",
+      "modifications": [
+        "Speed defense as level 3 due to size",
+        "perception as level 7"
+      ],
+      "combat": "A zombie hulk bashes with massive, permanently balled fists stained with the gore of past targets. \nAlternatively, a zombie hulk can bite a target. When this occurs, it's almost impossible to force the hulk's jaws apart again. When a target takes damage from a bite, they must also succeed on a Speed defense roll or one of their limbs is clamped in the hulk's mouth. The target automatically takes damage each round they are caught, and all their tasks are hindered, including attempts to escape. Meanwhile, the hulk is free to bash other foes as its action even as it chews on a previously caught target. \nIf an attack would reduce the zombie hulk's health to 0, it does so only if the number rolled for the attack was an even number; otherwise, the zombie is reduced to 1 point of health instead.",
+      "options": [],
+      "interactions": "A zombie hulk may choose to smash a nearby structure instead of going straight toward food, but it is typically a mindless, unreasoning monster.",
+      "uses": "Just when it seems like the characters understand the situation with zombies, a zombie hulk appears, making it clear that bizarre and dangerous zombie permutations are possible. If a regular zombie can become a hulk, what other ways can they mutate and evolve?",
+      "loot": null,
+      "intrusions": null
     }
   ],
   "equipment": [
@@ -26421,6 +27954,18 @@
       ]
     },
     {
+      "name": "Ammo handloading tools",
+      "variants": [
+        {
+          "description": "Asset (and needed supplies) for creating ammunition",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Analysis apparatus",
       "variants": [
         {
@@ -26436,7 +27981,7 @@
       "name": "Animal hide",
       "variants": [
         {
-          "description": "",
+          "description": "Smell hinders stealth tasks",
           "notes": ["Light armor"],
           "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["INEXPENSIVE"],
@@ -26512,6 +28057,18 @@
           "notes": [],
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["1 GP"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Assault rifle",
+      "variants": [
+        {
+          "description": "",
+          "notes": ["Heavy weapon", "Long range", "rapid-fire weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
           "levels": []
         }
       ]
@@ -26630,6 +28187,13 @@
           "levels": []
         },
         {
+          "description": "",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
           "description": "A quality, well-packed backpack can carry a surprising amount of gear, including a sleeping bag.",
           "notes": [],
           "tags": ["CONTEMPORARY", "MODERN", "UTILITY GEAR"],
@@ -26698,6 +28262,30 @@
           "notes": [],
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["10 GP"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Baseball bat",
+      "variants": [
+        {
+          "description": "",
+          "notes": ["Medium weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Batteries",
+      "variants": [
+        {
+          "description": "4-pack, household (one use or rechargeable)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
           "levels": []
         }
       ]
@@ -26787,12 +28375,31 @@
       ]
     },
     {
+      "name": "Bicycle/skateboard/inline skates",
+      "variants": [
+        {
+          "description": "Use requires same attention as other vehicular movement",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Binoculars",
       "variants": [
         {
           "description": "",
           "notes": ["Asset for perception tasks at range"],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
+          "description": "",
+          "notes": ["Asset for perception tasks"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["MODERATE"],
           "levels": []
         },
@@ -26926,6 +28533,18 @@
       ]
     },
     {
+      "name": "Bolt cutter",
+      "variants": [
+        {
+          "description": "Cuts bolts, chains, bars, etc. of up to level 5",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Bolt cutters",
       "variants": [
         {
@@ -26976,6 +28595,13 @@
           "notes": ["Long range", "Medium weapon"],
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["EXPENSIVE", "30 GP"],
+          "levels": []
+        },
+        {
+          "description": "",
+          "notes": ["Long range", "Medium weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
           "levels": []
         },
         {
@@ -27288,6 +28914,13 @@
           "levels": []
         },
         {
+          "description": "",
+          "notes": ["Asset for climbing tasks"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
           "description": "Enables and eases tasks to climb buildings or cliffs. Includes 15 m (50 feet) of nylon rope.",
           "notes": [],
           "tags": ["CONTEMPORARY", "MODERN", "UTILITY GEAR"],
@@ -27518,6 +29151,13 @@
           "levels": []
         },
         {
+          "description": "Asset for breaking into stuck or locked doors",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
           "description": "Enables and eases tasks to force open stuck or barred doors.",
           "notes": [],
           "tags": ["CONTEMPORARY", "MODERN", "UTILITY GEAR"],
@@ -27601,6 +29241,18 @@
           "notes": [],
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["50 GP"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Duct tape",
+      "variants": [
+        {
+          "description": "Useful and ubiquitous",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
           "levels": []
         }
       ]
@@ -27832,6 +29484,13 @@
           "levels": []
         },
         {
+          "description": "Asset for twenty healing tasks before contents used up",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
           "description": "Kit of bandages, antibiotics, and similar supplies; provides an asset to healing tasks.",
           "notes": [],
           "tags": ["CONTEMPORARY", "HEALTH CARE AND NUTRITION", "MODERN"],
@@ -27880,6 +29539,30 @@
           "tags": ["ADVANCED", "ARMAMENT", "SCIENCE FICTION"],
           "value": ["VERY EXPENSIVE"],
           "levels": [4]
+        }
+      ]
+    },
+    {
+      "name": "Food, perishable",
+      "variants": [
+        {
+          "description": "Single helping of fruit, vegetable, recently slaughtered animal, etc",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Food, preserved",
+      "variants": [
+        {
+          "description": "Single can of food, water, or condiment, typically from before-times",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
         }
       ]
     },
@@ -27964,6 +29647,13 @@
           "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["INEXPENSIVE"],
           "levels": []
+        },
+        {
+          "description": "Breathable air for four hours",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
         }
       ]
     },
@@ -28036,6 +29726,18 @@
           "tags": ["FANTASTIC", "SCIENCE FICTION", "STELLAR GATE"],
           "value": ["PRICELESS"],
           "levels": [5]
+        }
+      ]
+    },
+    {
+      "name": "Glasses",
+      "variants": [
+        {
+          "description": "Corrects for different vision impairments",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
         }
       ]
     },
@@ -28196,6 +29898,18 @@
       ]
     },
     {
+      "name": "Hand axe",
+      "variants": [
+        {
+          "description": "",
+          "notes": ["Light weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Hand crossbow",
       "variants": [
         {
@@ -28240,13 +29954,6 @@
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["MODERATE", "5 GP"],
           "levels": []
-        },
-        {
-          "description": "",
-          "notes": ["Light weapon"],
-          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
-          "value": ["INEXPENSIVE"],
-          "levels": []
         }
       ]
     },
@@ -28266,12 +29973,26 @@
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
           "value": ["MODERATE"],
           "levels": []
+        },
+        {
+          "description": "",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": [5]
         }
       ]
     },
     {
       "name": "Handgun, heavy",
       "variants": [
+        {
+          "description": "",
+          "notes": ["Heavy weapon", "Long range"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
+          "levels": []
+        },
         {
           "description": "",
           "notes": ["Heavy weapon", "Long range"],
@@ -28287,6 +30008,13 @@
         {
           "description": "",
           "notes": ["Light weapon", "Short range"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        },
+        {
+          "description": "",
+          "notes": ["Light weapon", "Short range"],
           "tags": ["ARMAMENT", "CONTEMPORARY", "MODERN"],
           "value": ["EXPENSIVE"],
           "levels": [2]
@@ -28296,6 +30024,13 @@
     {
       "name": "Handgun, medium",
       "variants": [
+        {
+          "description": "",
+          "notes": ["Long range", "Medium weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        },
         {
           "description": "",
           "notes": ["Long range", "Medium weapon"],
@@ -28338,6 +30073,18 @@
           "tags": ["FANTASTIC", "PLANETARY VEHICLE", "SCIENCE FICTION"],
           "value": ["EXORBITANT"],
           "levels": [4]
+        }
+      ]
+    },
+    {
+      "name": "Hazmat suit",
+      "variants": [
+        {
+          "description": "+2 Armor against chemical and radiation damage",
+          "notes": ["Light armor"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
         }
       ]
     },
@@ -28441,6 +30188,18 @@
           "tags": ["ADVANCED", "APPAREL & ARMOR", "SCIENCE FICTION"],
           "value": ["VERY EXPENSIVE"],
           "levels": [5]
+        }
+      ]
+    },
+    {
+      "name": "Horse",
+      "variants": [
+        {
+          "description": "Trained for riding (typically found with a few days of feed)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
+          "levels": []
         }
       ]
     },
@@ -28659,6 +30418,13 @@
       "name": "Kevlar vest",
       "variants": [
         {
+          "description": "",
+          "notes": ["Medium armor"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        },
+        {
           "description": "Functions as medium armor (+2 Armor).",
           "notes": ["Medium armor"],
           "tags": ["APPAREL & ARMOR", "CONTEMPORARY", "MODERN"],
@@ -28739,9 +30505,9 @@
       "variants": [
         {
           "description": "",
-          "notes": ["Asset to small repair tasks", "Light weapon"],
+          "notes": ["Asset to minor repair tasks", "Light weapon"],
           "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
-          "value": ["INEXPENSIVE"],
+          "value": ["MODERATE"],
           "levels": []
         }
       ]
@@ -28952,10 +30718,34 @@
       "name": "Light weapon",
       "variants": [
         {
-          "description": "Won't last long",
+          "description": "",
+          "notes": ["Light weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Light weapon, Improvised",
+      "variants": [
+        {
+          "description": "Chair, ice skate, frying pan, etc. could break after one combat",
           "notes": ["Light weapon"],
           "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["INEXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Lighter (butane or electric)",
+      "variants": [
+        {
+          "description": "Depletes after 1d100 uses (but may be refilled/recharged)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
           "levels": []
         }
       ]
@@ -28975,6 +30765,13 @@
           "notes": ["Medium armor"],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
           "value": ["EXPENSIVE"],
+          "levels": []
+        },
+        {
+          "description": "encumbers as light armor",
+          "notes": ["Medium armor"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
           "levels": []
         }
       ]
@@ -29064,6 +30861,13 @@
         {
           "description": "",
           "notes": ["Medium weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
+          "description": "",
+          "notes": ["Medium weapon"],
           "tags": ["ARMAMENT", "CONTEMPORARY", "MODERN"],
           "value": ["MODERATE"],
           "levels": [2]
@@ -29091,6 +30895,30 @@
           "tags": ["", "FANTASTIC", "SCIENCE FICTION"],
           "value": ["EXORBITANT"],
           "levels": [6]
+        }
+      ]
+    },
+    {
+      "name": "Matches",
+      "variants": [
+        {
+          "description": "Single box or book",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Matches, windproof",
+      "variants": [
+        {
+          "description": "Single container (25 matches)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
         }
       ]
     },
@@ -29155,6 +30983,30 @@
       ]
     },
     {
+      "name": "Medication, one bottle",
+      "variants": [
+        {
+          "description": "Pain relief, allergy, antacid, antibiotic, anti-nausea, or another drug in a bottle",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Medication, one pill",
+      "variants": [
+        {
+          "description": "Pain relief, allergy, antacid, antibiotic, anti-nausea, or another single drug pill",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Medium blaster",
       "variants": [
         {
@@ -29203,17 +31055,17 @@
       ]
     },
     {
-      "name": "Microphone",
+      "name": "Microphone designed to be concealed",
       "variants": [
         {
-          "description": "designed to be concealed Transmits at long range.",
+          "description": "Transmits at long range.",
           "notes": ["Long range"],
           "tags": ["MODERN", "UTILITY GEAR"],
           "value": ["EXPENSIVE"],
           "levels": []
         },
         {
-          "description": "designed to be concealed Transmits at long range.",
+          "description": "Transmits at long range.",
           "notes": ["Long range"],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
           "value": ["EXPENSIVE"],
@@ -29236,6 +31088,13 @@
     {
       "name": "Military body armor",
       "variants": [
+        {
+          "description": "",
+          "notes": ["Heavy armor"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
+          "levels": []
+        },
         {
           "description": "Functions as heavy armor (+3 Armor).",
           "notes": ["Heavy armor"],
@@ -29551,6 +31410,13 @@
           "levels": []
         },
         {
+          "description": "See in darkness as if dim light at long range",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        },
+        {
           "description": "Reasonably accurate vision in complete darkness, up to 100 m (330 feet).",
           "notes": [],
           "tags": ["CONTEMPORARY", "MODERN", "SENSE-ENHANCING TOOLS"],
@@ -29630,6 +31496,13 @@
           "levels": []
         },
         {
+          "description": "",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": [5]
+        },
+        {
           "description": "Padlocks aren't too difficult to remove, especially with bolt cutters, but they do slow down would-be thieves.",
           "notes": [],
           "tags": ["CONTEMPORARY", "MODERN", "UTILITY GEAR"],
@@ -29658,6 +31531,18 @@
           "notes": [],
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["1 SP"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Personal hygiene product, single",
+      "variants": [
+        {
+          "description": "Toilet paper roll, menstrual supply, soap, etc.",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
           "levels": []
         }
       ]
@@ -29777,6 +31662,18 @@
           "description": "",
           "notes": [],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Portable lamp or flashlight",
+      "variants": [
+        {
+          "description": "Requires batteries (expensive version recharges with sunlight or crank)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["MODERATE"],
           "levels": []
         }
@@ -29903,6 +31800,18 @@
       ]
     },
     {
+      "name": "Radiation detector, handheld",
+      "variants": [
+        {
+          "description": "Immediate range",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Radiation pill (pack of 5)",
       "variants": [
         {
@@ -29919,6 +31828,13 @@
       "variants": [
         {
           "description": "Prevents radiation damage for three days",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        },
+        {
+          "description": "Prevents damage from environmental radiation",
           "notes": [],
           "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["EXPENSIVE"],
@@ -30011,6 +31927,18 @@
       ]
     },
     {
+      "name": "Rifle",
+      "variants": [
+        {
+          "description": "",
+          "notes": ["Long range", "Medium weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Rifle, assault",
       "variants": [
         {
@@ -30025,6 +31953,13 @@
     {
       "name": "Rifle, heavy",
       "variants": [
+        {
+          "description": "300-foot (90 m) range",
+          "notes": ["Heavy weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
+          "levels": []
+        },
         {
           "description": "",
           "notes": ["Heavy weapon", "Very long range"],
@@ -30043,6 +31978,18 @@
           "tags": ["ARMAMENT", "CONTEMPORARY", "MODERN"],
           "value": ["MODERATE"],
           "levels": [2]
+        }
+      ]
+    },
+    {
+      "name": "Riot gear",
+      "variants": [
+        {
+          "description": "",
+          "notes": ["Medium armor"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
         }
       ]
     },
@@ -30079,6 +32026,13 @@
           "description": "Nylon, 50 feet",
           "notes": [],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
+          "description": "Nylon, 50 ft (16m)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["MODERATE"],
           "levels": []
         }
@@ -30296,12 +32250,31 @@
       ]
     },
     {
+      "name": "Shopping cart/wheelbarrow",
+      "variants": [
+        {
+          "description": "",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Shotgun",
       "variants": [
         {
           "description": "",
           "notes": ["Heavy weapon", "Immediate range"],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
+          "value": ["EXPENSIVE"],
+          "levels": []
+        },
+        {
+          "description": "",
+          "notes": ["Heavy weapon", "immediate range"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["EXPENSIVE"],
           "levels": []
         },
@@ -30393,6 +32366,13 @@
           "description": "",
           "notes": [],
           "tags": ["SCIENCE FICTION", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        },
+        {
+          "description": "",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
           "value": ["MODERATE"],
           "levels": []
         },
@@ -30865,6 +32845,13 @@
       "name": "Submachine gun",
       "variants": [
         {
+          "description": "",
+          "notes": ["Medium weapon", "Short range", "rapid-fire weapon"],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
+          "levels": []
+        },
+        {
           "description": "Medium weapon (4 damage), short range.",
           "notes": ["Medium Weapon", "Rapid-fire weapon", "Short Range"],
           "tags": ["ARMAMENT", "CONTEMPORARY", "MODERN"],
@@ -30906,6 +32893,18 @@
           "tags": ["FANTASTIC", "PLANETARY VEHICLE", "SCIENCE FICTION"],
           "value": ["EXORBITANT"],
           "levels": [3]
+        }
+      ]
+    },
+    {
+      "name": "Sunglasses",
+      "variants": [
+        {
+          "description": "",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
+          "levels": []
         }
       ]
     },
@@ -31133,6 +33132,18 @@
       ]
     },
     {
+      "name": "Textbook, \"How To\"",
+      "variants": [
+        {
+          "description": "Asset to one knowledge task such as plumbing, electronics, gardening, etc",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Throwing dart",
       "variants": [
         {
@@ -31152,6 +33163,30 @@
           "notes": ["Light weapon", "Short range"],
           "tags": ["FANTASY", "UTILITY GEAR"],
           "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Tool set, hand tools",
+      "variants": [
+        {
+          "description": "Includes hammer, tape measure, screwdriver, pliers, etc",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
+        }
+      ]
+    },
+    {
+      "name": "Tool, single hand tool",
+      "variants": [
+        {
+          "description": "Hammer, tape measure, manual drill, or other single hand tool",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["INEXPENSIVE"],
           "levels": []
         }
       ]
@@ -31313,6 +33348,18 @@
       ]
     },
     {
+      "name": "Vehicle",
+      "variants": [
+        {
+          "description": "Car, truck, van, boat, or prop two-seater plane (internal combustion engine or EV)",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["VERY EXPENSIVE"],
+          "levels": []
+        }
+      ]
+    },
+    {
       "name": "Wafercraft, exploration",
       "variants": [
         {
@@ -31357,6 +33404,18 @@
           "tags": ["FANTASTIC", "PLANETARY VEHICLE", "SCIENCE FICTION"],
           "value": ["PRICELESS"],
           "levels": [4]
+        }
+      ]
+    },
+    {
+      "name": "Water filter straw or bottle",
+      "variants": [
+        {
+          "description": "Filters water while drinking",
+          "notes": [],
+          "tags": ["POST-APOCALYPTIC", "UTILITY GEAR"],
+          "value": ["MODERATE"],
+          "levels": []
         }
       ]
     },
