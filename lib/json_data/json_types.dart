@@ -404,7 +404,7 @@ class CJsonFocus implements CSearchable {
   String name;
   String description;
   List<CJsonAbilityRef> abilities;
-  String intrusions;
+  String? intrusions;
 
   @override
   @JsonKey(includeFromJson: false)
@@ -429,7 +429,9 @@ class CJsonFocus implements CSearchable {
   Iterable<Widget> getRenderables() {
     return [
       CRenderParagraph(description),
-      CRenderLabeledParagraph(label: "GM Intrusions:", text: intrusions),
+      if (intrusions != null)
+        CRenderLabeledParagraph(
+            label: "GM Intrusions:", text: intrusions ?? ""),
       ...abilities
           .groupListsBy((a) => a.tier)
           .entries
@@ -574,7 +576,7 @@ class CJsonArtifact implements CSearchable {
   @JsonKey(name: "level_mod")
   int levelMod;
 
-  String form;
+  String? form;
   String depletion;
   String effect;
   List<CJsonRollTable> options;
@@ -613,7 +615,7 @@ class CJsonArtifact implements CSearchable {
 
     return [
       CRenderVerticalKeyValues([
-        CNameDescription("Form", form),
+        if (form != null) CNameDescription("Form", form ?? ""),
         if (levelDice != null)
           CNameDescription(
               "Level", "$levelDice ${levelMod != 0 ? "+ $levelMod" : ""}"),

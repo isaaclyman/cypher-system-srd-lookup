@@ -190,7 +190,7 @@ CJsonFocus _$CJsonFocusFromJson(Map<String, dynamic> json) => CJsonFocus(
       abilities: (json['abilities'] as List<dynamic>)
           .map((e) => CJsonAbilityRef.fromJson(e as Map<String, dynamic>))
           .toList(),
-      intrusions: json['intrusions'] as String,
+      intrusions: json['intrusions'] as String?,
     );
 
 Map<String, dynamic> _$CJsonFocusToJson(CJsonFocus instance) =>
@@ -255,7 +255,7 @@ CJsonArtifact _$CJsonArtifactFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       levelDice: json['level_dice'] as String?,
       levelMod: json['level_mod'] as int,
-      form: json['form'] as String,
+      form: json['form'] as String?,
       depletion: json['depletion'] as String,
       effect: json['effect'] as String,
       options: (json['options'] as List<dynamic>)

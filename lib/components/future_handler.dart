@@ -19,31 +19,35 @@ class CFutureHandler<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: future,
-      builder: (context, snapshot) {
-        Widget child = const Center(
-          child: CircularProgressIndicator(),
-        );
-
-        final data = snapshot.data;
-        if (snapshot.hasError) {
-          child = Center(
-            child: Text(errorMessage),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: FutureBuilder(
+        future: future,
+        builder: (context, snapshot) {
+          Widget child = const Center(
+            child: CircularProgressIndicator(),
           );
-        } else if (data != null) {
-          child = builder(context, data);
-        } else if (snapshot.connectionState == ConnectionState.done) {
-          child = Center(
-            child: Text(nullDataMessage),
-          );
-        }
 
-        return AnimatedSwitcher(
-          duration: const Duration(milliseconds: 100),
-          child: child,
-        );
-      },
+          final data = snapshot.data;
+          if (snapshot.hasError) {
+            throw snapshot.error!;
+            child = Center(
+              child: Text(errorMessage),
+            );
+          } else if (data != null) {
+            child = builder(context, data);
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            child = Center(
+              child: Text(nullDataMessage),
+            );
+          }
+
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 100),
+            child: child,
+          );
+        },
+      ),
     );
   }
 }
