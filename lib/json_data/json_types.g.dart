@@ -54,7 +54,7 @@ Map<String, dynamic> _$CJsonRootToJson(CJsonRoot instance) => <String, dynamic>{
 
 CJsonAbility _$CJsonAbilityFromJson(Map<String, dynamic> json) => CJsonAbility(
       name: json['name'] as String,
-      cost: json['cost'] as int?,
+      cost: (json['cost'] as num?)?.toInt(),
       pool: (json['pool'] as List<dynamic>).map((e) => e as String).toList(),
       additionalCost: json['additional_cost'] as String?,
       costRendered: json['cost_rendered'] as String,
@@ -83,7 +83,7 @@ Map<String, dynamic> _$CJsonAbilityToJson(CJsonAbility instance) =>
 CJsonAbilityRef _$CJsonAbilityRefFromJson(Map<String, dynamic> json) =>
     CJsonAbilityRef(
       name: json['name'] as String,
-      tier: json['tier'] as int,
+      tier: (json['tier'] as num).toInt(),
       preselected: json['preselected'] as bool,
     );
 
@@ -140,8 +140,8 @@ Map<String, dynamic> _$CJsonTypeToJson(CJsonType instance) => <String, dynamic>{
 CJsonSpecialAbilitiesAmount _$CJsonSpecialAbilitiesAmountFromJson(
         Map<String, dynamic> json) =>
     CJsonSpecialAbilitiesAmount(
-      tier: json['tier'] as int,
-      specialAbilities: json['special_abilities'] as int,
+      tier: (json['tier'] as num).toInt(),
+      specialAbilities: (json['special_abilities'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CJsonSpecialAbilitiesAmountToJson(
@@ -191,6 +191,9 @@ CJsonFocus _$CJsonFocusFromJson(Map<String, dynamic> json) => CJsonFocus(
           .map((e) => CJsonAbilityRef.fromJson(e as Map<String, dynamic>))
           .toList(),
       intrusions: json['intrusions'] as String?,
+      additionalEquipment: json['additional_equipment'] as String?,
+      minorEffect: json['minor_effect'] as String?,
+      majorEffect: json['major_effect'] as String?,
     );
 
 Map<String, dynamic> _$CJsonFocusToJson(CJsonFocus instance) =>
@@ -199,6 +202,9 @@ Map<String, dynamic> _$CJsonFocusToJson(CJsonFocus instance) =>
       'description': instance.description,
       'abilities': instance.abilities,
       'intrusions': instance.intrusions,
+      'additional_equipment': instance.additionalEquipment,
+      'minor_effect': instance.minorEffect,
+      'major_effect': instance.majorEffect,
     };
 
 CJsonCypher _$CJsonCypherFromJson(Map<String, dynamic> json) => CJsonCypher(
@@ -206,7 +212,7 @@ CJsonCypher _$CJsonCypherFromJson(Map<String, dynamic> json) => CJsonCypher(
       effect: json['effect'] as String,
       form: json['form'] as String?,
       levelDice: json['level_dice'] as String?,
-      levelMod: json['level_mod'] as int,
+      levelMod: (json['level_mod'] as num).toInt(),
       options: (json['options'] as List<dynamic>)
           .map((e) => CJsonRollTable.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -238,8 +244,8 @@ Map<String, dynamic> _$CJsonRollTableToJson(CJsonRollTable instance) =>
 
 CJsonRollEntry _$CJsonRollEntryFromJson(Map<String, dynamic> json) =>
     CJsonRollEntry(
-      start: json['start'] as int,
-      end: json['end'] as int,
+      start: (json['start'] as num).toInt(),
+      end: (json['end'] as num).toInt(),
       entry: json['entry'] as String,
     );
 
@@ -254,7 +260,7 @@ CJsonArtifact _$CJsonArtifactFromJson(Map<String, dynamic> json) =>
     CJsonArtifact(
       name: json['name'] as String,
       levelDice: json['level_dice'] as String?,
-      levelMod: json['level_mod'] as int,
+      levelMod: (json['level_mod'] as num).toInt(),
       form: json['form'] as String?,
       depletion: json['depletion'] as String,
       effect: json['effect'] as String,
@@ -278,13 +284,13 @@ CJsonCreature _$CJsonCreatureFromJson(Map<String, dynamic> json) =>
     CJsonCreature(
       name: json['name'] as String,
       kind: json['kind'] as String,
-      level: json['level'] as int?,
+      level: (json['level'] as num?)?.toInt(),
       description: json['description'] as String,
       motive: json['motive'] as String?,
       environment: json['environment'] as String?,
-      health: json['health'] as int?,
+      health: (json['health'] as num?)?.toInt(),
       damage: json['damage'] as String?,
-      armor: json['armor'] as int,
+      armor: (json['armor'] as num).toInt(),
       movement: json['movement'] as String?,
       modifications: (json['modifications'] as List<dynamic>)
           .map((e) => e as String)
@@ -337,7 +343,9 @@ CJsonEquipmentVariant _$CJsonEquipmentVariantFromJson(
       notes: (json['notes'] as List<dynamic>).map((e) => e as String).toSet(),
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toSet(),
       value: (json['value'] as List<dynamic>).map((e) => e as String).toList(),
-      levels: (json['levels'] as List<dynamic>).map((e) => e as int).toList(),
+      levels: (json['levels'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$CJsonEquipmentVariantToJson(

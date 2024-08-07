@@ -406,6 +406,15 @@ class CJsonFocus implements CSearchable {
   List<CJsonAbilityRef> abilities;
   String? intrusions;
 
+  @JsonKey(name: "additional_equipment")
+  String? additionalEquipment;
+
+  @JsonKey(name: "minor_effect")
+  String? minorEffect;
+
+  @JsonKey(name: "major_effect")
+  String? majorEffect;
+
   @override
   @JsonKey(includeFromJson: false)
   Iterable<String> searchTextList;
@@ -415,11 +424,18 @@ class CJsonFocus implements CSearchable {
     required this.description,
     required this.abilities,
     required this.intrusions,
+    required this.additionalEquipment,
+    required this.minorEffect,
+    required this.majorEffect,
   }) : searchTextList = [
           "Name: $name",
           description,
           ...abilities.map((a) => a.searchText),
-          "GM Intrusion: $intrusions",
+          if (intrusions != null) "GM Intrusion: $intrusions",
+          if (additionalEquipment != null)
+            "Additional Equipment: $additionalEquipment",
+          if (minorEffect != null) "Minor Effect: $minorEffect",
+          if (majorEffect != null) "Major Effect: $majorEffect",
         ];
 
   factory CJsonFocus.fromJson(Map<String, dynamic> json) =>
@@ -429,9 +445,35 @@ class CJsonFocus implements CSearchable {
   Iterable<Widget> getRenderables() {
     return [
       CRenderParagraph(description),
-      if (intrusions != null)
-        CRenderLabeledParagraph(
-            label: "GM Intrusions:", text: intrusions ?? ""),
+      if (additionalEquipment != null ||
+          intrusions != null ||
+          minorEffect != null ||
+          majorEffect != null)
+        CRenderLabeledListAccordion(
+          [
+            if (additionalEquipment != null)
+              CNameDescription(
+                "Additional Equipment",
+                additionalEquipment ?? "",
+              ),
+            if (intrusions != null)
+              CNameDescription(
+                "GM Intrusions",
+                intrusions ?? "",
+              ),
+            if (minorEffect != null)
+              CNameDescription(
+                "Minor Effect",
+                minorEffect ?? "",
+              ),
+            if (majorEffect != null)
+              CNameDescription(
+                "Major Effect",
+                majorEffect ?? "",
+              ),
+          ],
+          label: "Extras",
+        ),
       ...abilities
           .groupListsBy((a) => a.tier)
           .entries

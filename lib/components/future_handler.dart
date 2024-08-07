@@ -30,7 +30,6 @@ class CFutureHandler<T> extends StatelessWidget {
 
           final data = snapshot.data;
           if (snapshot.hasError) {
-            throw snapshot.error!;
             child = Center(
               child: Text(errorMessage),
             );
